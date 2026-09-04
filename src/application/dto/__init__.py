@@ -2,6 +2,7 @@ from .ad_link import AdLinkDto, AdLinkStatsDto
 from .base import BaseDto, TimestampMixin, TrackableMixin
 from .broadcast import BroadcastDto, BroadcastMessageDto
 from .build import BuildInfoDto
+from .device_purchase import DevicePurchaseDto
 from .message_payload import MediaDescriptorDto, MessagePayloadDto
 from .notification_task import NotificationTaskDto
 from .payment_gateway import (
@@ -53,6 +54,7 @@ __all__ = [
     "BroadcastDto",
     "BroadcastMessageDto",
     "BuildInfoDto",
+    "DevicePurchaseDto",
     "MediaDescriptorDto",
     "MessagePayloadDto",
     "NotificationTaskDto",

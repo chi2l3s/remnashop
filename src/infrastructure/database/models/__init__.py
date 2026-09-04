@@ -1,6 +1,7 @@
 from .ad_link import AdLink
 from .base import BaseSql
 from .broadcast import Broadcast, BroadcastMessage
+from .device_purchase import DevicePurchase
 from .oauth_provider import UserOAuthProvider
 from .payment_gateway import PaymentGateway
 from .plan import Plan, PlanDuration, PlanPrice
@@ -14,6 +15,7 @@ from .user import User
 __all__ = [
     "AdLink",
     "BaseSql",
+    "DevicePurchase",
     "Promocode",
     "PromocodeActivation",
     "Broadcast",

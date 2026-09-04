@@ -2,6 +2,7 @@ from .activity import RecentActivityDao
 from .ad_link import AdLinkDao
 from .auth import AuthSessionDao
 from .broadcast import BroadcastDao
+from .device_purchase import DevicePurchaseDao
 from .oauth_provider import UserOAuthProviderDao
 from .payment_gateway import PaymentGatewayDao
 from .plan import PlanDao
@@ -19,6 +20,7 @@ __all__ = [
     "AdLinkDao",
     "AuthSessionDao",
     "BroadcastDao",
+    "DevicePurchaseDao",
     "UserOAuthProviderDao",
     "PaymentGatewayDao",
     "PlanDao",

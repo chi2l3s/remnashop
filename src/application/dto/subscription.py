@@ -30,6 +30,7 @@ class RemnaSubscriptionDto:
 
     traffic_limit: int
     device_limit: int
+    extra_devices: int = 0
     traffic_limit_strategy: TrafficLimitStrategy
 
     tag: Optional[str] = None
@@ -63,6 +64,7 @@ class SubscriptionDto(BaseDto, TrackableMixin, TimestampMixin):
 
     traffic_limit: int
     device_limit: int
+    extra_devices: int = 0
     traffic_limit_strategy: TrafficLimitStrategy
 
     tag: Optional[str] = None
@@ -81,6 +83,11 @@ class SubscriptionDto(BaseDto, TrackableMixin, TimestampMixin):
     @property
     def is_active(self) -> bool:
         return self.current_status == SubscriptionStatus.ACTIVE
+
+    @property
+    def total_device_limit(self) -> int:
+        """Общее количество устройств: базовое + докупленные."""
+        return self.device_limit + self.extra_devices
 
     @property
     def is_expired(self) -> bool:

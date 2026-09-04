@@ -296,7 +296,7 @@ class RemnawaveImpl(Remnawave):
                 expire_at=subscription.expire_at,
                 traffic_limit_strategy=subscription.traffic_limit_strategy,
                 traffic_limit_bytes=gb_to_bytes(subscription.traffic_limit),
-                hwid_device_limit=subscription.device_limit,
+                hwid_device_limit=subscription.total_device_limit,  # Используем общее количество
                 description=user.remna_description,
                 email=user.email,
                 tag=subscription.tag,
@@ -346,7 +346,7 @@ class RemnawaveImpl(Remnawave):
                 ),
                 traffic_limit_strategy=subscription.traffic_limit_strategy,
                 traffic_limit_bytes=gb_to_bytes(subscription.traffic_limit),
-                hwid_device_limit=subscription.device_limit,
+                hwid_device_limit=subscription.total_device_limit,  # Используем общее количество
                 description=user.remna_description,
                 email=user.email,
                 tag=subscription.tag,

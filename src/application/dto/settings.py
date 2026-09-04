@@ -220,6 +220,25 @@ class ResetFeatureSettingsDto(TrackableMixin):
 
 
 @dataclass(kw_only=True)
+class DevicePurchaseSettingsDto(TrackableMixin):
+    """Настройки покупки дополнительных устройств."""
+
+    enabled: bool = True
+    # Цены за одно устройство для каждой валюты
+    prices: dict[Currency, int] = field(
+        default_factory=lambda: {
+            Currency.USD: 5,
+            Currency.RUB: 500,
+            Currency.XTR: 50,
+        }
+    )
+
+    def get_price(self, currency: Currency) -> int:
+        """Получить цену за устройство для указанной валюты."""
+        return self.prices.get(currency, 0)
+
+
+@dataclass(kw_only=True)
 class ExtraSettingsDto(TrackableMixin):
     device_single_reset: ResetFeatureSettingsDto = field(default_factory=ResetFeatureSettingsDto)
     device_all_reset: ResetFeatureSettingsDto = field(default_factory=ResetFeatureSettingsDto)
@@ -227,6 +246,7 @@ class ExtraSettingsDto(TrackableMixin):
     referral_reset: ResetFeatureSettingsDto = field(default_factory=ResetFeatureSettingsDto)
     trial_channel_guard: bool = False
     mini_app_reserve: bool = False
+    device_purchase: DevicePurchaseSettingsDto = field(default_factory=DevicePurchaseSettingsDto)
 
 
 @dataclass(kw_only=True)

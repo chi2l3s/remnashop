@@ -170,6 +170,8 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
 
                 subscription.expire_at = new_expire
                 subscription.device_limit = plan.device_limit
+                # Сохраняем докупленные устройства при обновлении подписки
+                # subscription.extra_devices остается без изменений
                 subscription.traffic_limit = plan.traffic_limit
                 subscription.traffic_limit_strategy = plan.traffic_limit_strategy
                 subscription.tag = plan.tag
