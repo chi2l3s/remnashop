@@ -1574,15 +1574,16 @@ msg-subscription-failed =
     Не волнуйтесь, техподдержка уже уведомлена и свяжется с вами в ближайшее время. Приносим извинения за неудобства.
 
 msg-subscription-devices-count =
-    <b><tg-emoji emoji-id="5226945370684140473">➕</tg-emoji> Докупить устройства</b><br><br>
+    <b><tg-emoji emoji-id="5226945370684140473">➕</tg-emoji> Докупить устройства</b>
+
     Ваш лимит устройств: <b>{ $base_devices }</b>{ $extra_devices ->
         [0] { empty }
-        *[HAS] + <b>{ $extra_devices }</b> докупленных
-    }<br>
-    { $price ->
+        *[HAS]{ space }+ <b>{ $extra_devices }</b> докупленных
+    }. { $price ->
         [0] Стоимость за устройство не указана.
         *[HAS] Стоимость одного устройства: <b>{ $price }{ $currency }</b>
-    }<br><br>
+    }
+
     Выберите количество устройств:
 
 msg-subscription-devices-method =
