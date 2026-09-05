@@ -21,8 +21,8 @@
 
 # пример-ключа = перевод
 
-custom-menu-link1 = 1️⃣ Первая кнопка
-custom-menu-link2 = 2️⃣ Вторая кнопка
+custom-menu-link1 = <tg-emoji emoji-id="">1️⃣</tg-emoji> Первая кнопка
+custom-menu-link2 = <tg-emoji emoji-id="">2️⃣</tg-emoji> Вторая кнопка
 
-custom-plan-name1 = 1️⃣ Первый план
-custom-plan-name2 = 2️⃣ Второй план
+custom-plan-name1 = <tg-emoji emoji-id="">1️⃣</tg-emoji> Первый план
+custom-plan-name2 = <tg-emoji emoji-id="">2️⃣</tg-emoji> Второй план

@@ -1,33 +1,33 @@
 btn-back =
-    .general = ⬅️ Назад
-    .menu = ↩️ Главное меню
-    .menu-return = ↩️ Вернуться в главное меню
-    .dashboard = ↩️ Вернуться в панель управления
-    .referrals = 👪 К списку рефералов
+    .general = <tg-emoji emoji-id="5974120159491657171">⬅️</tg-emoji> Назад
+    .menu = <tg-emoji emoji-id="5974120159491657171">↩️</tg-emoji> Главное меню
+    .menu-return = <tg-emoji emoji-id="5974120159491657171">↩️</tg-emoji> Вернуться в главное меню
+    .dashboard = <tg-emoji emoji-id="5974120159491657171">↩️</tg-emoji> Вернуться в панель управления
+    .referrals = <tg-emoji emoji-id="5409132617750555920">👪</tg-emoji> К списку рефералов
 
 btn-common =
-    .notification-close = ❌ Закрыть
-    .devices-empty = ⚠️ У вас нет подключенных устройств
+    .notification-close = <tg-emoji emoji-id="5834629976883732083">❌</tg-emoji> Закрыть
+    .devices-empty = <tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> У вас нет подключенных устройств
     .cancel = Отмена
-    .next = ▶️ Далее
-    .prev = ◀️ Назад
+    .next = <tg-emoji emoji-id="5253767677670862169">▶️</tg-emoji> Далее
+    .prev = <tg-emoji emoji-id="5255703720078879038">◀️</tg-emoji> Назад
 
     .squad-choice = { $selected -> 
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="5386575135979348751">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="5359744969202474972">⚪</tg-emoji>
     } { $name }
 
-    .duration = ⌛ { $value ->
+    .duration = <tg-emoji emoji-id="5440671202555215608">⌛</tg-emoji> { $value ->
     [0] { unlimited }
     *[OTHER] { unit-day }
     }
 
 btn-devices =
-    .delete-all = 🗑 Удалить все устройства
-    .reissue = 🔄 Перевыпустить подписку
-    .confirm-delete = ✅ Да, удалить
-    .confirm-reissue = ✅ Да, сбросить
-    .cancel-reissue = ❌ Нет
+    .delete-all = <tg-emoji emoji-id="5445267414562389170">🗑</tg-emoji> Удалить все устройства
+    .reissue = <tg-emoji emoji-id="5030872266716480568">🔄</tg-emoji> Перевыпустить подписку
+    .confirm-delete = <tg-emoji emoji-id="5206607081334906820">✅</tg-emoji> Да, удалить
+    .confirm-reissue = <tg-emoji emoji-id="5206607081334906820">✅</tg-emoji> Да, сбросить
+    .cancel-reissue = <tg-emoji emoji-id="5834629976883732083">❌</tg-emoji> Нет
 
     .item = { $platform_icon } { $platform } { $device_model -> 
     [0] { space }
@@ -36,75 +36,75 @@ btn-devices =
 
 btn-backup =
     .active-toggle = { $enabled ->
-        [1] 🟢 Включен
-        *[0] 🔴 Выключен
+        [1] <tg-emoji emoji-id="5316865463123195600">🟢</tg-emoji> Включен
+        *[0] <tg-emoji emoji-id="5316596104249224956">🔴</tg-emoji> Выключен
     }
-    .set-interval = 🕐 Интервал
-    .set-max-files = 📁 Кол-во файлов
+    .set-interval = <tg-emoji emoji-id="5316575093269214796">🕐</tg-emoji> Интервал
+    .set-max-files = <tg-emoji emoji-id="5433653135799228968">📁</tg-emoji> Кол-во файлов
     .send-toggle = { $send_to_chat ->
-        [1] ✅ Отправка в чат: включена
-        *[0] ❌ Отправка в чат: выключена
+        [1] <tg-emoji emoji-id="5206607081334906820">✅</tg-emoji> Отправка в чат: включена
+        *[0] <tg-emoji emoji-id="5834629976883732083">❌</tg-emoji> Отправка в чат: выключена
     }
-    .backup-assets = 📦 Запустить бэкап ассетов
-    .backup-db = 🗄 Запустить бэкап базы данных
+    .backup-assets = <tg-emoji emoji-id="5359741159566484212">📦</tg-emoji> Запустить бэкап ассетов
+    .backup-db = <tg-emoji emoji-id="4985967215405695597">🗄</tg-emoji> Запустить бэкап базы данных
     
 btn-remnashop-info =
-    .release-latest = 👀 Посмотреть
-    .how-upgrade = ❓ Как обновить
-    .github = ⭐ GitHub
-    .telegram = 👪 Telegram
-    .donate = 💰 Поддержать разработчика
-    .docs = 📖 Документация
+    .release-latest = <tg-emoji emoji-id="5280881372418816002">👀</tg-emoji> Посмотреть
+    .how-upgrade = <tg-emoji emoji-id="5452069934089641166">❓</tg-emoji> Как обновить
+    .github = <tg-emoji emoji-id="5438496463044752972">⭐</tg-emoji> GitHub
+    .telegram = <tg-emoji emoji-id="5409132617750555920">👪</tg-emoji> Telegram
+    .donate = <tg-emoji emoji-id="5357461124637794049">💰</tg-emoji> Поддержать разработчика
+    .docs = <tg-emoji emoji-id="5226512880362332956">📖</tg-emoji> Документация
 
 btn-requirement =
-    .rules-accept = ✅ Принять правила
-    .channel-join = ❤️ Перейти в канал
-    .channel-confirm = ✅ Подтвердить
+    .rules-accept = <tg-emoji emoji-id="5206607081334906820">✅</tg-emoji> Принять правила
+    .channel-join = <tg-emoji emoji-id="5471924412552849893">❤️</tg-emoji> Перейти в канал
+    .channel-confirm = <tg-emoji emoji-id="5206607081334906820">✅</tg-emoji> Подтвердить
 
 btn-menu =
-    .trial = 🎁 ПОПРОБОВАТЬ БЕСПЛАТНО
-    .trial-paid = 🚀 ПОПРОБОВАТЬ ЗА { $trial_price }
-    .connect = 🚀 Подключиться
-    .connect-reserve = 🔗 Подключиться (резерв)
-    .devices = 📱 Устройства
-    .subscription = 💳 Подписка
-    .invite = 👥 Пригласить
-    .support = 🆘 Поддержка
-    .web-cabinet = 🌐 Личный кабинет
-    .dashboard = 🛠 Панель управления
+    .trial = <tg-emoji emoji-id="5199749070830197566">🎁</tg-emoji> ПОПРОБОВАТЬ БЕСПЛАТНО
+    .trial-paid = <tg-emoji emoji-id="5188481279963715781">🚀</tg-emoji> ПОПРОБОВАТЬ ЗА { $trial_price }
+    .connect = <tg-emoji emoji-id="5188481279963715781">🚀</tg-emoji> Подключиться
+    .connect-reserve = <tg-emoji emoji-id="5379742233853451967">🔗</tg-emoji> Подключиться (резерв)
+    .devices = <tg-emoji emoji-id="5427252019620504695">📱</tg-emoji> Устройства
+    .subscription = <tg-emoji emoji-id="5472250091332993630">💳</tg-emoji> Подписка
+    .invite = <tg-emoji emoji-id="5409132617750555920">👥</tg-emoji> Пригласить
+    .support = <tg-emoji emoji-id="5238025132177369293">🆘</tg-emoji> Поддержка
+    .web-cabinet = <tg-emoji emoji-id="6019602127989510280">🌐</tg-emoji> Личный кабинет
+    .dashboard = <tg-emoji emoji-id="5334882760735598374">🛠</tg-emoji> Панель управления
 
     .connect-not-available =
-    ⚠️ { $status ->
+    <tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> { $status ->
     [LIMITED] ПРЕВЫШЕН ЛИМИТ ТРАФИКА
     [EXPIRED] СРОК ДЕЙСТВИЯ ИСТЕК
     *[OTHER] ВАША ПОДПИСКА НЕ РАБОТАЕТ
-    } ⚠️
+    } <tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji>
 
 btn-invite =
-    .about = ❓ Подробнее о награде
-    .copy = 📋 Скопировать ссылку
-    .send = 📩 Пригласить
-    .qr = 🧾 QR-код
-    .withdraw-points = 💎 Обменять баллы
-    .reset-referral = 🔄 Сбросить реф. ссылку
+    .about = <tg-emoji emoji-id="5452069934089641166">❓</tg-emoji> Подробнее о награде
+    .copy = <tg-emoji emoji-id="5467397594332275071">📋</tg-emoji> Скопировать ссылку
+    .send = <tg-emoji emoji-id="5319166753845026372">📩</tg-emoji> Пригласить
+    .qr = <tg-emoji emoji-id="5440410042773824003">🧾</tg-emoji> QR-код
+    .withdraw-points = <tg-emoji emoji-id="5427168083074628963">💎</tg-emoji> Обменять баллы
+    .reset-referral = <tg-emoji emoji-id="5030872266716480568">🔄</tg-emoji> Сбросить реф. ссылку
 
 btn-dashboard =
-    .statistics = 📊 Статистика
-    .users = 👥 Пользователи
-    .broadcast = 📢 Рассылка
-    .promocodes = 🎟 Промокоды
-    .access = 🔓 Режим доступа
-    .remnawave = 🌊 RemnaWave
-    .remnashop = 🛍 RemnaShop
-    .transactions = 🧾 Транзакции
-    .importer = 📥 Импорт пользователей
+    .statistics = <tg-emoji emoji-id="5190806721286657692">📊</tg-emoji> Статистика
+    .users = <tg-emoji emoji-id="5409132617750555920">👥</tg-emoji> Пользователи
+    .broadcast = <tg-emoji emoji-id="5388632425314140043">📢</tg-emoji> Рассылка
+    .promocodes = <tg-emoji emoji-id="5330139858415397734">🎟</tg-emoji> Промокоды
+    .access = <tg-emoji emoji-id="5301054868167876393">🔓</tg-emoji> Режим доступа
+    .remnawave = <tg-emoji emoji-id="">🌊</tg-emoji> RemnaWave
+    .remnashop = <tg-emoji emoji-id="">🛍</tg-emoji> RemnaShop
+    .transactions = <tg-emoji emoji-id="5821310218146943846">🧾</tg-emoji> Транзакции
+    .importer = <tg-emoji emoji-id="5449683594425410231">📥</tg-emoji> Импорт пользователей
 
 btn-statistics =
-    .users = 👥 Пользователи
-    .subscriptions = 💳 Подписки
-    .transactions = 🧾 Транзакции
-    .promocodes = 🎁 Промокоды
-    .referrals = 👪 Рефералы
+    .users = <tg-emoji emoji-id="5409132617750555920">👥</tg-emoji> Пользователи
+    .subscriptions = <tg-emoji emoji-id="5472250091332993630">💳</tg-emoji> Подписки
+    .transactions = <tg-emoji emoji-id="5821310218146943846">🧾</tg-emoji> Транзакции
+    .promocodes = <tg-emoji emoji-id="5330139858415397734">🎁</tg-emoji> Промокоды
+    .referrals = <tg-emoji emoji-id="5409132617750555920">👪</tg-emoji> Рефералы
 
     .subscription-page =
     { $page ->
@@ -131,137 +131,137 @@ btn-statistics =
     }
 
 btn-users =
-    .search = 🔍 Поиск пользователя
-    .recent-registered = 🆕 Последние зарегистрированные
-    .recent-activity = 📝 Последние взаимодействующие
-    .blacklist = 🚫 Черный список
-    .unblock-all = 🔓 Разблокировать всех
-    .blacklist-view = 🗒️ Список заблокированных
-    .blacklist-block = ⛔ Заблокировать по ID
-    .blacklist-sources = 🔗 Автообновляемые списки
-    .blacklist-sources-sync = 🔄 Синхронизировать
-    .blacklist-block-clear = 🗑 Очистить список ID
+    .search = <tg-emoji emoji-id="">🔍</tg-emoji> Поиск пользователя
+    .recent-registered = <tg-emoji emoji-id="">🆕</tg-emoji> Последние зарегистрированные
+    .recent-activity = <tg-emoji emoji-id="">📝</tg-emoji> Последние взаимодействующие
+    .blacklist = <tg-emoji emoji-id="">🚫</tg-emoji> Черный список
+    .unblock-all = <tg-emoji emoji-id="">🔓</tg-emoji> Разблокировать всех
+    .blacklist-view = <tg-emoji emoji-id="">🗒️</tg-emoji> Список заблокированных
+    .blacklist-block = <tg-emoji emoji-id="">⛔</tg-emoji> Заблокировать по ID
+    .blacklist-sources = <tg-emoji emoji-id="">🔗</tg-emoji> Автообновляемые списки
+    .blacklist-sources-sync = <tg-emoji emoji-id="">🔄</tg-emoji> Синхронизировать
+    .blacklist-block-clear = <tg-emoji emoji-id="">🗑</tg-emoji> Очистить список ID
 
-    .blacklist-source = 🔗 { $source }
+    .blacklist-source = <tg-emoji emoji-id="">🔗</tg-emoji> { $source }
 
 btn-user =
-    .discount = 💸 Скидка
-    .discount-personal = 👤 Персональная скидка
-    .discount-purchase = 🎟 На следующую покупку
-    .points = 💎 Баллы
-    .statistics = 📊 Статистика
-    .referrals = 👪 Рефералы
-    .message = 📩 Сообщение
-    .role = 👮‍♂️ Роль
-    .transactions = 🧾 Транзакции
-    .give-access = 🔑 Доступ к планам
-    .current-subscription = 💳 Текущая подписка
-    .subscription-traffic-limit = 🌐 Лимит трафика
-    .subscription-device-limit = 📱 Лимит устройств
-    .subscription-expire-time = ⏳ Время истечения
-    .subscription-squads = 🔗 Сквады
-    .subscription-traffic-reset = 🔄 Сбросить трафик
-    .subscription-devices = 🗒️ Список устройств
-    .subscription-url = 📋 Скопировать ссылку
-    .subscription-delete = ❌ Удалить
-    .subscription-reissue = ♻️ Перевыпустить
-    .message-preview = 👀 Предпросмотр
-    .message-confirm = ✅ Отправить
-    .referral-reset = 🔄 Сбросить реф. ссылку
-    .sync = 🌀 Синхронизировать
-    .sync-remnawave = 🌊 Использовать данные Remnawave
-    .sync-remnashop = 🛍 Использовать данные Remnashop
-    .give-subscription = 🎁 Выдать подписку
-    .subscription-internal-squads = ⏺️ Внутренние сквады
-    .subscription-external-squads = ⏹️ Внешний сквад
+    .discount = <tg-emoji emoji-id="">💸</tg-emoji> Скидка
+    .discount-personal = <tg-emoji emoji-id="">👤</tg-emoji> Персональная скидка
+    .discount-purchase = <tg-emoji emoji-id="">🎟</tg-emoji> На следующую покупку
+    .points = <tg-emoji emoji-id="">💎</tg-emoji> Баллы
+    .statistics = <tg-emoji emoji-id="">📊</tg-emoji> Статистика
+    .referrals = <tg-emoji emoji-id="">👪</tg-emoji> Рефералы
+    .message = <tg-emoji emoji-id="">📩</tg-emoji> Сообщение
+    .role = <tg-emoji emoji-id="">👮‍♂️</tg-emoji> Роль
+    .transactions = <tg-emoji emoji-id="">🧾</tg-emoji> Транзакции
+    .give-access = <tg-emoji emoji-id="">🔑</tg-emoji> Доступ к планам
+    .current-subscription = <tg-emoji emoji-id="">💳</tg-emoji> Текущая подписка
+    .subscription-traffic-limit = <tg-emoji emoji-id="">🌐</tg-emoji> Лимит трафика
+    .subscription-device-limit = <tg-emoji emoji-id="">📱</tg-emoji> Лимит устройств
+    .subscription-expire-time = <tg-emoji emoji-id="">⏳</tg-emoji> Время истечения
+    .subscription-squads = <tg-emoji emoji-id="">🔗</tg-emoji> Сквады
+    .subscription-traffic-reset = <tg-emoji emoji-id="">🔄</tg-emoji> Сбросить трафик
+    .subscription-devices = <tg-emoji emoji-id="">🗒️</tg-emoji> Список устройств
+    .subscription-url = <tg-emoji emoji-id="">📋</tg-emoji> Скопировать ссылку
+    .subscription-delete = <tg-emoji emoji-id="">❌</tg-emoji> Удалить
+    .subscription-reissue = <tg-emoji emoji-id="">♻️</tg-emoji> Перевыпустить
+    .message-preview = <tg-emoji emoji-id="">👀</tg-emoji> Предпросмотр
+    .message-confirm = <tg-emoji emoji-id="">✅</tg-emoji> Отправить
+    .referral-reset = <tg-emoji emoji-id="">🔄</tg-emoji> Сбросить реф. ссылку
+    .sync = <tg-emoji emoji-id="">🌀</tg-emoji> Синхронизировать
+    .sync-remnawave = <tg-emoji emoji-id="">🌊</tg-emoji> Использовать данные Remnawave
+    .sync-remnashop = <tg-emoji emoji-id="">🛍</tg-emoji> Использовать данные Remnashop
+    .give-subscription = <tg-emoji emoji-id="">🎁</tg-emoji> Выдать подписку
+    .subscription-internal-squads = <tg-emoji emoji-id="">⏺️</tg-emoji> Внутренние сквады
+    .subscription-external-squads = <tg-emoji emoji-id="">⏹️</tg-emoji> Внешний сквад
 
     .allowed-plan-choice = { $selected ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } { $plan_name }
 
     .subscription-active-toggle = { $is_active ->
-    [1] 🔴 Выключить
-    *[0] 🟢 Включить
+    [1] <tg-emoji emoji-id="">🔴</tg-emoji> Выключить
+    *[0] <tg-emoji emoji-id="">🟢</tg-emoji> Включить
     }
 
     .transaction = { $status ->
-    [PENDING] 🕓
-    [COMPLETED] ✅
-    [CANCELED] ❌
-    [REFUNDED] 💸
-    [FAILED] ⚠️
+    [PENDING] <tg-emoji emoji-id="">🕓</tg-emoji>
+    [COMPLETED] <tg-emoji emoji-id="">✅</tg-emoji>
+    [CANCELED] <tg-emoji emoji-id="">❌</tg-emoji>
+    [REFUNDED] <tg-emoji emoji-id="">💸</tg-emoji>
+    [FAILED] <tg-emoji emoji-id="">⚠️</tg-emoji>
     *[OTHER] { $status }
     } { $created_at } · { gateway-type }
     
     .trial-toggle = { $is_trial_available ->
-    [1] 🧪 Пробник: доступен
-    *[0] 🧪 Пробник: не доступен
+    [1] <tg-emoji emoji-id="">🧪</tg-emoji> Пробник: доступен
+    *[0] <tg-emoji emoji-id="">🧪</tg-emoji> Пробник: не доступен
     }
 
     .block = { $is_blocked ->
-    [1] 🔓 Разблокировать
-    *[0] 🔒 Заблокировать
+    [1] <tg-emoji emoji-id="">🔓</tg-emoji> Разблокировать
+    *[0] <tg-emoji emoji-id="">🔒</tg-emoji> Заблокировать
     }
 
 btn-broadcast =
-    .list = 🗒️ Список всех рассылок
-    .all = 👥 Всем
-    .plan = 📦 По плану
-    .subscribed = ✅ С подпиской
-    .unsubscribed = ❌ Без подписки
-    .expired = ⌛ Просроченным
-    .trial = ✳️ С пробником
-    .content = ✉️ Редактировать содержимое
-    .buttons = ✳️ Редактировать кнопки
-    .preview = 👀 Предпросмотр
-    .confirm = ✅ Запустить рассылку
-    .refresh = 🔄 Обновить данные
-    .cancel = ⛔ Остановить рассылку
-    .delete = ❌ Удалить отправленное
+    .list = <tg-emoji emoji-id="">🗒️</tg-emoji> Список всех рассылок
+    .all = <tg-emoji emoji-id="">👥</tg-emoji> Всем
+    .plan = <tg-emoji emoji-id="">📦</tg-emoji> По плану
+    .subscribed = <tg-emoji emoji-id="">✅</tg-emoji> С подпиской
+    .unsubscribed = <tg-emoji emoji-id="">❌</tg-emoji> Без подписки
+    .expired = <tg-emoji emoji-id="">⌛</tg-emoji> Просроченным
+    .trial = <tg-emoji emoji-id="">✳️</tg-emoji> С пробником
+    .content = <tg-emoji emoji-id="">✉️</tg-emoji> Редактировать содержимое
+    .buttons = <tg-emoji emoji-id="">✳️</tg-emoji> Редактировать кнопки
+    .preview = <tg-emoji emoji-id="">👀</tg-emoji> Предпросмотр
+    .confirm = <tg-emoji emoji-id="">✅</tg-emoji> Запустить рассылку
+    .refresh = <tg-emoji emoji-id="">🔄</tg-emoji> Обновить данные
+    .cancel = <tg-emoji emoji-id="">⛔</tg-emoji> Остановить рассылку
+    .delete = <tg-emoji emoji-id="">❌</tg-emoji> Удалить отправленное
 
     .plan-title = { $is_active ->
-    [1] 🟢
-    *[0] 🔴 
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> 
     } { $name }
     
     .button-choice = { $selected ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     }
     
     .title = { $status ->
-    [PROCESSING] ⏳
-    [COMPLETED] ✅
-    [CANCELED] ⛔
-    [DELETED] ❌
-    [ERROR] ⚠️
+    [PROCESSING] <tg-emoji emoji-id="">⏳</tg-emoji>
+    [COMPLETED] <tg-emoji emoji-id="">✅</tg-emoji>
+    [CANCELED] <tg-emoji emoji-id="">⛔</tg-emoji>
+    [DELETED] <tg-emoji emoji-id="">❌</tg-emoji>
+    [ERROR] <tg-emoji emoji-id="">⚠️</tg-emoji>
     *[OTHER] { $status }
     } { $created_at }
     
 btn-goto =
-    .subscription = 💳 Купить подписку
-    .promocode = 🎟 Активировать промокод
-    .invite = 👥 Пригласить
-    .subscription-renew = 🔄 Продлить подписку
-    .user-profile = 👤 Перейти к пользователю
-    .referrer-profile = 🤝 Перейти к пригласителю
-    .contact-support = 📩 Перейти в поддержку
+    .subscription = <tg-emoji emoji-id="5472250091332993630">💳</tg-emoji> Купить подписку
+    .promocode = <tg-emoji emoji-id="5330139858415397734">🎟</tg-emoji> Активировать промокод
+    .invite = <tg-emoji emoji-id="5409132617750555920">👥</tg-emoji> Пригласить
+    .subscription-renew = <tg-emoji emoji-id="5030872266716480568">🔄</tg-emoji> Продлить подписку
+    .user-profile = <tg-emoji emoji-id="5409132617750555920">👤</tg-emoji> Перейти к пользователю
+    .referrer-profile = <tg-emoji emoji-id="">🤝</tg-emoji> Перейти к пригласителю
+    .contact-support = <tg-emoji emoji-id="">📩</tg-emoji> Перейти в поддержку
 
 btn-promocodes =
-    .save = ✅ Сохранить
-    .create = 🆕 Создать промокод
-    .confirm = ✅ Создать промокод
-    .delete = 🗑️ Удалить
-    .regenerate = 🔄 Перегенерировать
-    .code = 🏷️ Код
-    .type = 🔖 Тип награды
-    .availability = ✴️ Доступ
-    .reward = 🎁 Награда
-    .plan = 📦 План
-    .expires = ⌛ Срок действия
-    .max-activations = 🔢 Лимит активаций
-    .reset = 🔄 Сбросить
+    .save = <tg-emoji emoji-id="">✅</tg-emoji> Сохранить
+    .create = <tg-emoji emoji-id="">🆕</tg-emoji> Создать промокод
+    .confirm = <tg-emoji emoji-id="">✅</tg-emoji> Создать промокод
+    .delete = <tg-emoji emoji-id="">🗑️</tg-emoji> Удалить
+    .regenerate = <tg-emoji emoji-id="">🔄</tg-emoji> Перегенерировать
+    .code = <tg-emoji emoji-id="">🏷️</tg-emoji> Код
+    .type = <tg-emoji emoji-id="">🔖</tg-emoji> Тип награды
+    .availability = <tg-emoji emoji-id="">✴️</tg-emoji> Доступ
+    .reward = <tg-emoji emoji-id="">🎁</tg-emoji> Награда
+    .plan = <tg-emoji emoji-id="">📦</tg-emoji> План
+    .expires = <tg-emoji emoji-id="">⌛</tg-emoji> Срок действия
+    .max-activations = <tg-emoji emoji-id="">🔢</tg-emoji> Лимит активаций
+    .reset = <tg-emoji emoji-id="">🔄</tg-emoji> Сбросить
 
     .plan-duration = { $days -> 
         [one] { $days } день
@@ -269,348 +269,348 @@ btn-promocodes =
         *[more] { $days } дней
     }
 
-    .item = 🎟 { $code } — { promocode-type }
+    .item = <tg-emoji emoji-id="">🎟</tg-emoji> { $code } — { promocode-type }
 
     .active-toggle = { $is_active ->
-    [1] 🟢 Включен
-    *[0] 🔴 Выключен
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
     }
 
-    .reusable-toggle = 🔁 { $is_reusable ->
+    .reusable-toggle = <tg-emoji emoji-id="">🔁</tg-emoji> { $is_reusable ->
     [1] Повтор: да
     *[0] Повтор: нет
     }
 
 btn-access =
     .mode = { access-mode }
-    .conditions = ⚙️ Условия доступа
-    .rules = ✳️ Принятие правил
-    .channel = ❇️ Подписка на канал
+    .conditions = <tg-emoji emoji-id="">⚙️</tg-emoji> Условия доступа
+    .rules = <tg-emoji emoji-id="">✳️</tg-emoji> Принятие правил
+    .channel = <tg-emoji emoji-id="">❇️</tg-emoji> Подписка на канал
 
     .payments-toggle = { $enabled ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } Платежи
 
     .registration-toggle = { $enabled ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } Регистрация
 
     .condition-toggle = { $enabled ->
-    [1] 🔘 Включено
-    *[0] ⚪ Выключено
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji> Включено
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji> Выключено
     }
 
 btn-remnashop =
-    .admins = 👮‍♂️ Администраторы
-    .gateways = 🌐 Платежные системы
-    .referral = 👥 Реф. система
-    .advertising = 🎯 Реклама
-    .plans = 📦 Планы
-    .notifications = 🔔 Уведомления
-    .logs = 📄 Логи
-    .menu-editor = 🎛 Редактор главного меню
-    .backup = 💾 Бэкап
-    .extra = ⚙️ Доп. настройки
+    .admins = <tg-emoji emoji-id="">👮‍♂️</tg-emoji> Администраторы
+    .gateways = <tg-emoji emoji-id="">🌐</tg-emoji> Платежные системы
+    .referral = <tg-emoji emoji-id="">👥</tg-emoji> Реф. система
+    .advertising = <tg-emoji emoji-id="">🎯</tg-emoji> Реклама
+    .plans = <tg-emoji emoji-id="">📦</tg-emoji> Планы
+    .notifications = <tg-emoji emoji-id="">🔔</tg-emoji> Уведомления
+    .logs = <tg-emoji emoji-id="">📄</tg-emoji> Логи
+    .menu-editor = <tg-emoji emoji-id="">🎛</tg-emoji> Редактор главного меню
+    .backup = <tg-emoji emoji-id="">💾</tg-emoji> Бэкап
+    .extra = <tg-emoji emoji-id="">⚙️</tg-emoji> Доп. настройки
 
 btn-remnashop-transaction = { $status ->
-    [PENDING] 🕓
-    [COMPLETED] ✅
-    [CANCELED] ❌
-    [REFUNDED] 💸
-    [FAILED] ⚠️
+    [PENDING] <tg-emoji emoji-id="">🕓</tg-emoji>
+    [COMPLETED] <tg-emoji emoji-id="">✅</tg-emoji>
+    [CANCELED] <tg-emoji emoji-id="">❌</tg-emoji>
+    [REFUNDED] <tg-emoji emoji-id="">💸</tg-emoji>
+    [FAILED] <tg-emoji emoji-id="">⚠️</tg-emoji>
     *[OTHER] { $status }
     } #{ $user_id } · { gateway-type } · { $created_at }
 
 btn-remnashop-extra =
     .device-single = { $enabled -> 
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Удаление устройства
 
     .device-all = { $enabled -> 
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Удаление всех устройств
 
     .link-reset = { $enabled -> 
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Перевыпуск подписки
     .referral-reset = { $enabled -> 
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Сброс реф. ссылки
 
     .trial-channel-guard = { $enabled ->
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Авто отключение пробника
 
     .mini-app-reserve = { $enabled ->
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Резервная кнопка подключения
 
     .device-purchase = { $enabled ->
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } Докупка устройств
 
-    .device-price = 💰 { $currency } { $price ->
+    .device-price = <tg-emoji emoji-id="">💰</tg-emoji> { $currency } { $price ->
         [0] — не задана
         *[HAS] — { $price }{ $symbol }
     }
 
     .toggle = { $enabled ->
-        [1] 🟢 Включено
-        *[0] 🔴 Выключено
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключено
     }
 
 btn-menu-editor =
-    .text = 🏷️ Текст
-    .availability = ✴️ Доступ
-    .type = 🔖 Тип
-    .payload = 📄 Данные
-    .color = 🎨 Цвет
-    .confirm = ✅ Сохранить
+    .text = <tg-emoji emoji-id="">🏷️</tg-emoji> Текст
+    .availability = <tg-emoji emoji-id="">✴️</tg-emoji> Доступ
+    .type = <tg-emoji emoji-id="">🔖</tg-emoji> Тип
+    .payload = <tg-emoji emoji-id="">📄</tg-emoji> Данные
+    .color = <tg-emoji emoji-id="">🎨</tg-emoji> Цвет
+    .confirm = <tg-emoji emoji-id="">✅</tg-emoji> Сохранить
     .color-default = Без цвета
     .color-primary = Основной
     .color-success = Зеленый
     .color-danger = Красный
 
     .button = { $is_active ->
-        [1] 🟢
-        *[0] 🔴
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } { $text }
 
     .active-toggle = { $is_active ->
-        [1] 🟢 Включена
-        *[0] 🔴 Выключена
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
     }
 
     .subscribers-only-toggle = { $subscribers_only ->
-        [1] 💳 С подпиской
-        *[0] 👥 Всем
+        [1] <tg-emoji emoji-id="">💳</tg-emoji> С подпиской
+        *[0] <tg-emoji emoji-id="">👥</tg-emoji> Всем
     }
 
 btn-gateway =
     .title = { gateway-type }
     .setting = { $field }
-    .display-name = 🏷️ Отображаемое название
-    .webhook-copy = 📋 Скопировать вебхук
-    .test = 🐞 Тест
-    .default-currency = 💸 Валюта по умолчанию
-    .placement = 🔢 Изменить позиционирование
-    .field-reset = ♻️ Сбросить значение
+    .display-name = <tg-emoji emoji-id="">🏷️</tg-emoji> Отображаемое название
+    .webhook-copy = <tg-emoji emoji-id="">📋</tg-emoji> Скопировать вебхук
+    .test = <tg-emoji emoji-id="">🐞</tg-emoji> Тест
+    .default-currency = <tg-emoji emoji-id="">💸</tg-emoji> Валюта по умолчанию
+    .placement = <tg-emoji emoji-id="">🔢</tg-emoji> Изменить позиционирование
+    .field-reset = <tg-emoji emoji-id="">♻️</tg-emoji> Сбросить значение
 
     .active-toggle = { $is_active ->
-    [1] 🟢 Включено
-    *[0] 🔴 Выключено
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включено
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключено
     }
 
     .default-currency-choice = { $enabled ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } { $symbol } { $currency }
 
 btn-referral =
-    .level = 🔢 Уровень
-    .reward-type = 🎀 Тип награды
-    .accrual-strategy = 📍 Условие начисления
-    .reward-strategy = ⚖️ Форма начисления
-    .reward = 🎁 Награда
+    .level = <tg-emoji emoji-id="">🔢</tg-emoji> Уровень
+    .reward-type = <tg-emoji emoji-id="">🎀</tg-emoji> Тип награды
+    .accrual-strategy = <tg-emoji emoji-id="">📍</tg-emoji> Условие начисления
+    .reward-strategy = <tg-emoji emoji-id="">⚖️</tg-emoji> Форма начисления
+    .reward = <tg-emoji emoji-id="">🎁</tg-emoji> Награда
     
     .active-toggle = { $is_enable -> 
-    [1] 🟢 Включена
-    *[0] 🔴 Выключена
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
     }
 
     .level-choice = { $type -> 
-    [1] 1️⃣
-    [2] 2️⃣
-    [3] 3️⃣
+    [1] <tg-emoji emoji-id="">1️⃣</tg-emoji>
+    [2] <tg-emoji emoji-id="">2️⃣</tg-emoji>
+    [3] <tg-emoji emoji-id="">3️⃣</tg-emoji>
     *[OTHER] { $type }
     }
 
     .reward-choice = { $type -> 
-    [POINTS] 💎 Баллы
-    [EXTRA_DAYS] ⏳ Дни
+    [POINTS] <tg-emoji emoji-id="">💎</tg-emoji> Баллы
+    [EXTRA_DAYS] <tg-emoji emoji-id="">⏳</tg-emoji> Дни
     *[OTHER] { $type }
     }
 
     .accrual-strategy-choice = { $type -> 
-    [ON_FIRST_PAYMENT] 💳 Первый платеж
-    [ON_EACH_PAYMENT] 💸 Каждый платеж
+    [ON_FIRST_PAYMENT] <tg-emoji emoji-id="">💳</tg-emoji> Первый платеж
+    [ON_EACH_PAYMENT] <tg-emoji emoji-id="">💸</tg-emoji> Каждый платеж
     *[OTHER] { $type }
     }
 
     .reward-strategy-choice = { $type -> 
-    [AMOUNT] 🔸 Фиксированная
-    [PERCENT] 🔹 Процентная
+    [AMOUNT] <tg-emoji emoji-id="">🔸</tg-emoji> Фиксированная
+    [PERCENT] <tg-emoji emoji-id="">🔹</tg-emoji> Процентная
     *[OTHER] { $type }
     }
 
 btn-notifications =
-    .user = 👥 Пользовательские
-    .system = ⚙️ Системные
-    .route = 📡 Маршрут
-    .default-route = 📡 Общий маршрут
-    .chat-id = 💬 Изменить чат
-    .thread-id = 📁 Изменить тред
-    .route-clear = ❌ Удалить маршрут
+    .user = <tg-emoji emoji-id="">👥</tg-emoji> Пользовательские
+    .system = <tg-emoji emoji-id="">⚙️</tg-emoji> Системные
+    .route = <tg-emoji emoji-id="">📡</tg-emoji> Маршрут
+    .default-route = <tg-emoji emoji-id="">📡</tg-emoji> Общий маршрут
+    .chat-id = <tg-emoji emoji-id="">💬</tg-emoji> Изменить чат
+    .thread-id = <tg-emoji emoji-id="">📁</tg-emoji> Изменить тред
+    .route-clear = <tg-emoji emoji-id="">❌</tg-emoji> Удалить маршрут
     
     .user-choice = { $enabled ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } { notification-type }
 
     .system-choice = { $enabled -> 
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } { $has_route ->
-    [1] 📡
+    [1] <tg-emoji emoji-id="">📡</tg-emoji>
     *[0] { space }
     } { notification-type }
 
     .active-toggle = { $is_active ->
-    [1] 🟢 Включено
-    *[0] 🔴 Выключено
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включено
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключено
     }
 
 btn-plans =
-    .save = ✅ Сохранить
-    .create = 🆕 Создать план
-    .create-confirm = ✅ Создать план
-    .delete = ❌ Удалить
-    .name = 🏷️ Название
-    .description = 💬 Описание
-    .description-remove = ❌ Удалить текущее описание
-    .tag = 📌 Тег
-    .tag-remove = ❌ Удалить текущий тег
-    .type = 🔖 Тип
-    .availability = ✴️ Доступ
-    .durations-prices = ⏳ Длительности и 💰 Цены
-    .traffic = 🌐 Трафик
-    .devices = 📱 Устройства
-    .allowed = 👥 Разрешенные пользователи
-    .squads = 🔗 Сквады
-    .internal-squads = ⏺️ Внутренние сквады
-    .external-squads = ⏹️ Внешний сквад
-    .duration-add = 🆕 Добавить длительность
-    .price-choice = 💸 { $price } { $currency }
-    .export = 📤 Экспорт
-    .import = 📥 Импорт
-    .exporting = 📤 Экспортировать
-    .importing = 📥 Импортировать
-    .url = 📋 Скопировать ссылку на план
+    .save = <tg-emoji emoji-id="">✅</tg-emoji> Сохранить
+    .create = <tg-emoji emoji-id="">🆕</tg-emoji> Создать план
+    .create-confirm = <tg-emoji emoji-id="">✅</tg-emoji> Создать план
+    .delete = <tg-emoji emoji-id="">❌</tg-emoji> Удалить
+    .name = <tg-emoji emoji-id="">🏷️</tg-emoji> Название
+    .description = <tg-emoji emoji-id="">💬</tg-emoji> Описание
+    .description-remove = <tg-emoji emoji-id="">❌</tg-emoji> Удалить текущее описание
+    .tag = <tg-emoji emoji-id="">📌</tg-emoji> Тег
+    .tag-remove = <tg-emoji emoji-id="">❌</tg-emoji> Удалить текущий тег
+    .type = <tg-emoji emoji-id="">🔖</tg-emoji> Тип
+    .availability = <tg-emoji emoji-id="">✴️</tg-emoji> Доступ
+    .durations-prices = <tg-emoji emoji-id="">⏳</tg-emoji> Длительности и <tg-emoji emoji-id="">💰</tg-emoji> Цены
+    .traffic = <tg-emoji emoji-id="">🌐</tg-emoji> Трафик
+    .devices = <tg-emoji emoji-id="">📱</tg-emoji> Устройства
+    .allowed = <tg-emoji emoji-id="">👥</tg-emoji> Разрешенные пользователи
+    .squads = <tg-emoji emoji-id="">🔗</tg-emoji> Сквады
+    .internal-squads = <tg-emoji emoji-id="">⏺️</tg-emoji> Внутренние сквады
+    .external-squads = <tg-emoji emoji-id="">⏹️</tg-emoji> Внешний сквад
+    .duration-add = <tg-emoji emoji-id="">🆕</tg-emoji> Добавить длительность
+    .price-choice = <tg-emoji emoji-id="">💸</tg-emoji> { $price } { $currency }
+    .export = <tg-emoji emoji-id="">📤</tg-emoji> Экспорт
+    .import = <tg-emoji emoji-id="">📥</tg-emoji> Импорт
+    .exporting = <tg-emoji emoji-id="">📤</tg-emoji> Экспортировать
+    .importing = <tg-emoji emoji-id="">📥</tg-emoji> Импортировать
+    .url = <tg-emoji emoji-id="">📋</tg-emoji> Скопировать ссылку на план
 
     .trial = { $is_trial ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } Пробник 
 
     .export-choice = { $selected ->
-    [1] 🔘
-    *[0] ⚪
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji>
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji>
     } { $name }
 
     .title = { $is_active ->
-    [1] 🟢
-    *[0] 🔴 
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> 
     } { $name }
 
     .active-toggle = { $is_active -> 
-    [1] 🟢 Включен
-    *[0] 🔴 Выключен
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
     }
     
     .type-choice = { $type -> 
-    [TRAFFIC] 🌐 Трафик
-    [DEVICES] 📱 Устройства
-    [BOTH] 🔗 Трафик + устройства
-    [UNLIMITED] ♾️ Безлимит
+    [TRAFFIC] <tg-emoji emoji-id="">🌐</tg-emoji> Трафик
+    [DEVICES] <tg-emoji emoji-id="">📱</tg-emoji> Устройства
+    [BOTH] <tg-emoji emoji-id="">🔗</tg-emoji> Трафик + устройства
+    [UNLIMITED] <tg-emoji emoji-id="">♾️</tg-emoji> Безлимит
     *[OTHER] { $type }
     }
 
     .availability-choice = { $type -> 
-    [ALL] 🌍 Для всех
-    [NEW] 🌱 Для новых
-    [EXISTING] 👥 Для клиентов
-    [INVITED] ✉️ Для приглашенных
-    [ALLOWED] 🔐 Для разрешенных
-    [LINK] 🔗 По ссылке
+    [ALL] <tg-emoji emoji-id="">🌍</tg-emoji> Для всех
+    [NEW] <tg-emoji emoji-id="">🌱</tg-emoji> Для новых
+    [EXISTING] <tg-emoji emoji-id="">👥</tg-emoji> Для клиентов
+    [INVITED] <tg-emoji emoji-id="">✉️</tg-emoji> Для приглашенных
+    [ALLOWED] <tg-emoji emoji-id="">🔐</tg-emoji> Для разрешенных
+    [LINK] <tg-emoji emoji-id="">🔗</tg-emoji> По ссылке
     *[OTHER] { $type }
     }
 
     .traffic-strategy-choice = { $selected ->
-    [1] 🔘 { traffic-strategy }
-    *[0] ⚪ { traffic-strategy }
+    [1] <tg-emoji emoji-id="">🔘</tg-emoji> { traffic-strategy }
+    *[0] <tg-emoji emoji-id="">⚪</tg-emoji> { traffic-strategy }
     }
 
     
 btn-remnawave =
-    .users = 👥 Пользователи
-    .hosts = 🌐 Хосты
-    .nodes = 🖥️ Ноды
-    .inbounds = 🔌 Инбаунды
+    .users = <tg-emoji emoji-id="">👥</tg-emoji> Пользователи
+    .hosts = <tg-emoji emoji-id="">🌐</tg-emoji> Хосты
+    .nodes = <tg-emoji emoji-id="">🖥️</tg-emoji> Ноды
+    .inbounds = <tg-emoji emoji-id="">🔌</tg-emoji> Инбаунды
 
 btn-importer =
-    .from-xui = 💩 Импорт из панели 3X-UI
-    .sync-from-panel = 🌀 Синхронизация: панель → бот
-    .sync-from-bot = 🤖 Синхронизация: бот → панель
-    .sync-start = ▶️ Синхронизировать
-    .squads = 🔗 Внутренние сквады
-    .import-all = ✅ Импортировать всех
-    .import-active = ❇️ Импортировать активных
+    .from-xui = <tg-emoji emoji-id="">💩</tg-emoji> Импорт из панели 3X-UI
+    .sync-from-panel = <tg-emoji emoji-id="">🌀</tg-emoji> Синхронизация: панель → бот
+    .sync-from-bot = <tg-emoji emoji-id="">🤖</tg-emoji> Синхронизация: бот → панель
+    .sync-start = <tg-emoji emoji-id="">▶️</tg-emoji> Синхронизировать
+    .squads = <tg-emoji emoji-id="">🔗</tg-emoji> Внутренние сквады
+    .import-all = <tg-emoji emoji-id="">✅</tg-emoji> Импортировать всех
+    .import-active = <tg-emoji emoji-id="">❇️</tg-emoji> Импортировать активных
 
 btn-subscription =
-    .plan = 💳 Перейти к оформлению подписки
-    .new = 💸 Купить подписку
-    .renew = 🔄 Продлить
-    .change = 🔃 Изменить
-    .promocode = 🎟 Активировать промокод
-    .promocode-confirm = ✅ Подтвердить
-    .pay = 💳 Оплатить
-    .get = 🎁 Получить бесплатно
+    .plan = <tg-emoji emoji-id="">💳</tg-emoji> Перейти к оформлению подписки
+    .new = <tg-emoji emoji-id="">💸</tg-emoji> Купить подписку
+    .renew = <tg-emoji emoji-id="">🔄</tg-emoji> Продлить
+    .change = <tg-emoji emoji-id="">🔃</tg-emoji> Изменить
+    .promocode = <tg-emoji emoji-id="">🎟</tg-emoji> Активировать промокод
+    .promocode-confirm = <tg-emoji emoji-id="">✅</tg-emoji> Подтвердить
+    .pay = <tg-emoji emoji-id="">💳</tg-emoji> Оплатить
+    .get = <tg-emoji emoji-id="">🎁</tg-emoji> Получить бесплатно
     .back-plans = ⬅️ Назад к выбору плана
     .back-duration = ⬅️ Изменить длительность
     .back-payment-method = ⬅️ Изменить способ оплаты
-    .connect = 🚀 Подключиться
-    .devices = ➕ Докупить устройства
+    .connect = <tg-emoji emoji-id="">🚀</tg-emoji> Подключиться
+    .devices = <tg-emoji emoji-id="">➕</tg-emoji> Докупить устройства
     .devices-count = { $count } шт.
     .devices-count-priced = { $count } шт. | { $final_amount }{ $currency }
     .devices-back-count = ⬅️ Изменить количество
     .devices-back-method = ⬅️ Изменить способ оплаты
 
     .payment-method = { $gateway_title } | { $final_amount ->
-    [0] 🎁
+    [0] <tg-emoji emoji-id="">🎁</tg-emoji>
     *[HAS] { $final_amount }{ $currency }
     }
     
     .duration = { $period } | { $final_amount -> 
-    [0] 🎁
+    [0] <tg-emoji emoji-id="">🎁</tg-emoji>
     *[HAS] { $final_amount }{ $currency }
     }
 
 btn-ad-links =
-    .save = ✅ Сохранить
-    .create = 🆕 Создать ссылку
-    .create-confirm = ✅ Создать ссылку
-    .delete = ❌ Удалить ссылку
-    .name = 🏷️ Название
-    .code = 🔗 Код
-    .regenerate = 🔄 Перегенерировать
-    .stats = 📊 Статистика
-    .url = 📋 Скопировать ссылку
+    .save = <tg-emoji emoji-id="">✅</tg-emoji> Сохранить
+    .create = <tg-emoji emoji-id="">🆕</tg-emoji> Создать ссылку
+    .create-confirm = <tg-emoji emoji-id="">✅</tg-emoji> Создать ссылку
+    .delete = <tg-emoji emoji-id="">❌</tg-emoji> Удалить ссылку
+    .name = <tg-emoji emoji-id="">🏷️</tg-emoji> Название
+    .code = <tg-emoji emoji-id="">🔗</tg-emoji> Код
+    .regenerate = <tg-emoji emoji-id="">🔄</tg-emoji> Перегенерировать
+    .stats = <tg-emoji emoji-id="">📊</tg-emoji> Статистика
+    .url = <tg-emoji emoji-id="">📋</tg-emoji> Скопировать ссылку
 
     .title = { $is_active ->
-    [1] 🟢
-    *[0] 🔴
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji>
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji>
     } { $name }
 
     .active-toggle = { $is_active ->
-    [1] 🟢 Включена
-    *[0] 🔴 Выключена
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
     }

@@ -44,21 +44,21 @@ command =
     .rules = Условия использования
     .help = Помощь
 
-hdr-user = <b>👤 Пользователь</b>:
-hdr-user-profile = <b>👤 Профиль</b>:
-hdr-payment = <b>💰 Платеж</b>:
-hdr-error = <b>⚠️ Ошибка</b>:
-hdr-node = <b>🖥 Нода</b>:
-hdr-hwid = <b>📱 Устройство</b>:
+hdr-user = <b><tg-emoji emoji-id="">👤</tg-emoji> Пользователь</b>:
+hdr-user-profile = <b><tg-emoji emoji-id="">👤</tg-emoji> Профиль</b>:
+hdr-payment = <b><tg-emoji emoji-id="">💰</tg-emoji> Платеж</b>:
+hdr-error = <b><tg-emoji emoji-id="">⚠️</tg-emoji> Ошибка</b>:
+hdr-node = <b><tg-emoji emoji-id="">🖥</tg-emoji> Нода</b>:
+hdr-hwid = <b><tg-emoji emoji-id="">📱</tg-emoji> Устройство</b>:
 
 hdr-subscription = { $is_trial ->
-    [1] <b>🎁 Пробная подписка</b>:
-    *[0] <b>💳 Подписка</b>:
+    [1] <b><tg-emoji emoji-id="">🎁</tg-emoji> Пробная подписка</b>:
+    *[0] <b><tg-emoji emoji-id="">💳</tg-emoji> Подписка</b>:
 }
 
 hdr-plan = { $is_trial_plan ->
-    [1] <b>🎁 Пробный план</b>:
-    *[0] <b>📦 План</b>:
+    [1] <b><tg-emoji emoji-id="">🎁</tg-emoji> Пробный план</b>:
+    *[0] <b><tg-emoji emoji-id="">📦</tg-emoji> План</b>:
 }
 
 frg-user =
@@ -209,7 +209,7 @@ frg-build-info =
     { $has_build ->
     [0] { space }
     *[HAS]
-    <b>🏗️ Информация о сборке</b>:
+    <b><tg-emoji emoji-id="">🏗️</tg-emoji> Информация о сборке</b>:
     <blockquote>
     Время сборки: { $time }
     Ветка: { $branch } ({ $tag })
@@ -361,9 +361,9 @@ gateway-type = { $gateway_type ->
 }
 
 access-mode = { $access_mode ->
-    [PUBLIC] 🟢 Разрешен для всех
-    [INVITED] 🟡 Разрешен для приглашенных
-    [RESTRICTED] 🔴 Запрещен для всех
+    [PUBLIC] <tg-emoji emoji-id="">🟢</tg-emoji> Разрешен для всех
+    [INVITED] <tg-emoji emoji-id="">🟡</tg-emoji> Разрешен для приглашенных
+    [RESTRICTED] <tg-emoji emoji-id="">🔴</tg-emoji> Запрещен для всех
     *[OTHER] { $access_mode }
 }
 

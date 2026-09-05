@@ -106,7 +106,11 @@ class TranslatorRunnerImpl(TranslatorRunner):
         text = re.sub(pattern, max_newlines, text)
         text = re.sub(r"(?<=\n)[ \t]*!empty![ \t]*\n", "", text)
 
-        return re.sub(r"\s*!empty!\s*", "", text)
+        text = re.sub(r"\s*!empty!\s*", "", text)
+
+        # Custom emoji без id (ещё не заполнен) не парсится Telegram — оставляем
+        # просто эмодзи; после заполнения id тег уходит в сообщение как есть.
+        return re.sub(r'<tg-emoji emoji-id="">([^<]*)</tg-emoji>', r"\1", text)
 
     def __call__(self, obj: Any = None, **kwargs: Any) -> str:
         key = self._request_line.rstrip(self.separator)

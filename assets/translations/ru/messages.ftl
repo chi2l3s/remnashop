@@ -42,14 +42,14 @@ msg-main-menu =
     • У вас нет оформленной подписки.
 
     <i>{ $trial_available ->
-    [1] 🎁 Для вас доступен бесплатный пробник — нажмите кнопку ниже, чтобы его получить.
-    *[0] ↘️ Для покупки доступа перейдите в меню «Подписка».
+    [1] <tg-emoji emoji-id="">🎁</tg-emoji> Для вас доступен бесплатный пробник — нажмите кнопку ниже, чтобы его получить.
+    *[0] <tg-emoji emoji-id="">↘️</tg-emoji> Для покупки доступа перейдите в меню «Подписка».
     }</i>
     </blockquote>
     }
 
 msg-menu-devices =
-    <b>📱 Управление устройствами</b>
+    <b><tg-emoji emoji-id="">📱</tg-emoji> Управление устройствами</b>
 
     Подключено: <b>{ $current_count } / { $max_count -> 
     [0] { unlimited }
@@ -68,9 +68,9 @@ msg-menu-devices =
     }
 
 msg-menu-devices-confirm-reissue =
-    🔄 <b>Перевыпуск подписки</b>
+    <tg-emoji emoji-id="">🔄</tg-emoji> <b>Перевыпуск подписки</b>
 
-    ⚠️ После сброса старая ссылка <b>перестанет работать</b> и все устройства придется заново переподключать.
+    <tg-emoji emoji-id="">⚠️</tg-emoji> После сброса старая ссылка <b>перестанет работать</b> и все устройства придется заново переподключать.
 
     Вам потребуется:
     • Удалить старую подписку из приложения
@@ -79,7 +79,7 @@ msg-menu-devices-confirm-reissue =
     Вы уверены, что хотите сбросить ссылку?
 
 msg-menu-devices-confirm-delete =
-    🗑 <b>Подтвердите удаление устройства</b>
+    <tg-emoji emoji-id="">🗑</tg-emoji> <b>Подтвердите удаление устройства</b>
 
     <b>{ $device_model }</b>
     <blockquote>
@@ -88,10 +88,10 @@ msg-menu-devices-confirm-delete =
     </blockquote>
 
 msg-menu-devices-confirm-delete-all =
-    🗑 <b>Подтвердите удаление всех устройств</b>
+    <tg-emoji emoji-id="">🗑</tg-emoji> <b>Подтвердите удаление всех устройств</b>
 
 msg-menu-invite =
-    <b>👥 Пригласить друзей</b>
+    <b><tg-emoji emoji-id="">👥</tg-emoji> Пригласить друзей</b>
     
     Делитесь вашей уникальной ссылкой и получайте вознаграждение в виде { $reward_type ->
         [POINTS] <b>баллов, которые можно обменять на подписку или реальные деньги</b>
@@ -99,20 +99,20 @@ msg-menu-invite =
         *[OTHER] { $reward_type }
     }!
 
-    <b>📊 Статистика</b>:
+    <b><tg-emoji emoji-id="">📊</tg-emoji> Статистика</b>:
     <blockquote>
-    👥 Всего приглашенных: { $referrals }
-    💳 Платежей по вашей ссылке: { $payments }
+    <tg-emoji emoji-id="">👥</tg-emoji> Всего приглашенных: { $referrals }
+    <tg-emoji emoji-id="">💳</tg-emoji> Платежей по вашей ссылке: { $payments }
     { $reward_type -> 
-    [POINTS] 💎 Ваши баллы: { $points }
+    [POINTS] <tg-emoji emoji-id="">💎</tg-emoji> Ваши баллы: { $points }
     *[EXTRA_DAYS] { empty }
     }
     </blockquote>
 
 msg-menu-invite-about =
-    <b>🎁 Подробнее о вознаграждении</b>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Подробнее о вознаграждении</b>
 
-    <b>✨ Как получить награду</b>:
+    <b><tg-emoji emoji-id="">✨</tg-emoji> Как получить награду</b>:
     <blockquote>
     { $accrual_strategy ->
     [ON_FIRST_PAYMENT] Награда начисляется за первую покупку подписки приглашенным пользователем.
@@ -121,15 +121,15 @@ msg-menu-invite-about =
     }
     </blockquote>
 
-    <b>💎 Что вы получаете</b>:
+    <b><tg-emoji emoji-id="">💎</tg-emoji> Что вы получаете</b>:
     <blockquote>
     { $max_level -> 
     [1] За приглашенных друзей: { $reward_level_1 }
     *[MORE]
     { $identical_reward ->
     [0]
-    1️⃣ За ваших друзей: { $reward_level_1 }
-    2️⃣ За приглашенных вашими друзьями: { $reward_level_2 }
+    <tg-emoji emoji-id="">1️⃣</tg-emoji> За ваших друзей: { $reward_level_1 }
+    <tg-emoji emoji-id="">2️⃣</tg-emoji> За приглашенных вашими друзьями: { $reward_level_2 }
     *[1]
     За ваших друзей и приглашенных вашими друзьями: { $reward_level_1 }
     }
@@ -174,13 +174,13 @@ msg-invite-reward = { $value }{ $reward_strategy_type ->
 
 
 # Dashboard
-msg-dashboard-main = <b>🛠 Панель управления</b>
-msg-users-main = <b>👥 Пользователи</b>
-msg-broadcast-main = <b>📢 Рассылка</b>
-msg-statistics-main = <b>📊 Статистика</b>
+msg-dashboard-main = <b><tg-emoji emoji-id="">🛠</tg-emoji> Панель управления</b>
+msg-users-main = <b><tg-emoji emoji-id="">👥</tg-emoji> Пользователи</b>
+msg-broadcast-main = <b><tg-emoji emoji-id="">📢</tg-emoji> Рассылка</b>
+msg-statistics-main = <b><tg-emoji emoji-id="">📊</tg-emoji> Статистика</b>
     
 msg-statistics-users =
-    <b>👥 Статистика по пользователям</b>
+    <b><tg-emoji emoji-id="">👥</tg-emoji> Статистика по пользователям</b>
 
     <blockquote>
     • <b>Всего</b>: { $total_users }
@@ -203,8 +203,8 @@ msg-statistics-users =
 
 msg-statistics-subscriptions =
     { $plan_name ->
-    [0] <b>💳 Статистика по подпискам</b>
-    *[HAS] <b>📦 Статистика плана «{ $plan_name }»</b>
+    [0] <b><tg-emoji emoji-id="">💳</tg-emoji> Статистика по подпискам</b>
+    *[HAS] <b><tg-emoji emoji-id="">📦</tg-emoji> Статистика плана «{ $plan_name }»</b>
     }
 
     <blockquote>
@@ -236,8 +236,8 @@ msg-statistics-subscriptions-plan-income = { $income }{ $currency }
     
 msg-statistics-transactions =
     { $gateway_type ->
-    [0] <b>🧾 Общая статистика по транзакциям</b>
-    *[HAS] <b>🧾 Статистика { gateway-type }</b>
+    [0] <b><tg-emoji emoji-id="">🧾</tg-emoji> Общая статистика по транзакциям</b>
+    *[HAS] <b><tg-emoji emoji-id="">🧾</tg-emoji> Статистика { gateway-type }</b>
     }
 
     <blockquote>
@@ -267,7 +267,7 @@ msg-statistics-transactions =
     }
 
 msg-statistics-promocodes =
-    <b>🎁 Статистика по промокодам</b>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Статистика по промокодам</b>
 
     <blockquote>
     • <b>Всего промокодов</b>: { $total_promocodes }
@@ -291,14 +291,14 @@ msg-statistics-promocodes =
     </blockquote>
 
 msg-statistics-promocode-detail =
-    <b>🎁 Промокод</b> <code>{ $code }</code>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Промокод</b> <code>{ $code }</code>
 
     <blockquote>
     • <b>Тип</b>: { promocode-type }
     • <b>Награда</b>: { $reward }
     • <b>Статус</b>: { $is_active ->
-        [1] 🟢 Включен
-        *[0] 🔴 Выключен
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
         }
     • <b>Повторная активация</b>: { $is_reusable ->
         [1] Разрешена
@@ -321,7 +321,7 @@ msg-statistics-promocode-detail =
     </blockquote>
 
 msg-statistics-referrals =
-    <b>👪 Статистика по рефералам</b>
+    <b><tg-emoji emoji-id="">👪</tg-emoji> Статистика по рефералам</b>
 
     <blockquote>
     • <b>Всего рефералов</b>: { $total_referrals }
@@ -349,7 +349,7 @@ msg-statistics-referrals =
 
 # Access
 msg-access-main =
-    <b>🔓 Режим доступа</b>
+    <b><tg-emoji emoji-id="">🔓</tg-emoji> Режим доступа</b>
     
     <blockquote>
     • <b>Режим</b>: { access-mode }
@@ -364,10 +364,10 @@ msg-access-main =
     </blockquote>
 
 msg-access-conditions =
-    <b>⚙️ Условия доступа</b>
+    <b><tg-emoji emoji-id="">⚙️</tg-emoji> Условия доступа</b>
 
 msg-access-rules =
-    <b>✳️ Изменить ссылку на правила</b>
+    <b><tg-emoji emoji-id="">✳️</tg-emoji> Изменить ссылку на правила</b>
 
     { $rules_url ->
     [0] { space }
@@ -380,7 +380,7 @@ msg-access-rules =
     Введите ссылку (в формате https://telegram.org/tos).
 
 msg-access-channel =
-    <b>❇️ Изменить ссылку на канал/группу</b>
+    <b><tg-emoji emoji-id="">❇️</tg-emoji> Изменить ссылку на канал/группу</b>
 
     { $channel_url ->
     [0] { space }
@@ -399,9 +399,9 @@ msg-access-channel =
 
 
 # Broadcast
-msg-broadcast-list = <b>📄 Список рассылок</b>
-msg-broadcast-plan-select = <b>📦 Выберите план для рассылки</b>
-msg-broadcast-send = <b>📢 Отправить рассылку ({ audience-type })</b>
+msg-broadcast-list = <b><tg-emoji emoji-id="">📄</tg-emoji> Список рассылок</b>
+msg-broadcast-plan-select = <b><tg-emoji emoji-id="">📦</tg-emoji> Выберите план для рассылки</b>
+msg-broadcast-send = <b><tg-emoji emoji-id="">📢</tg-emoji> Отправить рассылку ({ audience-type })</b>
 
     { $audience_count } { $audience_count ->
     [one] пользователю
@@ -410,14 +410,14 @@ msg-broadcast-send = <b>📢 Отправить рассылку ({ audience-typ
     } будет отправлена рассылка
 
 msg-broadcast-content =
-    <b>✉️ Содержимое рассылки</b>
+    <b><tg-emoji emoji-id="">✉️</tg-emoji> Содержимое рассылки</b>
 
     Отправьте сообщение (поддерживается HTML). Можно прикрепить фото, видео или файл. Лимит: до 4096 символов без медиа, до 1024 символов с медиа.
 
-msg-broadcast-buttons = <b>✳️ Кнопки рассылки</b>
+msg-broadcast-buttons = <b><tg-emoji emoji-id="">✳️</tg-emoji> Кнопки рассылки</b>
 
 msg-broadcast-view =
-    <b>📢 Рассылка</b>
+    <b><tg-emoji emoji-id="">📢</tg-emoji> Рассылка</b>
 
     <blockquote>
     • <b>ID</b>: <code>{ $broadcast_id }</code>
@@ -434,19 +434,19 @@ msg-broadcast-view =
 
 
 # Users
-msg-users-recent-registered = <b>🆕 Последние зарегистрированные</b>
-msg-users-recent-activity = <b>📝 Последние взаимодействующие</b>
-msg-user-transactions = <b>🧾 Транзакции пользователя</b>
-msg-user-devices = <b>📱 Устройства пользователя ({ $current_count } / { $max_count })</b>
-msg-user-give-access = <b>🔑 Предоставить доступ к плану</b>
+msg-users-recent-registered = <b><tg-emoji emoji-id="">🆕</tg-emoji> Последние зарегистрированные</b>
+msg-users-recent-activity = <b><tg-emoji emoji-id="">📝</tg-emoji> Последние взаимодействующие</b>
+msg-user-transactions = <b><tg-emoji emoji-id="">🧾</tg-emoji> Транзакции пользователя</b>
+msg-user-devices = <b><tg-emoji emoji-id="">📱</tg-emoji> Устройства пользователя ({ $current_count } / { $max_count })</b>
+msg-user-give-access = <b><tg-emoji emoji-id="">🔑</tg-emoji> Предоставить доступ к плану</b>
 
 msg-users-search =
-    <b>🔍 Поиск пользователя</b>
+    <b><tg-emoji emoji-id="">🔍</tg-emoji> Поиск пользователя</b>
 
     Введите ID или Email пользователя, часть имени или перешлите любое его сообщение.
 
 msg-users-search-results =
-    <b>🔍 Поиск пользователя</b>
+    <b><tg-emoji emoji-id="">🔍</tg-emoji> Поиск пользователя</b>
 
     Найдено <b>{ $count }</b> { $count ->
     [one] пользователь
@@ -458,12 +458,12 @@ msg-users-search-results =
     } запросу
 
 msg-user-main = 
-    <b>📝 Информация о пользователе</b>
+    <b><tg-emoji emoji-id="">📝</tg-emoji> Информация о пользователе</b>
 
     { hdr-user-profile }
     { frg-user-details }
 
-    <b>💸 Скидка</b>:
+    <b><tg-emoji emoji-id="">💸</tg-emoji> Скидка</b>:
     <blockquote>
     • <b>Персональная</b>: { $personal_discount }%
     • <b>На следующую покупку</b>: { $purchase_discount }%
@@ -492,7 +492,7 @@ msg-user-main =
     }
 
 msg-user-statistics =
-    <b>📊 Статистика пользователя</b>
+    <b><tg-emoji emoji-id="">📊</tg-emoji> Статистика пользователя</b>
 
     <blockquote>
     • <b>Дата регистрации</b>: { $registered_at }
@@ -528,12 +528,12 @@ msg-user-statistics =
 
 msg-user-statistics-payment-amount = • <b>Оплачено ({ $currency })</b>: { $amount }
 
-msg-user-referrals = <b>👪 Рефералы пользователя</b>
+msg-user-referrals = <b><tg-emoji emoji-id="">👪</tg-emoji> Рефералы пользователя</b>
 
 msg-user-sync = 
-    <b>🌀 Синхронизировать пользователя</b>
+    <b><tg-emoji emoji-id="">🌀</tg-emoji> Синхронизировать пользователя</b>
 
-    <b>🛍 Remnashop</b>: { $bot_version }
+    <b><tg-emoji emoji-id="">🛍</tg-emoji> Remnashop</b>: { $bot_version }
     <blockquote>
     { $has_bot_subscription -> 
     [0] Данные отсутствуют
@@ -541,7 +541,7 @@ msg-user-sync =
     }
     </blockquote>
 
-    <b>🌊 Remnawave</b>: { $remna_version }
+    <b><tg-emoji emoji-id="">🌊</tg-emoji> Remnawave</b>: { $remna_version }
     <blockquote>
     { $has_remna_subscription -> 
     [0] Данные отсутствуют
@@ -595,85 +595,85 @@ msg-user-sync-subscription =
     }
 
 msg-user-sync-waiting =
-    <b>🌀 Синхронизация пользователя</b>
+    <b><tg-emoji emoji-id="">🌀</tg-emoji> Синхронизация пользователя</b>
 
     Пожалуйста, подождите... Идет процесс синхронизации данных пользователя. Вы автоматически вернетесь к редактору пользователя по завершении.
 
 msg-user-give-subscription =
-    <b>🎁 Выдать подписку</b>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Выдать подписку</b>
 
     Выберите план, который хотите выдать пользователю.
 
 msg-user-give-subscription-duration =
-    <b>⏳ Выберите длительность</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Выберите длительность</b>
 
     Выберите длительность выдаваемой подписки.
 
 msg-user-discount =
-    <b>💸 Изменить скидку</b>
+    <b><tg-emoji emoji-id="">💸</tg-emoji> Изменить скидку</b>
 
     Выберите тип скидки для изменения.
 
 msg-user-discount-personal =
-    <b>👤 Персональная скидка</b>
+    <b><tg-emoji emoji-id="">👤</tg-emoji> Персональная скидка</b>
 
     Выберите по кнопке или введите свой вариант.
 
 msg-user-discount-purchase =
-    <b>🎟 Скидка на следующую покупку</b>
+    <b><tg-emoji emoji-id="">🎟</tg-emoji> Скидка на следующую покупку</b>
 
     Выберите по кнопке или введите свой вариант.
     Скидка будет применена один раз и сброшена после любого платежа.
 
 msg-user-points =
-    <b>💎 Изменить баллы реферальной системы</b>
+    <b><tg-emoji emoji-id="">💎</tg-emoji> Изменить баллы реферальной системы</b>
 
     <b>Текущее кол-во баллов: { $current_points }</b>
 
     Выберите по кнопке или введите свой вариант, чтобы добавить или отнять.
 
 msg-user-subscription-traffic-limit =
-    <b>🌐 Изменить лимит трафика</b>
+    <b><tg-emoji emoji-id="">🌐</tg-emoji> Изменить лимит трафика</b>
 
     Выберите по кнопке или введите свой вариант (в ГБ), чтобы изменить лимит трафика.
 
 msg-user-subscription-device-limit =
-    <b>📱 Изменить лимит устройств</b>
+    <b><tg-emoji emoji-id="">📱</tg-emoji> Изменить лимит устройств</b>
 
     Выберите по кнопке или введите свой вариант, чтобы изменить лимит устройств.
 
 msg-user-subscription-expire-time =
-    <b>⏳ Изменить срок действия</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Изменить срок действия</b>
 
     <b>Закончится через: { $expire_time }</b>
 
     Выберите по кнопке или введите свой вариант (в днях), чтобы добавить или отнять.
 
 msg-user-subscription-squads =
-    <b>🔗 Изменить список сквадов</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> Изменить список сквадов</b>
 
     { $internal_squads ->
     [0] { empty }
-    *[HAS] <b>⏺️ Внутренние</b>: { $internal_squads }
+    *[HAS] <b><tg-emoji emoji-id="">⏺️</tg-emoji> Внутренние</b>: { $internal_squads }
     }
 
     { $external_squad ->
     [0] { empty }
-    *[HAS] <b>⏹️ Внешний</b>: { $external_squad }
+    *[HAS] <b><tg-emoji emoji-id="">⏹️</tg-emoji> Внешний</b>: { $external_squad }
     }
 
 msg-user-subscription-internal-squads =
-    <b>⏺️ Изменить список внутренних сквадов</b>
+    <b><tg-emoji emoji-id="">⏺️</tg-emoji> Изменить список внутренних сквадов</b>
 
     Выберите, какие внутренние группы будут присвоены этому пользователю.
 
 msg-user-subscription-external-squads =
-    <b>⏹️ Изменить внешний сквад</b>
+    <b><tg-emoji emoji-id="">⏹️</tg-emoji> Изменить внешний сквад</b>
 
     Выберите, какая внешняя группа будет присвоена этому пользователю.
 
 msg-user-subscription-info =
-    <b>💳 Информация о текущей подписке</b>
+    <b><tg-emoji emoji-id="">💳</tg-emoji> Информация о текущей подписке</b>
     
     { hdr-subscription }
     { frg-subscription-details }
@@ -701,7 +701,7 @@ msg-user-subscription-info =
     { frg-plan-snapshot }
 
 msg-user-transaction-info =
-    <b>🧾 Информация о транзакции</b>
+    <b><tg-emoji emoji-id="">🧾</tg-emoji> Информация о транзакции</b>
 
     { hdr-payment }
     <blockquote>
@@ -718,27 +718,27 @@ msg-user-transaction-info =
     </blockquote>
 
     { $is_test -> 
-    [1] ⚠️ Тестовая транзакция
+    [1] <tg-emoji emoji-id="">⚠️</tg-emoji> Тестовая транзакция
     *[0]
     { hdr-plan }
     { frg-plan-snapshot }
     }
     
 msg-user-role = 
-    <b>👮‍♂️ Изменить роль</b>
+    <b><tg-emoji emoji-id="">👮‍♂️</tg-emoji> Изменить роль</b>
     
     Выберите новую роль для пользователя.
 
 msg-users-blacklist =
-    <b>🚫 Черный список</b>
+    <b><tg-emoji emoji-id="">🚫</tg-emoji> Черный список</b>
 
 msg-users-blacklist-list =
-    <b>📋 Заблокированные пользователи</b>
+    <b><tg-emoji emoji-id="">📋</tg-emoji> Заблокированные пользователи</b>
 
     Заблокировано: <b>{ $count_blocked }</b> / <b>{ $count_users }</b> ({ $percent }%).
 
 msg-users-blacklist-block =
-    <b>⛔ Заблокировать по ID</b>
+    <b><tg-emoji emoji-id="">⛔</tg-emoji> Заблокировать по ID</b>
 
     Поддерживаемые форматы
     <blockquote>
@@ -752,7 +752,7 @@ msg-users-blacklist-block =
     Блокировка действует даже если пользователь ни разу не использовал бота.
 
 msg-users-blacklist-sources =
-    <b>🔗 Автообновляемые черные списки</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> Автообновляемые черные списки</b>
 
     Нажмите на список, чтобы удалить его.
     Синхронизация запускается автоматически каждые 6 часов.
@@ -760,16 +760,16 @@ msg-users-blacklist-sources =
     Чтобы добавить новый список — отправьте прямую ссылку на текстовый файл с Telegram ID.
 
 msg-user-message =
-    <b>📩 Отправить сообщение пользователю</b>
+    <b><tg-emoji emoji-id="">📩</tg-emoji> Отправить сообщение пользователю</b>
 
     Отправьте любое сообщение: текст, изображение или все вместе (поддерживается HTML).
     
 
 # RemnaWave
 msg-remnawave-main =
-    <b>🌊 RemnaWave v{ $version }</b>
+    <b><tg-emoji emoji-id="">🌊</tg-emoji> RemnaWave v{ $version }</b>
     
-    <b>🖥️ Система</b>:
+    <b><tg-emoji emoji-id="">🖥️</tg-emoji> Система</b>:
     <blockquote>
     • <b>ЦПУ</b>: { $cpu_cores } { $cpu_cores ->
     [one] ядро
@@ -781,9 +781,9 @@ msg-remnawave-main =
     </blockquote>
 
 msg-remnawave-users =
-    <b>👥 Пользователи</b>
+    <b><tg-emoji emoji-id="">👥</tg-emoji> Пользователи</b>
 
-    <b>📊 Статистика</b>:
+    <b><tg-emoji emoji-id="">📊</tg-emoji> Статистика</b>:
     <blockquote>
     • <b>Всего</b>: { $users_total }
     • <b>Активные</b>: { $users_active }
@@ -792,7 +792,7 @@ msg-remnawave-users =
     • <b>Истекшие</b>: { $users_expired }
     </blockquote>
 
-    <b>🟢 Онлайн</b>:
+    <b><tg-emoji emoji-id="">🟢</tg-emoji> Онлайн</b>:
     <blockquote>
     • <b>За день</b>: { $online_last_day }
     • <b>За неделю</b>: { $online_last_week }
@@ -829,7 +829,7 @@ msg-remnawave-node-details =
     </blockquote>
 
 msg-remnawave-inbound-details =
-    <b>🔗 { $tag }</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> { $tag }</b>
     <blockquote>
     • <b>ID</b>: <code>{ $inbound_id }</code>
     • <b>Протокол</b>: { $type } { $network -> 
@@ -847,7 +847,7 @@ msg-remnawave-inbound-details =
     </blockquote>
 
 msg-remnawave-hosts =
-    <b>🌐 Хосты</b>
+    <b><tg-emoji emoji-id="">🌐</tg-emoji> Хосты</b>
 
     { $is_empty ->
     [1] <i>Нет хостов</i>
@@ -855,7 +855,7 @@ msg-remnawave-hosts =
     }
 
 msg-remnawave-nodes =
-    <b>🖥️ Ноды</b>
+    <b><tg-emoji emoji-id="">🖥️</tg-emoji> Ноды</b>
 
     { $is_empty ->
     [1] <i>Нет нод</i>
@@ -863,7 +863,7 @@ msg-remnawave-nodes =
     }
 
 msg-remnawave-inbounds =
-    <b>🔌 Инбаунды</b>
+    <b><tg-emoji emoji-id="">🔌</tg-emoji> Инбаунды</b>
 
     { $is_empty ->
     [1] <i>Нет инбаундов</i>
@@ -872,26 +872,26 @@ msg-remnawave-inbounds =
 
 
 # RemnaShop
-msg-remnashop-main = <b>🛍 RemnaShop { $version ->
+msg-remnashop-main = <b><tg-emoji emoji-id="">🛍</tg-emoji> RemnaShop { $version ->
 [0] { space }
 *[HAS] { $version }
 }</b>
 
-msg-remnashop-transactions = <b>🧾 Последние транзакции</b>
+msg-remnashop-transactions = <b><tg-emoji emoji-id="">🧾</tg-emoji> Последние транзакции</b>
 
 
 # Backup
 msg-backup-main =
-    <b>💾 Авто-бэкап базы данных</b>
+    <b><tg-emoji emoji-id="">💾</tg-emoji> Авто-бэкап базы данных</b>
 
     <blockquote>
     • <b>Статус</b>: { $enabled ->
-        [1] 🟢 Включен
-        *[0] 🔴 Выключен
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
     }
     • <b>Отправка в чат</b>: { $send_to_chat ->
-        [1] ✅ Включена
-        *[0] ❌ Выключена
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включена
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключена
     }
     • <b>Интервал</b>:  { $interval_hours ->
     [one] каждый
@@ -901,30 +901,30 @@ msg-backup-main =
     </blockquote>
 
 msg-backup-set-interval =
-    <b>🕐 Интервал бэкапа</b>
+    <b><tg-emoji emoji-id="">🕐</tg-emoji> Интервал бэкапа</b>
 
     Текущее значение: <b>{ $interval_hours } ч.</b>
 
     Введите интервал бэкапа в часах (от 1 до 720).
 
 msg-backup-set-max-files =
-    <b>📁 Количество файлов</b>
+    <b><tg-emoji emoji-id="">📁</tg-emoji> Количество файлов</b>
 
     Текущее значение: <b>{ $max_files }</b>
 
     Введите сколько файлов бэкапа хранить (от 1 до 30). Старые файлы будут удаляться автоматически.
 
-msg-extra-main = <b>⚙️ Дополнительные настройки</b>
+msg-extra-main = <b><tg-emoji emoji-id="">⚙️</tg-emoji> Дополнительные настройки</b>
 
 msg-extra-device-single =
-    ⚙️ <b>Удаление одного устройства</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Удаление одного устройства</b>
 
     Позволяет пользователю удалить конкретное устройство из списка.
 
     <blockquote>
     <b>Статус:</b> { $enabled -> 
-        [1] 🟢 Включено
-        *[0] 🔴 Выключено
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключено
     }
     <b>Кулдаун:</b> { $cooldown -> 
         [0] { unknown }
@@ -935,14 +935,14 @@ msg-extra-device-single =
     Введите число для изменения кулдауна (в часах. 0 — без ограничений).
 
 msg-extra-device-all =
-    ⚙️ <b>Удаление всех устройств</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Удаление всех устройств</b>
 
     Позволяет пользователям удалить все устройства одним нажатием.
 
     <blockquote>
     <b>Статус:</b> { $enabled -> 
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
     <b>Кулдаун:</b> { $cooldown -> 
         [0] { unknown }
@@ -953,14 +953,14 @@ msg-extra-device-all =
     Введите число для изменения кулдауна (в часах. 0 — без ограничений).
 
 msg-extra-link-reset =
-    ⚙️ <b>Перевыпуск подписки</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Перевыпуск подписки</b>
 
     Позволяет перевыпустить ссылку подключения (инвалидирует старую).
 
     <blockquote>
     <b>Статус:</b> { $enabled -> 
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
     <b>Кулдаун:</b> { $cooldown -> 
         [0] { unknown }
@@ -971,14 +971,14 @@ msg-extra-link-reset =
     Введите число для изменения кулдауна (в часах. 0 — без ограничений).
 
 msg-extra-referral-reset =
-    ⚙️ <b>Сброс реферальной ссылки</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Сброс реферальной ссылки</b>
 
     Позволяет пользователям изменить свою реферальную ссылку.
 
     <blockquote>
     <b>Статус:</b> { $enabled -> 
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
     <b>Кулдаун:</b> { $cooldown -> 
         [0] { unknown }
@@ -989,45 +989,45 @@ msg-extra-referral-reset =
     Введите число для изменения кулдауна (в часах. 0 — без ограничений).
 
 msg-extra-trial-channel-guard =
-    ⚙️ <b>Авто отключение пробника при отписке от канала</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Авто отключение пробника при отписке от канала</b>
 
     Если пользователь отписывается от обязательного канала/группы во время пробного периода, его подписка автоматически приостанавливается. После повторной подписки доступ восстанавливается, если триал еще не истек.
 
     <blockquote>
     <b>Статус:</b> { $enabled ->
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
     </blockquote>
 
     Работает только при включенной обязательной подписке на канал/группу.
 
 msg-extra-mini-app-reserve =
-    ⚙️ <b>Резервная кнопка подключения при активном Mini App</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Резервная кнопка подключения при активном Mini App</b>
 
     Под основной кнопкой «Подключиться» (открывает Mini App) добавляется резервная кнопка, открывающая страницу подписки в браузере. Полезно в регионах, где Telegram Mini App может быть недоступен из-за блокировок.
 
     <blockquote>
     <b>Статус:</b> { $enabled ->
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
     </blockquote>
 
     Работает только при включённом Mini App (BOT_MINI_APP).
 
 msg-extra-device-purchase =
-    ⚙️ <b>Докупка дополнительных устройств</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Докупка дополнительных устройств</b>
 
     Пользователи с активной подпиской могут докупать дополнительные устройства к своему лимиту через меню подписки. Докупленные устройства сохраняются при продлении и смене плана.
 
     <blockquote>
     <b>Статус:</b> { $enabled ->
-        [1] ✅ Включено
-        *[0] ❌ Выключено
+        [1] <tg-emoji emoji-id="">✅</tg-emoji> Включено
+        *[0] <tg-emoji emoji-id="">❌</tg-emoji> Выключено
     }
 
-    💰 <b>Цена за 1 устройство</b>:
+    <tg-emoji emoji-id="">💰</tg-emoji> <b>Цена за 1 устройство</b>:
     • Telegram Stars: { $price_xtr ->
         [0] не задана
         *[HAS] { $price_xtr }★
@@ -1045,7 +1045,7 @@ msg-extra-device-purchase =
     Нажмите на кнопку с валютой, чтобы задать цену. Если цена для валюты шлюза не задана, этот способ оплаты не будет доступен при докупке.
 
 msg-extra-device-purchase-price =
-    ⚙️ <b>Цена за устройство ({ $currency })</b>
+    <tg-emoji emoji-id="">⚙️</tg-emoji> <b>Цена за устройство ({ $currency })</b>
 
     Текущая цена: { $price ->
         [0] не задана
@@ -1054,28 +1054,28 @@ msg-extra-device-purchase-price =
 
     Отправьте новую цену за одно устройство в сообщении (целое число).
 
-msg-admins-main = <b>👮‍♂️ Администраторы</b>
+msg-admins-main = <b><tg-emoji emoji-id="">👮‍♂️</tg-emoji> Администраторы</b>
 
 
 # Menu editor
 msg-menu-editor-main =
-    <b>🎛 Редактор кнопок главного меню</b>
+    <b><tg-emoji emoji-id="">🎛</tg-emoji> Редактор кнопок главного меню</b>
 
     Выберите кнопку для редактирования.
 
 msg-menu-editor-button =
-    <b>🎛 Конфигуратор кнопки</b>
+    <b><tg-emoji emoji-id="">🎛</tg-emoji> Конфигуратор кнопки</b>
 
     <blockquote>
     • <b>Статус</b>: { $is_active ->
-        [1] 🟢 Включена
-        *[0] 🔴 Выключена
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
         }
     • <b>Текст</b>: { $text }
     • <b>Доступ</b>: { role }
     • <b>Видимость</b>: { $subscribers_only ->
-        [1] 🔒 Только подписчики
-        *[0] 👥 Все пользователи
+        [1] <tg-emoji emoji-id="">🔒</tg-emoji> Только подписчики
+        *[0] <tg-emoji emoji-id="">👥</tg-emoji> Все пользователи
         }
     • <b>Тип</b>: { button-type }
     • <b>Цвет</b>: { $color ->
@@ -1093,22 +1093,22 @@ msg-menu-editor-button =
     Выберите пункт для изменения.
 
 msg-menu-editor-button-text =
-    <b>🏷️ Изменить текст кнопки</b>
+    <b><tg-emoji emoji-id="">🏷️</tg-emoji> Изменить текст кнопки</b>
 
     Введите текст кнопки (максимум 32 символа) или ключ перевода.
 
 msg-menu-editor-button-availability =
-    <b>✴️ Изменить доступ к кнопке</b>
+    <b><tg-emoji emoji-id="">✴️</tg-emoji> Изменить доступ к кнопке</b>
 
     Выберите роль для доступа к кнопке.
 
 msg-menu-editor-button-type =
-    <b>🔖 Изменить тип кнопки</b>
+    <b><tg-emoji emoji-id="">🔖</tg-emoji> Изменить тип кнопки</b>
 
     Выберите тип кнопки.
 
 msg-menu-editor-button-payload =
-    <b>📄 Изменить данные кнопки</b>
+    <b><tg-emoji emoji-id="">📄</tg-emoji> Изменить данные кнопки</b>
 
     { $button_type ->
         [URL] Введите ссылку. Должна начинаться с <code>https://</code>.
@@ -1118,19 +1118,19 @@ msg-menu-editor-button-payload =
     }
 
 msg-menu-editor-button-color =
-    <b>🎨 Изменить цвет кнопки</b>
+    <b><tg-emoji emoji-id="">🎨</tg-emoji> Изменить цвет кнопки</b>
 
     Выберите цвет кнопки.
 
 
 # Gateways
-msg-gateways-main = <b>🌐 Платежные системы</b>
-msg-gateways-settings = <b>🌐 Конфигурация { gateway-type }</b>
-msg-gateways-default-currency = <b>💸 Валюта по умолчанию</b>
-msg-gateways-placement = <b>🔢 Изменить позиционирование</b>
+msg-gateways-main = <b><tg-emoji emoji-id="">🌐</tg-emoji> Платежные системы</b>
+msg-gateways-settings = <b><tg-emoji emoji-id="">🌐</tg-emoji> Конфигурация { gateway-type }</b>
+msg-gateways-default-currency = <b><tg-emoji emoji-id="">💸</tg-emoji> Валюта по умолчанию</b>
+msg-gateways-placement = <b><tg-emoji emoji-id="">🔢</tg-emoji> Изменить позиционирование</b>
 
 msg-gateways-field =
-    <b>🌐 Конфигурация { gateway-type }</b>
+    <b><tg-emoji emoji-id="">🌐</tg-emoji> Конфигурация { gateway-type }</b>
 
     Введите новое значение для { $field ->
         [display_name] отображаемого названия
@@ -1140,12 +1140,12 @@ msg-gateways-field =
 
 # Referral
 msg-referral-main =
-    <b>👥 Реферальная система</b>
+    <b><tg-emoji emoji-id="">👥</tg-emoji> Реферальная система</b>
 
     <blockquote>
     • <b>Статус</b>: { $is_enable -> 
-        [1] 🟢 Включена
-        *[0] 🔴 Выключена
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
         }
     • <b>Тип награды</b>: { reward-type }
     • <b>Количество уровней</b>: { $referral_level }
@@ -1156,23 +1156,23 @@ msg-referral-main =
     Выберите пункт для изменения.
 
 msg-referral-level =
-    <b>🔢 Изменить уровень</b>
+    <b><tg-emoji emoji-id="">🔢</tg-emoji> Изменить уровень</b>
 
     Выберите максимальный уровень реферала.
 
 msg-referral-reward-type =
-    <b>🎀 Изменить тип награды</b>
+    <b><tg-emoji emoji-id="">🎀</tg-emoji> Изменить тип награды</b>
 
     Выберите новый тип награды.
     
 msg-referral-accrual-strategy =
-    <b>📍 Изменить условие начисления</b>
+    <b><tg-emoji emoji-id="">📍</tg-emoji> Изменить условие начисления</b>
 
     Выберите, в каком случае будет начисляться награда.
 
 
 msg-referral-reward-strategy =
-    <b>⚖️ Изменить форму начисления</b>
+    <b><tg-emoji emoji-id="">⚖️</tg-emoji> Изменить форму начисления</b>
 
     Выберите способ расчета награды.
 
@@ -1200,7 +1200,7 @@ msg-referral-reward-level = { $level } уровень: { $value }{ $reward_strat
     }
     
 msg-referral-reward =
-    <b>🎁 Изменить награду</b>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Изменить награду</b>
 
     <blockquote>
     { $reward }
@@ -1222,20 +1222,20 @@ msg-referral-reward =
 
 
 # Plans
-msg-plans-main = <b>📦 Планы</b>
+msg-plans-main = <b><tg-emoji emoji-id="">📦</tg-emoji> Планы</b>
 
 msg-plans-import = 
-    <b>📦 Импортировать планы</b>
+    <b><tg-emoji emoji-id="">📦</tg-emoji> Импортировать планы</b>
 
     Отправьте json файл для импорта.
 
 msg-plans-export = 
-    <b>📦 Экспортировать планы</b>
+    <b><tg-emoji emoji-id="">📦</tg-emoji> Экспортировать планы</b>
 
     Выберите планы для экспорта.
 
 msg-plan-configurator =
-    <b>📦 Конфигуратор плана</b>
+    <b><tg-emoji emoji-id="">📦</tg-emoji> Конфигуратор плана</b>
 
     <blockquote>
     • <b>Название</b>: { $name }
@@ -1245,8 +1245,8 @@ msg-plan-configurator =
     }
     • <b>Доступ</b>: { availability-type }
     • <b>Статус</b>: { $is_active -> 
-        [1] 🟢 Включен
-        *[0] 🔴 Выключен
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
         }
     </blockquote>
     
@@ -1264,7 +1264,7 @@ msg-plan-configurator =
     Выберите пункт для изменения.
 
 msg-plan-name =
-    <b>🏷️ Изменить название</b>
+    <b><tg-emoji emoji-id="">🏷️</tg-emoji> Изменить название</b>
 
     { $name ->
     [0] { space }
@@ -1277,7 +1277,7 @@ msg-plan-name =
     Введите уникальное название плана или ключ перевода (максимум 32 символа).
 
 msg-plan-description =
-    <b>💬 Изменить описание</b>
+    <b><tg-emoji emoji-id="">💬</tg-emoji> Изменить описание</b>
 
     { $description ->
     [0] { space }
@@ -1290,7 +1290,7 @@ msg-plan-description =
     Введите новое описание плана или ключ перевода.
 
 msg-plan-tag =
-    <b>📌 Изменить тег</b>
+    <b><tg-emoji emoji-id="">📌</tg-emoji> Изменить тег</b>
 
     { $tag ->
     [0] { space }
@@ -1303,37 +1303,37 @@ msg-plan-tag =
     Введите новый тег плана (только латинские заглавные буквы, цифры и символ подчеркивания).
 
 msg-plan-type =
-    <b>🔖 Изменить тип</b>
+    <b><tg-emoji emoji-id="">🔖</tg-emoji> Изменить тип</b>
 
     Выберите новый тип плана. Отметьте кнопкой «Пробник», чтобы предоставить данный план как пробный.
 
 msg-plan-availability =
-    <b>✴️ Изменить доступность</b>
+    <b><tg-emoji emoji-id="">✴️</tg-emoji> Изменить доступность</b>
 
     Выберите доступность плана.
 
 msg-plan-traffic =
-    <b>🌐 Изменить лимит и стратегию сброса трафика</b>
+    <b><tg-emoji emoji-id="">🌐</tg-emoji> Изменить лимит и стратегию сброса трафика</b>
 
     Введите новый лимит трафика плана (в ГБ) и выберите стратегию его сброса.
 
 msg-plan-devices =
-    <b>📱 Изменить лимит устройств</b>
+    <b><tg-emoji emoji-id="">📱</tg-emoji> Изменить лимит устройств</b>
 
     Введите новый лимит устройств плана.
 
 msg-plan-durations =
-    <b>⏳ Длительности плана</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Длительности плана</b>
 
     Выберите длительность для изменения цены.
 
 msg-plan-duration =
-    <b>⏳ Добавить длительность плана</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Добавить длительность плана</b>
 
     Введите новую длительность (в днях).
 
 msg-plan-prices =
-    <b>💰 Изменить цены длительности ({ $value ->
+    <b><tg-emoji emoji-id="">💰</tg-emoji> Изменить цены длительности ({ $value ->
             [0] { unlimited }
             *[OTHER] { unit-day }
         })</b>
@@ -1341,7 +1341,7 @@ msg-plan-prices =
     Выберите валюту с ценой для изменения.
 
 msg-plan-price =
-    <b>💰 Изменить цену для длительности ({ $value ->
+    <b><tg-emoji emoji-id="">💰</tg-emoji> Изменить цену для длительности ({ $value ->
             [0] { unlimited }
             *[OTHER] { unit-day }
         })</b>
@@ -1349,46 +1349,46 @@ msg-plan-price =
     Введите новую цену для валюты { $currency }.
 
 msg-plan-allowed-users = 
-    <b>👥 Изменить список разрешенных пользователей</b>
+    <b><tg-emoji emoji-id="">👥</tg-emoji> Изменить список разрешенных пользователей</b>
 
     Введите ID пользователя или Email для добавления в список.
 
 msg-plan-squads =
-    <b>🔗 Сквады</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> Сквады</b>
 
     { $internal_squads ->
     [0] { space }
-    *[HAS] <b>⏺️ Внутренние</b>: { $internal_squads }
+    *[HAS] <b><tg-emoji emoji-id="">⏺️</tg-emoji> Внутренние</b>: { $internal_squads }
     }
 
     { $external_squad ->
     [0] { space }
-    *[HAS] <b>⏹️ Внешний</b>: { $external_squad }
+    *[HAS] <b><tg-emoji emoji-id="">⏹️</tg-emoji> Внешний</b>: { $external_squad }
     }
 
 msg-plan-internal-squads =
-    <b>⏺️ Изменить список внутренних сквадов</b>
+    <b><tg-emoji emoji-id="">⏺️</tg-emoji> Изменить список внутренних сквадов</b>
 
     Выберите, какие внутренние группы будут присвоены этому плану.
 
 msg-plan-external-squads =
-    <b>⏹️ Изменить внешний сквад</b>
+    <b><tg-emoji emoji-id="">⏹️</tg-emoji> Изменить внешний сквад</b>
 
     Выберите, какая внешняя группа будет присвоена этому плану.
 
 
 # Notifications
-msg-notifications-main = <b>🔔 Настройка уведомлений</b>
-msg-notifications-user = <b>👥 Пользовательские уведомления</b>
-msg-notifications-system = <b>⚙️ Системные уведомления</b>
+msg-notifications-main = <b><tg-emoji emoji-id="">🔔</tg-emoji> Настройка уведомлений</b>
+msg-notifications-user = <b><tg-emoji emoji-id="">👥</tg-emoji> Пользовательские уведомления</b>
+msg-notifications-system = <b><tg-emoji emoji-id="">⚙️</tg-emoji> Системные уведомления</b>
 
 msg-notifications-system-type = 
-    <b>🔔 { notification-type }</b>
+    <b><tg-emoji emoji-id="">🔔</tg-emoji> { notification-type }</b>
 
     <blockquote>
     • <b>Статус</b>: { $is_active -> 
-    [1] 🟢 Включено
-    *[0] 🔴 Выключено
+    [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включено
+    *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключено
     }
     • <b>Маршрут</b>: { $has_route -> 
     [0] { unknown }
@@ -1400,7 +1400,7 @@ msg-notifications-system-type =
     </blockquote>
 
 msg-notifications-system-route = 
-    <b>📡 Маршрут: { notification-type }</b>
+    <b><tg-emoji emoji-id="">📡</tg-emoji> Маршрут: { notification-type }</b>
 
     <blockquote>
     • <b>Чат ID</b>: { $chat_id ->
@@ -1419,7 +1419,7 @@ msg-notifications-system-route =
 
 
 msg-notifications-system-default-route =
-    <b>📡 Общий маршрут</b>
+    <b><tg-emoji emoji-id="">📡</tg-emoji> Общий маршрут</b>
 
     <blockquote>
     • <b>Чат ID</b>: { $chat_id ->
@@ -1440,24 +1440,24 @@ msg-notifications-system-default-route =
 
 
 msg-notifications-system-route-chat-id =
-    <b>💬 Изменить Чат ID</b>
+    <b><tg-emoji emoji-id="">💬</tg-emoji> Изменить Чат ID</b>
 
     Введите ID группы (например: <code>-1001234567891</code>).
 
 msg-notifications-system-route-thread-id =
-    <b>📁 Изменить Тред ID</b>
+    <b><tg-emoji emoji-id="">📁</tg-emoji> Изменить Тред ID</b>
 
     Введите ID треда (введите <code>0</code> чтобы сбросить).
 
 
 # Subscription
-msg-subscription-main = <b>💳 Подписка</b>
-msg-subscription-plans = <b>📦 Выберите план</b>
+msg-subscription-main = <b><tg-emoji emoji-id="">💳</tg-emoji> Подписка</b>
+msg-subscription-plans = <b><tg-emoji emoji-id="">📦</tg-emoji> Выберите план</b>
 msg-subscription-new-success = Чтобы начать пользоваться нашим сервисом, нажмите кнопку <code>`{ btn-subscription.connect }`</code> и следуйте инструкциям!
 msg-subscription-renew-success = Ваша подписка продлена на { $added_duration }.
 
 msg-subscription-plan = 
-    <b>📦 Доступный план по ссылке</b>
+    <b><tg-emoji emoji-id="">📦</tg-emoji> Доступный план по ссылке</b>
     
     Вам доступен план <b>{ $name }</b> по ссылке. Нажмите кнопку ниже чтобы перейти к выбору длительности и способа оплаты.
 
@@ -1470,8 +1470,8 @@ msg-subscription-plan =
     }
 
     { $purchase_type ->
-    [RENEW] <i>⚠️ Текущая подписка будет <u>продлена</u> на выбранный срок.</i>
-    [CHANGE] <i>⚠️ Текущая подписка будет <u>заменена</u> данным планом без пересчета оставшегося срока.</i>
+    [RENEW] <i><tg-emoji emoji-id="">⚠️</tg-emoji> Текущая подписка будет <u>продлена</u> на выбранный срок.</i>
+    [CHANGE] <i><tg-emoji emoji-id="">⚠️</tg-emoji> Текущая подписка будет <u>заменена</u> данным планом без пересчета оставшегося срока.</i>
     *[OTHER] { empty }
     }
     
@@ -1508,27 +1508,27 @@ msg-subscription-details =
     }
 
 msg-subscription-duration =
-    <b>⏳ Выберите длительность</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Выберите длительность</b>
 
     { msg-subscription-details }
 
     { $plan_is_modified ->
-    [1] <i>ℹ️ Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
+    [1] <i><tg-emoji emoji-id="">ℹ️</tg-emoji> Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
     *[0] { "" }
     }
 
 msg-subscription-payment-method =
-    <b>💳 Выберите способ оплаты</b>
+    <b><tg-emoji emoji-id="">💳</tg-emoji> Выберите способ оплаты</b>
 
     { msg-subscription-details }
 
     { $plan_is_modified ->
     [0] { empty }
-    *[MODIFIED] <i>ℹ️ Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
+    *[MODIFIED] <i><tg-emoji emoji-id="">ℹ️</tg-emoji> Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
     }
 
 msg-subscription-confirm =
-    <b>🛒 Подтверждение { $purchase_type ->
+    <b><tg-emoji emoji-id="">🛒</tg-emoji> Подтверждение { $purchase_type ->
     [RENEW] продления
     [CHANGE] изменения
     *[OTHER] покупки
@@ -1537,23 +1537,23 @@ msg-subscription-confirm =
     { msg-subscription-details }
 
     { $purchase_type ->
-    [RENEW] <i>⚠️ Текущая подписка будет <u>продлена</u> на выбранный срок.</i>
-    [CHANGE] <i>⚠️ Текущая подписка будет <u>заменена</u> выбранной без пересчета оставшегося срока.</i>
+    [RENEW] <i><tg-emoji emoji-id="">⚠️</tg-emoji> Текущая подписка будет <u>продлена</u> на выбранный срок.</i>
+    [CHANGE] <i><tg-emoji emoji-id="">⚠️</tg-emoji> Текущая подписка будет <u>заменена</u> выбранной без пересчета оставшегося срока.</i>
     *[OTHER] { empty }
     }
 
     { $plan_is_modified ->
     [0] { empty }
-    *[MODIFIED] <i>ℹ️ Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
+    *[MODIFIED] <i><tg-emoji emoji-id="">ℹ️</tg-emoji> Условия плана изменились с момента последней покупки — актуальные данные указаны выше.</i>
     }
 
 msg-subscription-trial =
-    <b>✅ Пробная подписка успешно получена!</b>
+    <b><tg-emoji emoji-id="">✅</tg-emoji> Пробная подписка успешно получена!</b>
 
     { msg-subscription-new-success }
 
 msg-subscription-success =
-    <b>✅ Оплата прошла успешно!</b>
+    <b><tg-emoji emoji-id="">✅</tg-emoji> Оплата прошла успешно!</b>
 
     { $purchase_type ->
     [NEW] { msg-subscription-new-success }
@@ -1569,12 +1569,12 @@ msg-subscription-change-success =
     { frg-subscription }
 
 msg-subscription-failed = 
-    <b>❌ Произошла ошибка!</b>
+    <b><tg-emoji emoji-id="">❌</tg-emoji> Произошла ошибка!</b>
 
     Не волнуйтесь, техподдержка уже уведомлена и свяжется с вами в ближайшее время. Приносим извинения за неудобства.
 
 msg-subscription-devices-count =
-    <b>➕ Докупить устройства</b>
+    <b><tg-emoji emoji-id="">➕</tg-emoji> Докупить устройства</b>
 
     Ваш лимит устройств: <b>{ $base_devices }</b>{ $extra_devices ->
         [0] { empty }
@@ -1589,12 +1589,12 @@ msg-subscription-devices-count =
     Выберите количество устройств:
 
 msg-subscription-devices-method =
-    <b>💳 Выберите способ оплаты</b>
+    <b><tg-emoji emoji-id="">💳</tg-emoji> Выберите способ оплаты</b>
 
     Докупка <b>{ $devices_count }</b> шт. устройств.
 
 msg-subscription-devices-confirm =
-    <b>🛒 Подтверждение докупки устройств</b>
+    <b><tg-emoji emoji-id="">🛒</tg-emoji> Подтверждение докупки устройств</b>
 
     <blockquote>
     • <b>Количество</b>: { $devices_count } шт.
@@ -1611,20 +1611,20 @@ msg-subscription-devices-confirm =
     }
 
 msg-subscription-devices-success =
-    <b>✅ Оплата прошла успешно!</b>
+    <b><tg-emoji emoji-id="">✅</tg-emoji> Оплата прошла успешно!</b>
 
     Дополнительные устройства начислены. Общий лимит устройств: <b>{ $total_devices }</b> шт.
 
 
 # Importer
-msg-importer-main = <b>📥 Импорт пользователей</b>
+msg-importer-main = <b><tg-emoji emoji-id="">📥</tg-emoji> Импорт пользователей</b>
 
 msg-importer-from-xui =
-    <b>📥 Импорт пользователей (3X-UI)</b>
+    <b><tg-emoji emoji-id="">📥</tg-emoji> Импорт пользователей (3X-UI)</b>
     
     { $has_exported -> 
     [1]
-    <b>🔍 Найдено</b>:
+    <b><tg-emoji emoji-id="">🔍</tg-emoji> Найдено</b>:
     <blockquote>
     Всего пользователей: { $total }
     С активной подпиской: { $active }
@@ -1639,14 +1639,14 @@ msg-importer-from-xui =
     }
 
 msg-importer-squads =
-    <b>🔗 Список внутренних сквадов</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> Список внутренних сквадов</b>
 
     Выберите, какие внутренние группы будут доступны импортированным пользователям.
 
 msg-importer-import-completed =
-    <b>📥 Импорт пользователей завершен</b>
+    <b><tg-emoji emoji-id="">📥</tg-emoji> Импорт пользователей завершен</b>
     
-    <b>📃 Информация</b>:
+    <b><tg-emoji emoji-id="">📃</tg-emoji> Информация</b>:
     <blockquote>
     • <b>Всего пользователей</b>: { $total_count }
     • <b>Успешно импортированы</b>: { $success_count }
@@ -1654,19 +1654,19 @@ msg-importer-import-completed =
     </blockquote>
 
 msg-importer-sync-panel =
-    <b>🌀 Синхронизация: панель → бот</b>
+    <b><tg-emoji emoji-id="">🌀</tg-emoji> Синхронизация: панель → бот</b>
 
     Проходит по всем пользователям в RemnaWave. Если пользователь отсутствует в боте — создает его и импортирует подписку. Если пользователь есть в боте без подписки — импортирует подписку из панели. Если пользователь есть в боте с подпиской — обновляет данные.
 
 msg-importer-sync-bot =
-    <b>🤖 Синхронизация: бот → панель</b>
+    <b><tg-emoji emoji-id="">🤖</tg-emoji> Синхронизация: бот → панель</b>
 
     Проходит по всем пользователям бота. Если у пользователя нет подписки в боте — пропускает его, панель не затрагивается. Если подписка есть, но пользователь отсутствует в панели — создает его. Если пользователь присутствует в панели — обновляет данные.
 
 msg-importer-sync-panel-completed =
-    <b>📥 Синхронизация панель → бот завершена</b>
+    <b><tg-emoji emoji-id="">📥</tg-emoji> Синхронизация панель → бот завершена</b>
 
-    <b>📃 Информация</b>:
+    <b><tg-emoji emoji-id="">📃</tg-emoji> Информация</b>:
     <blockquote>
     Всего пользователей в панели: { $total_panel_users }
     Всего пользователей в боте: { $total_bot_users }
@@ -1679,9 +1679,9 @@ msg-importer-sync-panel-completed =
     </blockquote>
 
 msg-importer-sync-bot-completed =
-    <b>🔄 Синхронизация бот → панель завершена</b>
+    <b><tg-emoji emoji-id="">🔄</tg-emoji> Синхронизация бот → панель завершена</b>
 
-    <b>📃 Информация</b>:
+    <b><tg-emoji emoji-id="">📃</tg-emoji> Информация</b>:
     <blockquote>
     Всего пользователей в боте: { $total_bot_users }
 
@@ -1694,18 +1694,18 @@ msg-importer-sync-bot-completed =
 
 
 # Promocodes
-msg-promocodes-main = <b>🎟 Промокоды</b>
+msg-promocodes-main = <b><tg-emoji emoji-id="">🎟</tg-emoji> Промокоды</b>
 
 msg-promocode-configurator =
-    <b>🎟 Конфигуратор промокода</b>
+    <b><tg-emoji emoji-id="">🎟</tg-emoji> Конфигуратор промокода</b>
 
     <blockquote>
     • <b>Код</b>: <code>{ $code }</code>
     • <b>Тип</b>: { promocode-type }
     • <b>Доступ</b>: { availability-type }
     • <b>Статус</b>: { $is_active ->
-        [1] 🟢 Включен
-        *[0] 🔴 Выключен
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включен
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключен
         }
     • <b>Повторная активация</b>: { $is_reusable ->
         [1] Разрешена
@@ -1722,7 +1722,7 @@ msg-promocode-configurator =
     Выберите пункт для изменения.
 
 msg-promocode-input-code =
-    <b>🏷️ Изменить код</b>
+    <b><tg-emoji emoji-id="">🏷️</tg-emoji> Изменить код</b>
 
     { $code ->
     [0] { space }
@@ -1735,12 +1735,12 @@ msg-promocode-input-code =
     Отправьте свой уникальный код (от 3 до 16 символов).
 
 msg-promocode-select-type =
-    <b>🔖 Изменить тип награды</b>
+    <b><tg-emoji emoji-id="">🔖</tg-emoji> Изменить тип награды</b>
 
     Выберите тип награды.
 
 msg-promocode-input-reward =
-    <b>🎁 Изменить награду</b>
+    <b><tg-emoji emoji-id="">🎁</tg-emoji> Изменить награду</b>
 
     { $reward ->
     [0] { space }
@@ -1760,22 +1760,22 @@ msg-promocode-input-reward =
     }
 
 msg-promocode-select-plan =
-    <b>📦 Изменить план</b>
+    <b><tg-emoji emoji-id="">📦</tg-emoji> Изменить план</b>
 
     Выберите тарифный план.
 
 msg-promocode-select-plan-duration =
-    <b>⏳ Изменить длительность</b>
+    <b><tg-emoji emoji-id="">⏳</tg-emoji> Изменить длительность</b>
 
     Выберите длительность плана.
 
 msg-promocode-select-availability =
-    <b>✴️ Изменить доступность</b>
+    <b><tg-emoji emoji-id="">✴️</tg-emoji> Изменить доступность</b>
 
     Выберите доступность промокода.
 
 msg-promocode-input-expires =
-    <b>⌛ Действует до</b>
+    <b><tg-emoji emoji-id="">⌛</tg-emoji> Действует до</b>
 
     { $expires ->
     [0] { space }
@@ -1790,7 +1790,7 @@ msg-promocode-input-expires =
     Время указывается в UTC.
 
 msg-promocode-input-max-activations =
-    <b>🔢 Изменить лимит активаций</b>
+    <b><tg-emoji emoji-id="">🔢</tg-emoji> Изменить лимит активаций</b>
 
     { $max_activations ->
     [0] { space }
@@ -1803,14 +1803,14 @@ msg-promocode-input-max-activations =
     Введите максимальное количество активаций.
 
 msg-promocode-input =
-    <b>🎟 Промокод</b>
+    <b><tg-emoji emoji-id="">🎟</tg-emoji> Промокод</b>
 
     Введите промокод.
 
 msg-promocode-confirm =
-    <b>🎟 Промокод <code>{ $promo_code }</code></b>
+    <b><tg-emoji emoji-id="">🎟</tg-emoji> Промокод <code>{ $promo_code }</code></b>
 
-    🎁 Вы получите: { $reward_type ->
+    <tg-emoji emoji-id="">🎁</tg-emoji> Вы получите: { $reward_type ->
         [DURATION] { $reward ->
             [0] текущая подписка станет <b>бессрочной</b>.
             *[OTHER] <b>{ $reward } { $reward ->
@@ -1838,11 +1838,11 @@ msg-promocode-confirm =
     }
     
     { $show_reset_warning ->
-        [1] ⚠️ <i>Бонус действует до следующего продления подписки — при продлении лимит вернется к значению плана.</i>
+        [1] <tg-emoji emoji-id="">⚠️</tg-emoji> <i>Бонус действует до следующего продления подписки — при продлении лимит вернется к значению плана.</i>
        *[0] { space }
     }
     { $will_replace_subscription ->
-        [1] ⚠️ <i>У вас уже есть активная подписка. Она будет заменена новым планом, текущий остаток дней и трафик будут сброшены.</i>
+        [1] <tg-emoji emoji-id="">⚠️</tg-emoji> <i>У вас уже есть активная подписка. Она будет заменена новым планом, текущий остаток дней и трафик будут сброшены.</i>
        *[0] { space }
     }
 
@@ -1850,10 +1850,10 @@ msg-promocode-confirm =
 
 
 # Ad Links
-msg-ad-links-main = <b>🎯 Рекламные ссылки</b>
+msg-ad-links-main = <b><tg-emoji emoji-id="">🎯</tg-emoji> Рекламные ссылки</b>
 
 msg-ad-link-configurator =
-    <b>🎯 Конфигуратор рекламной ссылки</b>
+    <b><tg-emoji emoji-id="">🎯</tg-emoji> Конфигуратор рекламной ссылки</b>
 
     <blockquote>
     • <b>Название</b>: { $name ->
@@ -1865,15 +1865,15 @@ msg-ad-link-configurator =
         *[HAS] <code>{ $code }</code>
     }
     • <b>Статус</b>: { $is_active ->
-        [1] 🟢 Включена
-        *[0] 🔴 Выключена
+        [1] <tg-emoji emoji-id="">🟢</tg-emoji> Включена
+        *[0] <tg-emoji emoji-id="">🔴</tg-emoji> Выключена
     }
     </blockquote>
 
     Выберите пункт для изменения.
 
 msg-ad-link-name =
-    <b>🏷️ Название ссылки</b>
+    <b><tg-emoji emoji-id="">🏷️</tg-emoji> Название ссылки</b>
 
     { $name ->
     [0] { space }
@@ -1884,14 +1884,14 @@ msg-ad-link-name =
     Введите название рекламной кампании.
 
 msg-ad-link-code =
-    <b>🔗 Код ссылки</b>
+    <b><tg-emoji emoji-id="">🔗</tg-emoji> Код ссылки</b>
 
     Текущий: <code>{ $code }</code>
 
     Отправьте свой уникальный код или нажмите.
 
 msg-ad-link-stats =
-    <b>📊 Статистика: { $name }</b>
+    <b><tg-emoji emoji-id="">📊</tg-emoji> Статистика: { $name }</b>
 
     <blockquote>
     • <b>Регистрации</b>: { $registrations }
