@@ -83,3 +83,13 @@ class EmailDeliveryError(Exception): ...
 
 
 class EmailDeliveryDisabledError(Exception): ...
+
+
+class SubscriptionNotFoundError(Exception):
+    def __init__(self, subscription_id: int | str | None = None) -> None:
+        self.subscription_id = subscription_id
+        super().__init__(
+            f"Subscription '{subscription_id}' not found"
+            if subscription_id
+            else "Subscription not found"
+        )
