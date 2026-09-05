@@ -44,21 +44,21 @@ command =
     .rules = Условия использования
     .help = Помощь
 
-hdr-user = <b><tg-emoji emoji-id="">👤</tg-emoji> Пользователь</b>:
-hdr-user-profile = <b><tg-emoji emoji-id="">👤</tg-emoji> Профиль</b>:
-hdr-payment = <b><tg-emoji emoji-id="">💰</tg-emoji> Платеж</b>:
-hdr-error = <b><tg-emoji emoji-id="">⚠️</tg-emoji> Ошибка</b>:
-hdr-node = <b><tg-emoji emoji-id="">🖥</tg-emoji> Нода</b>:
-hdr-hwid = <b><tg-emoji emoji-id="">📱</tg-emoji> Устройство</b>:
+hdr-user = <b><tg-emoji emoji-id="5409132617750555920">👤</tg-emoji> Пользователь</b>:
+hdr-user-profile = <b><tg-emoji emoji-id="5409132617750555920">👤</tg-emoji> Профиль</b>:
+hdr-payment = <b><tg-emoji emoji-id="5357461124637794049">💰</tg-emoji> Платеж</b>:
+hdr-error = <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Ошибка</b>:
+hdr-node = <b><tg-emoji emoji-id="5929096876321149063">🖥</tg-emoji> Нода</b>:
+hdr-hwid = <b><tg-emoji emoji-id="5427252019620504695">📱</tg-emoji> Устройство</b>:
 
 hdr-subscription = { $is_trial ->
-    [1] <b><tg-emoji emoji-id="">🎁</tg-emoji> Пробная подписка</b>:
-    *[0] <b><tg-emoji emoji-id="">💳</tg-emoji> Подписка</b>:
+    [1] <b><tg-emoji emoji-id="5199749070830197566">🎁</tg-emoji> Пробная подписка</b>:
+    *[0] <b><tg-emoji emoji-id="5472250091332993630">💳</tg-emoji> Подписка</b>:
 }
 
 hdr-plan = { $is_trial_plan ->
-    [1] <b><tg-emoji emoji-id="">🎁</tg-emoji> Пробный план</b>:
-    *[0] <b><tg-emoji emoji-id="">📦</tg-emoji> План</b>:
+    [1] <b><tg-emoji emoji-id="5199749070830197566">🎁</tg-emoji> Пробный план</b>:
+    *[0] <b><tg-emoji emoji-id="5359741159566484212">📦</tg-emoji> План</b>:
 }
 
 frg-user =
@@ -361,9 +361,9 @@ gateway-type = { $gateway_type ->
 }
 
 access-mode = { $access_mode ->
-    [PUBLIC] <tg-emoji emoji-id="">🟢</tg-emoji> Разрешен для всех
+    [PUBLIC] <tg-emoji emoji-id="5316865463123195600">🟢</tg-emoji> Разрешен для всех
     [INVITED] <tg-emoji emoji-id="">🟡</tg-emoji> Разрешен для приглашенных
-    [RESTRICTED] <tg-emoji emoji-id="">🔴</tg-emoji> Запрещен для всех
+    [RESTRICTED] <tg-emoji emoji-id="5316596104249224956">🔴</tg-emoji> Запрещен для всех
     *[OTHER] { $access_mode }
 }
 

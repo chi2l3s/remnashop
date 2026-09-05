@@ -21,7 +21,7 @@ event-error =
     .remnawave-version =
     #RemnawaveVersionWarningEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Возможная несовместимость с Remnawave!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Возможная несовместимость с Remnawave!</b>
 
     <blockquote>
     Версия панели <b>{ $panel_version }</b> выше протестированной версии <b>{ $max_version }</b>. Некоторые функции бота могут работать некорректно.
@@ -58,7 +58,7 @@ event-error =
     .channel-check =
     #ChannelCheckErrorEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Ошибка проверки подписки на канал/группу!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Ошибка проверки подписки на канал/группу!</b>
 
     { hdr-user }
     { frg-user-info }
@@ -72,7 +72,7 @@ event-error =
     .notification =
     #NotificationErrorEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Ошибка доставки системного уведомления!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Ошибка доставки системного уведомления!</b>
 
     <blockquote>
     • <b>Маршрут</b>: { NUMBER($chat_id, useGrouping: 0) }{ $thread_id ->
@@ -93,7 +93,7 @@ event-bot =
 
     { frg-build-info }
 
-    <b><tg-emoji emoji-id="">🔓</tg-emoji> Доступность</b>:
+    <b><tg-emoji emoji-id="5301054868167876393">🔓</tg-emoji> Доступность</b>:
     <blockquote>
     • <b>Режим</b>: { access-mode }
     • <b>Платежи</b>: { $payments_allowed ->
@@ -109,7 +109,7 @@ event-bot =
     .inline-mode-disabled =
     #BotInlineModeDisabledEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Inline-режим отключен в BotFather!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Inline-режим отключен в BotFather!</b>
 
     <blockquote>
     Бот не настроен для работы в inline-режиме. Некоторые функции бота могут работать некорректно.
@@ -152,7 +152,7 @@ event-user =
     { $referrer_user_id ->
     [0] { empty }
     *[HAS]
-    <b><tg-emoji emoji-id="">🤝</tg-emoji> Пригласитель</b>:
+    <b><tg-emoji emoji-id="5357080225463149588">🤝</tg-emoji> Пригласитель</b>:
     <blockquote>
     { $referrer_telegram_id ->
         [0] • <b>Почта</b>: <code>{ $referrer_email }</code>
@@ -168,7 +168,7 @@ event-user =
     { $ad_link_id ->
     [0] { empty }
     *[HAS]
-    <b><tg-emoji emoji-id="">🎯</tg-emoji> Рекламная ссылка</b>:
+    <b><tg-emoji emoji-id="5350460637182993292">🎯</tg-emoji> Рекламная ссылка</b>:
     <blockquote>
     • <b>Название</b>: { $ad_link_name }
     • <b>Код</b>: <code>{ $ad_link_code }</code>
@@ -294,17 +294,17 @@ event-subscription =
     .expiring =
     { $is_trial ->
     [0]
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Внимание! Ваша подписка закончится через { unit-day }.</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Внимание! Ваша подписка закончится через { unit-day }.</b>
     
     Продлите ее заранее, чтобы не терять доступ к сервису! 
     *[1]
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Внимание! Ваш бесплатный пробник закончится через { unit-day }.</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Внимание! Ваш бесплатный пробник закончится через { unit-day }.</b>
 
     Оформите подписку, чтобы не терять доступ к сервису! 
     }
 
     .expired =
-    <b><tg-emoji emoji-id="">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
+    <b><tg-emoji emoji-id="5260293700088511294">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
 
     { $is_trial ->
     [0] Ваша подписка истекла, продлите ее, чтобы продолжить пользоваться VPN!
@@ -312,7 +312,7 @@ event-subscription =
     }
 
     .expired-ago =
-    <b><tg-emoji emoji-id="">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
+    <b><tg-emoji emoji-id="5260293700088511294">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
 
     { $is_trial ->
     [0] Ваша подписка истекла { unit-day } назад, продлите ее, чтобы продолжить пользоваться сервисом!
@@ -320,7 +320,7 @@ event-subscription =
     }
 
     .limited =
-    <b><tg-emoji emoji-id="">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
+    <b><tg-emoji emoji-id="5260293700088511294">⛔</tg-emoji> Внимание! Доступ приостановлен — VPN не работает.</b>
 
     Ваш трафик израсходован. { $is_trial ->
     [0] { $traffic_strategy ->
@@ -378,7 +378,7 @@ event-node =
 
 event-torrent-blocker =
     .user-blocked =
-    <b><tg-emoji emoji-id="">⛔</tg-emoji> Доступ на сервере временно ограничен.</b>
+    <b><tg-emoji emoji-id="5260293700088511294">⛔</tg-emoji> Доступ на сервере временно ограничен.</b>
 
     На ноде <b>{ $node_name }</b> зафиксирован BitTorrent трафик.
     Ограничение будет действовать еще <b>{ $block_duration }</b>.
@@ -388,7 +388,7 @@ event-torrent-blocker =
     .report =
     #TorrentBlockedEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Обнаружен BitTorrent трафик!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Обнаружен BitTorrent трафик!</b>
 
     { hdr-user }
     { frg-user-info }
@@ -406,14 +406,14 @@ event-torrent-blocker =
 
 event-referral =
     .attached =
-    <b><tg-emoji emoji-id="">🎉</tg-emoji> Вы пригласили друга!</b>
+    <b><tg-emoji emoji-id="5436040291507247633">🎉</tg-emoji> Вы пригласили друга!</b>
     
     <blockquote>
     Пользователь <b>{ $name }</b> присоединился по вашей пригласительной ссылке! Чтобы получить награду, убедитесь, что он совершит покупку подписки.
     </blockquote>
 
     .reward =
-    <b><tg-emoji emoji-id="">💰</tg-emoji> Вам начислена награда!</b>
+    <b><tg-emoji emoji-id="5357461124637794049">💰</tg-emoji> Вам начислена награда!</b>
     
     <blockquote>
     Пользователь <b>{ $name }</b> совершил платеж. Вы получили { $reward_type ->
@@ -434,7 +434,7 @@ event-referral =
     </blockquote>
 
     .reward-failed =
-    <b><tg-emoji emoji-id="">❌</tg-emoji> Не получилось выдать награду!</b>
+    <b><tg-emoji emoji-id="5834629976883732083">❌</tg-emoji> Не получилось выдать награду!</b>
     
     <blockquote>
     Пользователь <b>{ $name }</b> совершил платеж, но мы не смогли начислить вам вознаграждение из-за того что <b>у вас нет купленной подписки</b>, к которой можно было бы добавить { $value } { $reward_type ->
@@ -463,7 +463,7 @@ event-promocode =
     { hdr-user }
     { frg-user-info }
 
-    <b><tg-emoji emoji-id="">🎟</tg-emoji> Промокод</b>:
+    <b><tg-emoji emoji-id="5330139858415397734">🎟</tg-emoji> Промокод</b>:
     <blockquote>
     • <b>Код</b>: <code>{ $promocode_code }</code>
     • <b>Тип</b>: { promocode-type }
@@ -474,7 +474,7 @@ event-payment =
     .refunded =
     #PaymentRefundedEvent
 
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Платеж возвращен!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Платеж возвращен!</b>
 
     { hdr-payment }
     { frg-payment-info }
@@ -485,7 +485,7 @@ event-payment =
     Требуется ручная проверка — подписка пользователя могла остаться активной.
 
     .referral-failed =
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Не удалось начислить реферальную награду</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Не удалось начислить реферальную награду</b>
 
     { hdr-payment }
     { frg-payment-info }
@@ -496,7 +496,7 @@ event-payment =
     Покупка завершена успешно, но при начислении реферальной награды произошла ошибка. Требуется ручная проверка.
 
     .purchase-failed =
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Ошибка обработки платежа!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Ошибка обработки платежа!</b>
 
     { hdr-payment }
     { frg-payment-info }
@@ -507,7 +507,7 @@ event-payment =
     Платеж получен, но не удалось выдать подписку. Транзакция помечена как FAILED. Требуется ручная проверка.
 
     .devices-failed =
-    <b><tg-emoji emoji-id="">⚠️</tg-emoji> Событие: Ошибка выдачи устройств!</b>
+    <b><tg-emoji emoji-id="5447644880824181073">⚠️</tg-emoji> Событие: Ошибка выдачи устройств!</b>
 
     { hdr-payment }
     { frg-payment-info }
@@ -522,10 +522,10 @@ event-payment =
     Платеж получен, но не удалось начислить дополнительные устройства. Транзакция помечена как FAILED. Требуется ручная проверка.
 
 event-remnashop-welcome =
-    <b><tg-emoji emoji-id="">💎</tg-emoji> Remnashop v{ $version }</b>
+    <b><tg-emoji emoji-id="5427168083074628963">💎</tg-emoji> Remnashop v{ $version }</b>
 
     Проект создан и поддерживается всего одним <strike>разработчиком</strike> электриком. Поскольку бот полностью БЕСПЛАТНЫЙ и имеет открытый исходный код, он существует только благодаря вашей поддержке.
 
     ⭐ <i>Поставьте звездочку на <a href="{ $repository }">GitHub</a> и присоединяйтесь к нашему <a href="https://t.me/@remna_shop">сообществу</a>.</i>
 
-    <tg-emoji emoji-id="">🎁</tg-emoji> <i>Также есть <a href="https://boosty.to/snoups/purchase/3778398?ssource=DIRECT&amp;share=subscription_link">приватный чат</a> для донатеров.</i>
+    <tg-emoji emoji-id="5199749070830197566">🎁</tg-emoji> <i>Также есть <a href="https://boosty.to/snoups/purchase/3778398?ssource=DIRECT&amp;share=subscription_link">приватный чат</a> для донатеров.</i>
