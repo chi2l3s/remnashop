@@ -113,7 +113,8 @@ async def on_device_purchase_currency_select(
     if not raw_currency:
         return
     currency = Currency(raw_currency)
-    dialog_manager.dialog_data[DEVICE_PURCHASE_CURRENCY_KEY] = currency
+    # dialog_data сериализуется в FSM-хранилище: храним строковое значение, не enum
+    dialog_manager.dialog_data[DEVICE_PURCHASE_CURRENCY_KEY] = currency.value
     await dialog_manager.switch_to(RemnashopExtra.DEVICE_PURCHASE_PRICE)
 
 

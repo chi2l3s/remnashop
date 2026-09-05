@@ -43,7 +43,11 @@ async def device_purchase_price_getter(
     **kwargs: Any,
 ) -> dict[str, Any]:
     settings = await settings_dao.get()
-    currency: Currency = dialog_manager.dialog_data.get(DEVICE_PURCHASE_CURRENCY_KEY, Currency.XTR)
+    # dialog_data проходит JSON-сериализацию между апдейтами: enum приходит строкой
+    raw_currency = str(
+        dialog_manager.dialog_data.get(DEVICE_PURCHASE_CURRENCY_KEY, Currency.XTR.value)
+    )
+    currency = Currency(raw_currency)
     price = settings.extra.device_purchase.prices.get(currency)
     return {
         "device_currency": currency,

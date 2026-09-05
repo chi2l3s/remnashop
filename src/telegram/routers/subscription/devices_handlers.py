@@ -159,7 +159,8 @@ async def devices_confirm_getter(
 ) -> dict[str, Any]:
     devices_count: int = dialog_manager.dialog_data[DEVICES_COUNT_KEY]
     pricing = retort.load(dialog_manager.dialog_data["final_pricing"], PriceDetailsDto)
-    gateway_type: PaymentGatewayType = dialog_manager.dialog_data[DEVICES_METHOD_KEY]
+    # dialog_data проходит JSON-сериализацию между апдейтами: enum приходит строкой
+    gateway_type = PaymentGatewayType(str(dialog_manager.dialog_data[DEVICES_METHOD_KEY]))
     payment_gateway = await payment_gateway_dao.get_by_type(gateway_type)
 
     if not payment_gateway:
@@ -391,7 +392,8 @@ async def on_get_devices(
 
     user: TelegramUserDto = dialog_manager.middleware_data[USER_KEY]
     payment_id = dialog_manager.dialog_data["payment_id"]
-    gateway_type: PaymentGatewayType = dialog_manager.dialog_data[DEVICES_METHOD_KEY]
+    # dialog_data проходит JSON-сериализацию между апдейтами: enum приходит строкой
+    gateway_type = PaymentGatewayType(str(dialog_manager.dialog_data[DEVICES_METHOD_KEY]))
     logger.info(f"{user.log} Getting free devices '{payment_id}'")
     await process_payment.system(
         ProcessPaymentDto(
