@@ -18,21 +18,9 @@ fi
 # --- Migrate legacy layout: move pre-0.8 *.ftl (except custom.ftl) into .legacy/ ---
 # Built-in translations now ship in assets.default; the user volume keeps only custom.ftl.
 # Skipped when assets.default is absent (local dev bind-mounts src into assets directly).
-USER_TRANSLATIONS="${ASSETS_CONTAINER_PATH}/translations"
-if [ -d "$ASSETS_DEFAULT_PATH" ] && [ -d "$USER_TRANSLATIONS" ]; then
-    for locale_dir in "$USER_TRANSLATIONS"/*/; do
-        [ -d "$locale_dir" ] || continue
-        for ftl in "$locale_dir"*.ftl; do
-            [ -f "$ftl" ] || continue
-            case "$(basename "$ftl")" in
-                custom.ftl) continue ;;
-            esac
-            mkdir -p "${locale_dir}.legacy"
-            mv "$ftl" "${locale_dir}.legacy/"
-            echo "Moved legacy translation $(basename "$ftl") -> ${locale_dir}.legacy/"
-        done
-    done
-fi
+
+# Переводы из volume (volume = чекаут репозитория) НЕ трогаем: они имеют приоритет
+# над assets.default и должны применяться без пересборки образа.
 
 # --- Bootstrap custom.ftl for each locale in assets.default ---
 if [ -d "${ASSETS_DEFAULT_PATH}/translations" ]; then
