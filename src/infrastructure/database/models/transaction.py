@@ -34,4 +34,6 @@ class Transaction(BaseSql, TimestampMixin):
     currency: Mapped[Currency]
     plan_snapshot: Mapped[dict[str, Any]]
 
+    devices_count: Mapped[int] = mapped_column(default=0, server_default="0")
+
     user: Mapped["User"] = relationship(foreign_keys=[user_id])

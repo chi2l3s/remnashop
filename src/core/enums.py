@@ -102,6 +102,7 @@ class PurchaseType(UpperStrEnum):
     NEW = auto()
     RENEW = auto()
     CHANGE = auto()
+    DEVICES = auto()
 
 
 class TransactionStatus(UpperStrEnum):

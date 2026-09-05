@@ -8,15 +8,17 @@
 from dataclasses import dataclass
 from decimal import Decimal
 
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
 from src.application.common import Interactor
-from src.application.common.dao import DevicePurchaseDao, SettingsDao, SubscriptionDao, UserDao
+from src.application.common.dao import SettingsDao, SubscriptionDao, UserDao
 from src.application.common.uow import UnitOfWork
-from src.application.dto import UserDto
+from src.application.dto import TempUserDto, UserDto
 from src.application.use_cases.subscription.commands.purchase_devices import (
     PurchaseDevices,
     PurchaseDevicesDto,
 )
-from src.core.enums import Currency, PaymentGatewayType
+from src.core.enums import Currency, PaymentGatewayType, Role
 from src.core.exceptions import SubscriptionNotFoundError
 
 
@@ -134,7 +136,7 @@ class ProcessDevicePurchasePayment(Interactor[ProcessDevicePurchasePaymentDto, N
         subscription = await self.subscription_dao.get_by_id(data.subscription_id)
 
         if not user or not subscription:
-            raise ValueError(f"User or subscription not found")
+            raise ValueError("User or subscription not found")
 
         # 2. Выполнить покупку устройств
         purchase_data = PurchaseDevicesDto(
@@ -165,8 +167,6 @@ async def handle_device_purchase_button(callback_query, user: UserDto, container
     """
     Обработчик нажатия кнопки "Докупить устройства" в телеграм-боте.
     """
-    from aiogram import types
-    from aiogram.utils.keyboard import InlineKeyboardBuilder
 
     # Получить текущую подписку
     subscription_dao = await container.get(SubscriptionDao)
@@ -207,18 +207,19 @@ async def handle_device_purchase_button(callback_query, user: UserDto, container
     )
 
 
-async def handle_device_purchase_confirm(callback_query, user: UserDto, devices_count: int, container):
+async def handle_device_purchase_confirm(
+    callback_query, user: UserDto, devices_count: int, container
+):
     """
     Обработчик подтверждения покупки и выбора способа оплаты.
     """
-    from aiogram.utils.keyboard import InlineKeyboardBuilder
 
     # Получить настройки
     settings_dao = await container.get(SettingsDao)
     settings = await settings_dao.get()
 
     # Создать платеж
-    initiate_purchase = await container.get(InitiateDevicePurchase)
+    await container.get(InitiateDevicePurchase)
 
     # Показать доступные способы оплаты
     builder = InlineKeyboardBuilder()
@@ -282,8 +283,6 @@ async def handle_device_payment_create(
     payment_url = await initiate_purchase(actor=user, data=purchase_dto)
 
     # Отправить ссылку на оплату
-    from aiogram.utils.keyboard import InlineKeyboardBuilder
-
     builder = InlineKeyboardBuilder()
     builder.button(text="💳 Оплатить", url=payment_url)
 
@@ -326,9 +325,6 @@ async def webhook_device_purchase_handler(webhook_data: dict, container):
     currency = Currency(metadata.get("currency", "RUB"))
 
     # Создать системного пользователя для выполнения операции
-    from src.application.dto import TempUserDto
-    from src.core.enums import Role
-
     system_user = TempUserDto(
         telegram_id=0,
         name="SYSTEM",
@@ -358,7 +354,7 @@ async def webhook_device_purchase_handler(webhook_data: dict, container):
         #          f"💰 Оплачено: {price_per_device * devices_count} {currency.symbol}"
         # )
 
-    except Exception as e:
+    except Exception:
         # Логировать ошибку
         # logger.error(f"Failed to process device purchase payment {payment_id}: {e}")
 

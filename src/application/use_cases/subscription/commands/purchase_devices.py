@@ -4,7 +4,7 @@ from decimal import Decimal
 from loguru import logger
 
 from src.application.common import Interactor, Remnawave
-from src.application.common.dao import DevicePurchaseDao, SubscriptionDao
+from src.application.common.dao import DevicePurchaseDao, SubscriptionDao, UserDao
 from src.application.common.uow import UnitOfWork
 from src.application.dto import DevicePurchaseDto, SubscriptionDto, UserDto
 from src.core.enums import Currency
@@ -14,7 +14,7 @@ from src.core.exceptions import SubscriptionNotFoundError
 @dataclass(frozen=True)
 class PurchaseDevicesDto:
     user: UserDto
-    subscription: SubscriptionDto
+    subscription: SubscriptionDto | None
     devices_count: int
     price_per_device: Decimal
     currency: Currency
@@ -31,16 +31,16 @@ class PurchaseDevices(Interactor[PurchaseDevicesDto, DevicePurchaseDto]):
         uow: UnitOfWork,
         subscription_dao: SubscriptionDao,
         device_purchase_dao: DevicePurchaseDao,
+        user_dao: UserDao,
         remnawave: Remnawave,
     ) -> None:
         self.uow = uow
         self.subscription_dao = subscription_dao
         self.device_purchase_dao = device_purchase_dao
+        self.user_dao = user_dao
         self.remnawave = remnawave
 
-    async def _execute(
-        self, actor: UserDto, data: PurchaseDevicesDto
-    ) -> DevicePurchaseDto:
+    async def _execute(self, actor: UserDto, data: PurchaseDevicesDto) -> DevicePurchaseDto:
         user = data.user
         subscription = data.subscription
         devices_count = data.devices_count
@@ -48,6 +48,9 @@ class PurchaseDevices(Interactor[PurchaseDevicesDto, DevicePurchaseDto]):
 
         if not subscription:
             raise SubscriptionNotFoundError(f"Subscription not found for user '{user.id}'")
+
+        if devices_count <= 0:
+            raise ValueError(f"Invalid devices count '{devices_count}' for user '{user.id}'")
 
         logger.info(
             f"{actor.log} Purchasing {devices_count} devices for user '{user.id}' "
@@ -68,6 +71,10 @@ class PurchaseDevices(Interactor[PurchaseDevicesDto, DevicePurchaseDto]):
         # Сохраняем изменения в базе
         async with self.uow:
             await self.subscription_dao.update(subscription)
+
+            if user.purchase_discount:
+                user.purchase_discount = 0
+                await self.user_dao.update(user)
 
             # Создаем запись о покупке
             purchase = DevicePurchaseDto(

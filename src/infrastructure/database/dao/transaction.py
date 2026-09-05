@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.application.common.dao import TransactionDao
 from src.application.dto import GatewayStatsDto, PlanIncomeDto, TransactionDto, UserPaymentStatsDto
-from src.core.enums import PaymentGatewayType, TransactionStatus
+from src.core.enums import PaymentGatewayType, PurchaseType, TransactionStatus
 from src.core.utils.time import datetime_now
 from src.infrastructure.database.models import Transaction
 
@@ -338,6 +338,7 @@ class TransactionDaoImpl(TransactionDao):
         plan_id: int,
         duration_days: int,
         gateway_type: PaymentGatewayType,
+        purchase_type: PurchaseType,
     ) -> Optional[TransactionDto]:
         threshold = datetime_now() - timedelta(minutes=15)
         stmt = (
@@ -348,6 +349,7 @@ class TransactionDaoImpl(TransactionDao):
                 Transaction.status == TransactionStatus.PENDING,
                 Transaction.plan_snapshot["id"].as_integer() == plan_id,
                 Transaction.plan_snapshot["duration"].as_integer() == duration_days,
+                Transaction.purchase_type == purchase_type,
                 Transaction.created_at >= threshold,
             )
             .order_by(Transaction.created_at.desc())

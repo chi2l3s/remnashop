@@ -213,6 +213,14 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
                 )
 
                 new_sub = self._build_subscription_dto(updated_user, plan)
+                # Сохраняем докупленные устройства при смене плана
+                new_sub.extra_devices = subscription.extra_devices
+                await self.remnawave.update_user(
+                    user=user,
+                    uuid=subscription.user_remna_id,
+                    subscription=new_sub,
+                    reset_traffic=False,
+                )
                 await self.subscription_dao.create(
                     subscription=new_sub,
                     user_id=user.id,

@@ -28,6 +28,10 @@ class Subscription(StatesGroup):
     SUCCESS = State()
     FAILED = State()
     TRIAL = State()
+    DEVICES_COUNT = State()
+    DEVICES_METHOD = State()
+    DEVICES_CONFIRM = State()
+    DEVICES_SUCCESS = State()
 
 
 class Dashboard(StatesGroup):
@@ -135,6 +139,8 @@ class RemnashopExtra(StatesGroup):
     REFERRAL_RESET = State()
     TRIAL_CHANNEL_GUARD = State()
     MINI_APP_RESERVE = State()
+    DEVICE_PURCHASE = State()
+    DEVICE_PURCHASE_PRICE = State()
 
 
 class RemnashopReferral(StatesGroup):

@@ -9,6 +9,8 @@ raw-message = { $content }
 
 payment-invoice-description = { purchase-type } подписки { $name } на { $duration }
 
+payment-invoice-description-devices = Докупка дополнительных устройств: { $devices_count } шт.
+
 ad-link-default-name = Новая ссылка
 plan-default-name = Новый план
 
@@ -406,6 +408,7 @@ purchase-type = { $purchase_type ->
     [NEW] Покупка
     [RENEW] Продление
     [CHANGE] Изменение
+    [DEVICES] Докупка устройств
     *[OTHER] { $purchase_type }
 }
 

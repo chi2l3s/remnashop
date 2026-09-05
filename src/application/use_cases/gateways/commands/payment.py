@@ -1,5 +1,7 @@
 import uuid
 from dataclasses import dataclass
+from decimal import Decimal
+from typing import Optional
 from uuid import UUID
 
 from loguru import logger
@@ -25,6 +27,7 @@ from src.application.dto import (
     PaymentResultDto,
     PlanSnapshotDto,
     PriceDetailsDto,
+    SubscriptionDto,
     TransactionDto,
     UserDto,
 )
@@ -54,6 +57,10 @@ from src.application.use_cases.referral.commands.rewards import (
 from src.application.use_cases.subscription.commands.purchase import (
     PurchaseSubscription,
     PurchaseSubscriptionDto,
+)
+from src.application.use_cases.subscription.commands.purchase_devices import (
+    PurchaseDevices,
+    PurchaseDevicesDto,
 )
 from src.core.enums import (
     Currency,
@@ -140,6 +147,7 @@ class CreatePaymentDto:
     pricing: PriceDetailsDto
     purchase_type: PurchaseType
     gateway_type: PaymentGatewayType
+    devices_count: int = 0
 
 
 class CreatePayment(Interactor[CreatePaymentDto, PaymentResultDto]):
@@ -163,13 +171,19 @@ class CreatePayment(Interactor[CreatePaymentDto, PaymentResultDto]):
         gateway_instance = await self.get_payment_gateway_instance.system(data.gateway_type)
         i18n = self.translator_hub.get_translator_by_locale(actor.language)
 
-        key, kw = i18n_format_days(data.plan_snapshot.duration)
-        details = i18n.get(
-            "payment-invoice-description",
-            purchase_type=data.purchase_type,
-            name=i18n.get(data.plan_snapshot.name),
-            duration=i18n.get(key, **kw),
-        )
+        if data.purchase_type == PurchaseType.DEVICES:
+            details = i18n.get(
+                "payment-invoice-description-devices",
+                devices_count=data.devices_count,
+            )
+        else:
+            key, kw = i18n_format_days(data.plan_snapshot.duration)
+            details = i18n.get(
+                "payment-invoice-description",
+                purchase_type=data.purchase_type,
+                name=i18n.get(data.plan_snapshot.name),
+                duration=i18n.get(key, **kw),
+            )
 
         if data.pricing.is_free:
             async with self.uow:
@@ -178,6 +192,7 @@ class CreatePayment(Interactor[CreatePaymentDto, PaymentResultDto]):
                     plan_id=data.plan_snapshot.id,
                     duration_days=data.plan_snapshot.duration,
                     gateway_type=gateway_instance.data.type,
+                    purchase_type=data.purchase_type,
                 )
                 if existing is not None:
                     logger.info(
@@ -195,6 +210,7 @@ class CreatePayment(Interactor[CreatePaymentDto, PaymentResultDto]):
                     pricing=data.pricing,
                     currency=gateway_instance.data.currency,
                     plan_snapshot=data.plan_snapshot,
+                    devices_count=data.devices_count,
                 )
                 await self.transaction_dao.create(transaction)
                 await self.uow.commit()
@@ -218,6 +234,7 @@ class CreatePayment(Interactor[CreatePaymentDto, PaymentResultDto]):
             pricing=data.pricing,
             currency=gateway_instance.data.currency,
             plan_snapshot=data.plan_snapshot,
+            devices_count=data.devices_count,
         )
 
         async with self.uow:
@@ -309,6 +326,7 @@ class ProcessPayment(Interactor[ProcessPaymentDto, None]):
         redirect: Redirect,
         assign_referral_rewards: AssignReferralRewards,
         purchase_subscription: PurchaseSubscription,
+        purchase_devices: PurchaseDevices,
     ) -> None:
         self.uow = uow
         self.user_dao = user_dao
@@ -320,6 +338,7 @@ class ProcessPayment(Interactor[ProcessPaymentDto, None]):
         self.redirect = redirect
         self.assign_referral_rewards = assign_referral_rewards
         self.purchase_subscription = purchase_subscription
+        self.purchase_devices = purchase_devices
 
     async def _execute(self, actor: UserDto, data: ProcessPaymentDto) -> None:
         payment_id = data.payment_id
@@ -427,6 +446,10 @@ class ProcessPayment(Interactor[ProcessPaymentDto, None]):
 
         subscription = await self.subscription_dao.get_current(user.id)
         old_plan = subscription.plan_snapshot if subscription else None
+
+        if transaction.purchase_type == PurchaseType.DEVICES:
+            await self._handle_devices_success(user, transaction, subscription)
+            return
 
         event = UserPurchaseEvent(
             user_id=user.id,
@@ -536,3 +559,92 @@ class ProcessPayment(Interactor[ProcessPaymentDto, None]):
 
         if user.telegram_id is not None:
             await self.redirect.to_success_payment(user.telegram_id, transaction.purchase_type)
+
+    async def _handle_devices_success(
+        self,
+        user: UserDto,
+        transaction: TransactionDto,
+        subscription: Optional[SubscriptionDto],
+    ) -> None:
+        devices_count = transaction.devices_count
+        price_per_device = (
+            (transaction.pricing.final_amount / Decimal(devices_count)).quantize(Decimal("0.01"))
+            if devices_count > 0
+            else transaction.pricing.final_amount
+        )
+
+        try:
+            await self.purchase_devices.system(
+                PurchaseDevicesDto(
+                    user=user,
+                    subscription=subscription,
+                    devices_count=devices_count,
+                    price_per_device=price_per_device,
+                    currency=transaction.currency,
+                    payment_id=str(transaction.payment_id),
+                ),
+            )
+        except Exception as e:
+            logger.exception(
+                f"Failed to process devices purchase for user '{user.remna_name}', "
+                f"transaction '{transaction.payment_id}'"
+            )
+            async with self.uow:  # fresh UoW, no nesting
+                await self.transaction_dao.update_status(
+                    transaction.payment_id, TransactionStatus.FAILED
+                )
+                await self.uow.commit()
+            await self.notifier.notify_system(
+                MessagePayloadDto(
+                    i18n_key="event-payment.devices-failed",
+                    i18n_kwargs={
+                        "payment_id": str(transaction.payment_id),
+                        "gateway_type": transaction.gateway_type,
+                        "final_amount": transaction.pricing.final_amount,
+                        "original_amount": transaction.pricing.original_amount,
+                        "discount_percent": transaction.pricing.discount_percent,
+                        "currency": transaction.currency.symbol,
+                        "devices_count": devices_count,
+                        "telegram_id": user.telegram_id or 0,
+                        "username": user.username or 0,
+                        "name": user.name,
+                        "email": user.email,
+                    },
+                ),
+                roles=[Role.OWNER, Role.DEV],
+                notification_type=SystemNotificationType.SYSTEM,
+            )
+            if user.telegram_id is not None:
+                await self.redirect.to_failed_payment(user.telegram_id)
+            raise PurchaseError(e)
+
+        plan = subscription.plan_snapshot if subscription else transaction.plan_snapshot
+        event = UserPurchaseEvent(
+            user_id=user.id,
+            telegram_id=user.telegram_id,
+            name=user.name,
+            email=user.email,
+            username=user.username,
+            #
+            purchase_type=transaction.purchase_type,
+            is_trial_plan=False,
+            devices_count=devices_count,
+            payment_id=transaction.payment_id,
+            gateway_type=transaction.gateway_type,
+            final_amount=transaction.pricing.final_amount,
+            discount_percent=transaction.pricing.discount_percent,
+            original_amount=transaction.pricing.original_amount,
+            currency=transaction.currency.symbol,
+            #
+            plan_name=(plan.name, {}),
+            plan_type=plan.type,
+            plan_traffic_limit=i18n_format_traffic_limit(plan.traffic_limit),
+            plan_device_limit=i18n_format_device_limit(
+                subscription.total_device_limit if subscription else plan.device_limit
+            ),
+            plan_duration=i18n_format_days(plan.duration),
+        )
+        await self.event_publisher.publish(event)
+
+        if user.telegram_id is not None:
+            await self.redirect.to_success_devices(user.telegram_id)

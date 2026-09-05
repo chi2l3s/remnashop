@@ -12,9 +12,11 @@ from .commands.backup import (
 from .commands.currency import UpdateDefaultCurrency
 from .commands.defaults import CreateDefaultSettings
 from .commands.extra import (
+    ToggleDevicePurchase,
     ToggleMiniAppReserve,
     ToggleResetFeature,
     ToggleTrialChannelGuard,
+    UpdateDevicePurchasePrice,
     UpdateResetCooldown,
 )
 from .commands.notifications import (
@@ -61,5 +63,7 @@ SETTINGS_USE_CASES: Final[tuple[type[Interactor], ...]] = (
     ToggleResetFeature,
     ToggleTrialChannelGuard,
     ToggleMiniAppReserve,
+    ToggleDevicePurchase,
     UpdateResetCooldown,
+    UpdateDevicePurchasePrice,
 )

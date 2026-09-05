@@ -21,7 +21,8 @@ def upgrade() -> None:
         """
         UPDATE settings
         SET extra = extra
-            || '{"device_purchase": {"enabled": true, "prices": {"USD": 5, "RUB": 500, "XTR": 50}}}'::jsonb
+            || '{"device_purchase": {"enabled": true,'
+            || ' "prices": {"USD": 5, "RUB": 500, "XTR": 50}}}'::jsonb
         WHERE NOT (extra ? 'device_purchase')
     """
     )

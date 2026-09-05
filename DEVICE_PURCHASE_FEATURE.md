@@ -164,15 +164,23 @@ make migrate
 - `0041_add_device_purchases.py` - создание таблицы device_purchases и поля extra_devices
 - `0042_add_device_purchase_settings.py` - инициализация настроек
 
-## Telegram Bot UI (TODO)
+## Telegram Bot UI (реализовано)
 
-Для полной интеграции нужно добавить UI в телеграм-боте:
+Интеграция выполнена в существующих FSM/роутерах проекта:
 
-1. Кнопку "Докупить устройства" в меню подписки
-2. Диалог выбора количества устройств
-3. Выбор способа оплаты
-4. Обработку платежа
-5. Уведомление об успешной покупке
+1. Кнопка "Докупить устройства" в меню подписки (Subscription.MAIN, видна при
+   активной не-триальной подписке, включенной фиче и настроенной цене)
+2. Диалог выбора количества устройств (Subscription.DEVICES_COUNT: 1/2/3/5/10)
+3. Выбор способа оплаты (Subscription.DEVICES_METHOD — только шлюзы,
+   для валюты которых задана цена)
+4. Подтверждение и оплата (Subscription.DEVICES_CONFIRM — Url-кнопка оплаты
+   или "Получить бесплатно" при 100% скидке)
+5. Обработка платежа через ProcessPayment (PurchaseType.DEVICES) и окно успеха
+   Subscription.DEVICES_SUCCESS
+
+Админский сценарий: Dashboard → Remnashop → Доп. настройки → "Докупка устройств"
+(RemnashopExtra.DEVICE_PURCHASE): вкл/выкл функции и цена за устройство для
+XTR / RUB / USD через кнопки и ввод сообщения (RemnashopExtra.DEVICE_PURCHASE_PRICE).
 
 Примерный flow:
 ```

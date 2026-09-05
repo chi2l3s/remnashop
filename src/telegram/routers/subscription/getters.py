@@ -34,14 +34,29 @@ async def subscription_getter(
     dialog_manager: DialogManager,
     user: TelegramUserDto,
     subscription_dao: FromDishka[SubscriptionDao],
+    settings_dao: FromDishka[SettingsDao],
+    payment_gateway_dao: FromDishka[PaymentGatewayDao],
     **kwargs: Any,
 ) -> dict[str, Any]:
     current_subscription = await subscription_dao.get_current(user.id)
     has_active = bool(current_subscription and not current_subscription.is_trial)
     is_unlimited = current_subscription.is_unlimited if current_subscription else False
+
+    settings = await settings_dao.get()
+    device_purchase = settings.extra.device_purchase
+    gateways = await payment_gateway_dao.get_active()
+    devices_purchase_available = (
+        has_active
+        and device_purchase.enabled
+        and current_subscription is not None
+        and current_subscription.device_limit > 0
+        and any(device_purchase.get_price(gateway.currency) > 0 for gateway in gateways)
+    )
+
     return {
         "has_active_subscription": has_active,
         "is_not_unlimited": not is_unlimited,
+        "devices_purchase_available": devices_purchase_available,
     }
 
 

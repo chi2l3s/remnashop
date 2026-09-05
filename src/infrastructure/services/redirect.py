@@ -75,6 +75,20 @@ class RedirectImpl(Redirect):
         )
         logger.info(f"User '{telegram_id}' redirected to success payment")
 
+    async def to_success_devices(self, telegram_id: int) -> None:
+        bg_manager = self.bg_manager_factory.bg(
+            bot=self.bot,
+            user_id=telegram_id,
+            chat_id=telegram_id,
+        )
+
+        await bg_manager.start(
+            state=Subscription.DEVICES_SUCCESS,
+            mode=StartMode.RESET_STACK,
+            show_mode=ShowMode.DELETE_AND_SEND,
+        )
+        logger.info(f"User '{telegram_id}' redirected to success devices purchase")
+
     async def to_failed_payment(self, telegram_id: int) -> None:
         bg_manager = self.bg_manager_factory.bg(
             bot=self.bot,

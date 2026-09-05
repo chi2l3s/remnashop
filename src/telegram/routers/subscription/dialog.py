@@ -12,6 +12,15 @@ from src.telegram.states import Subscription
 from src.telegram.widgets import Banner, I18nFormat, IgnoreUpdate
 from src.telegram.widgets.kbd import Button, Column, Group, Row, Select, SwitchTo, Url
 
+from .devices_handlers import (
+    devices_confirm_getter,
+    devices_count_getter,
+    devices_method_getter,
+    devices_success_getter,
+    on_devices_count_select,
+    on_devices_method_select,
+    on_get_devices,
+)
 from .getters import (
     confirm_getter,
     duration_getter,
@@ -60,6 +69,14 @@ subscription = Window(
             text=I18nFormat("btn-subscription.promocode"),
             id="goto_promocode",
             on_click=lambda c, w, m: m.switch_to(Subscription.PROMOCODE),
+        ),
+    ),
+    Row(
+        SwitchTo(
+            text=I18nFormat("btn-subscription.devices"),
+            id="goto_devices",
+            state=Subscription.DEVICES_COUNT,
+            when=F["devices_purchase_available"],
         ),
     ),
     *back_main_menu_button,
@@ -265,6 +282,131 @@ failed = Window(
     state=Subscription.FAILED,
 )
 
+devices_count = Window(
+    Banner(BannerName.SUBSCRIPTION),
+    I18nFormat(
+        "msg-subscription-devices-count",
+        base_devices=F["base_devices"],
+        extra_devices=F["extra_devices"],
+        price=F["price"],
+        currency=F["currency"],
+        has_price=F["has_price"],
+    ),
+    Group(
+        Select(
+            text=Format("{item[label]}"),
+            id="devices_select_count",
+            item_id_getter=lambda item: item["count"],
+            items="quantities",
+            type_factory=int,
+            on_click=on_devices_count_select,
+        ),
+        width=2,
+    ),
+    *back_main_menu_button,
+    IgnoreUpdate(),
+    state=Subscription.DEVICES_COUNT,
+    getter=devices_count_getter,
+)
+
+devices_method = Window(
+    Banner(BannerName.SUBSCRIPTION),
+    I18nFormat(
+        "msg-subscription-devices-method",
+        devices_count=F["devices_count"],
+    ),
+    Column(
+        Select(
+            text=I18nFormat(
+                "btn-subscription.payment-method",
+                gateway_title=F["item"]["gateway_title"],
+                final_amount=F["item"]["final_amount"],
+                original_amount=F["item"]["original_amount"],
+                discount_percent=F["item"]["discount_percent"],
+                currency=F["item"]["currency"],
+            ),
+            id="devices_select_method",
+            item_id_getter=lambda item: item["gateway_type"],
+            items="payment_methods",
+            type_factory=PaymentGatewayType,
+            on_click=on_devices_method_select,
+        ),
+    ),
+    Row(
+        SwitchTo(
+            text=I18nFormat("btn-subscription.devices-back-count"),
+            id="devices_back_count",
+            state=Subscription.DEVICES_COUNT,
+            when=~F["only_single_method"],
+        ),
+    ),
+    *back_main_menu_button,
+    IgnoreUpdate(),
+    state=Subscription.DEVICES_METHOD,
+    getter=devices_method_getter,
+)
+
+devices_confirm = Window(
+    Banner(BannerName.SUBSCRIPTION),
+    I18nFormat(
+        "msg-subscription-devices-confirm",
+        devices_count=F["devices_count"],
+        final_amount=F["final_amount"],
+        original_amount=F["original_amount"],
+        discount_percent=F["discount_percent"],
+        currency=F["currency"],
+        payment_method_title=F["payment_method_title"],
+        is_free=F["is_free"],
+    ),
+    Row(
+        Url(
+            text=I18nFormat("btn-subscription.pay"),
+            url=Format("{url}"),
+            when=F["url"],
+            style=Style(ButtonStyle.SUCCESS),
+        ),
+        Button(
+            text=I18nFormat("btn-subscription.get"),
+            id="devices_get",
+            on_click=on_get_devices,
+            when=~F["url"],
+            style=Style(ButtonStyle.SUCCESS),
+        ),
+    ),
+    Row(
+        SwitchTo(
+            text=I18nFormat("btn-subscription.devices-back-method"),
+            id="devices_back_method",
+            state=Subscription.DEVICES_METHOD,
+            when=~F["only_single_method"] & ~F["is_free"],
+        ),
+        SwitchTo(
+            text=I18nFormat("btn-subscription.devices-back-count"),
+            id="devices_back_count",
+            state=Subscription.DEVICES_COUNT,
+            when=F["only_single_method"] | F["is_free"],
+        ),
+    ),
+    *back_main_menu_button,
+    IgnoreUpdate(),
+    state=Subscription.DEVICES_CONFIRM,
+    getter=devices_confirm_getter,
+)
+
+devices_success = Window(
+    Banner(BannerName.SUBSCRIPTION),
+    I18nFormat(
+        "msg-subscription-devices-success",
+        devices_count=F["devices_count"],
+        total_devices=F["total_devices"],
+    ),
+    *connect_buttons,
+    *back_main_menu_button,
+    IgnoreUpdate(),
+    state=Subscription.DEVICES_SUCCESS,
+    getter=devices_success_getter,
+)
+
 promocode_window = Window(
     Banner(BannerName.PROMOCODE),
     I18nFormat("msg-promocode-input", ~F["has_promo"]),
@@ -306,5 +448,9 @@ router = Dialog(
     success_payment,
     success_trial,
     failed,
+    devices_count,
+    devices_method,
+    devices_confirm,
+    devices_success,
     on_start=on_subscription_start,
 )

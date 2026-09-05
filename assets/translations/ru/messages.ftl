@@ -1016,6 +1016,44 @@ msg-extra-mini-app-reserve =
 
     Работает только при включённом Mini App (BOT_MINI_APP).
 
+msg-extra-device-purchase =
+    ⚙️ <b>Докупка дополнительных устройств</b>
+
+    Пользователи с активной подпиской могут докупать дополнительные устройства к своему лимиту через меню подписки. Докупленные устройства сохраняются при продлении и смене плана.
+
+    <blockquote>
+    <b>Статус:</b> { $enabled ->
+        [1] ✅ Включено
+        *[0] ❌ Выключено
+    }
+
+    💰 <b>Цена за 1 устройство</b>:
+    • Telegram Stars: { $price_xtr ->
+        [0] не задана
+        *[HAS] { $price_xtr }★
+    }
+    • Рубли: { $price_rub ->
+        [0] не задана
+        *[HAS] { $price_rub }₽
+    }
+    • Доллары: { $price_usd ->
+        [0] не задана
+        *[HAS] { $price_usd }$
+    }
+    </blockquote>
+
+    Нажмите на кнопку с валютой, чтобы задать цену. Если цена для валюты шлюза не задана, этот способ оплаты не будет доступен при докупке.
+
+msg-extra-device-purchase-price =
+    ⚙️ <b>Цена за устройство ({ $currency })</b>
+
+    Текущая цена: { $price ->
+        [0] не задана
+        *[HAS] <b>{ $price }{ $symbol }</b>
+    }
+
+    Отправьте новую цену за одно устройство в сообщении (целое число).
+
 msg-admins-main = <b>👮‍♂️ Администраторы</b>
 
 
@@ -1534,6 +1572,48 @@ msg-subscription-failed =
     <b>❌ Произошла ошибка!</b>
 
     Не волнуйтесь, техподдержка уже уведомлена и свяжется с вами в ближайшее время. Приносим извинения за неудобства.
+
+msg-subscription-devices-count =
+    <b>➕ Докупить устройства</b>
+
+    Ваш лимит устройств: <b>{ $base_devices }</b>{ $extra_devices ->
+        [0] { empty }
+        *[HAS] + <b>{ $extra_devices }</b> докупленных
+    }
+
+    { $price ->
+        [0] Стоимость за устройство не указана.
+        *[HAS] Стоимость одного устройства: <b>{ $price }{ $currency }</b>
+    }
+
+    Выберите количество устройств:
+
+msg-subscription-devices-method =
+    <b>💳 Выберите способ оплаты</b>
+
+    Докупка <b>{ $devices_count }</b> шт. устройств.
+
+msg-subscription-devices-confirm =
+    <b>🛒 Подтверждение докупки устройств</b>
+
+    <blockquote>
+    • <b>Количество</b>: { $devices_count } шт.
+    • <b>Стоимость</b>: { $final_amount }{ $currency }
+    • <b>Способ оплаты</b>: { $payment_method_title }
+    </blockquote>
+
+    { $discount_percent ->
+        [0] { empty }
+        *[HAS]
+    <blockquote>
+    <i>Применена скидка { $discount_percent }% (без скидки: { $original_amount }{ $currency })</i>
+    </blockquote>
+    }
+
+msg-subscription-devices-success =
+    <b>✅ Оплата прошла успешно!</b>
+
+    Дополнительные устройства начислены. Общий лимит устройств: <b>{ $total_devices }</b> шт.
 
 
 # Importer

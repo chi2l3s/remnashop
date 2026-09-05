@@ -273,6 +273,24 @@ event-subscription =
     { hdr-plan }
     { frg-plan-snapshot-comparison }
 
+    .devices =
+    #SubscriptionDevicesEvent
+
+    <b>🔅 Событие: Докупка устройств!</b>
+
+    { hdr-payment }
+    { frg-payment-info }
+
+    <blockquote>
+    • <b>Количество устройств</b>: { $devices_count } шт.
+    </blockquote>
+
+    { hdr-user }
+    { frg-user-info }
+
+    { hdr-plan }
+    { frg-plan-snapshot }
+
     .expiring =
     { $is_trial ->
     [0]
@@ -487,6 +505,21 @@ event-payment =
     { frg-user-info }
 
     Платеж получен, но не удалось выдать подписку. Транзакция помечена как FAILED. Требуется ручная проверка.
+
+    .devices-failed =
+    <b>⚠️ Событие: Ошибка выдачи устройств!</b>
+
+    { hdr-payment }
+    { frg-payment-info }
+
+    { hdr-user }
+    { frg-user-info }
+
+    <blockquote>
+    • <b>Количество устройств</b>: { $devices_count } шт.
+    </blockquote>
+
+    Платеж получен, но не удалось начислить дополнительные устройства. Транзакция помечена как FAILED. Требуется ручная проверка.
 
 event-remnashop-welcome =
     <b>💎 Remnashop v{ $version }</b>

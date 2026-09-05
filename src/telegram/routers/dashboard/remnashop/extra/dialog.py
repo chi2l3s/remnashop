@@ -2,14 +2,17 @@ from aiogram_dialog import Dialog, StartMode, Window
 from aiogram_dialog.widgets.input import MessageInput
 from magic_filter import F
 
-from src.core.enums import BannerName
+from src.core.enums import BannerName, Currency
 from src.telegram.states import DashboardRemnashop, RemnashopExtra
 from src.telegram.widgets import Banner, I18nFormat, IgnoreUpdate
 from src.telegram.widgets.kbd import Button, Row, Start, SwitchTo
 
-from .getters import extra_getter
+from .getters import device_purchase_price_getter, extra_getter
 from .handlers import (
     on_cooldown_input,
+    on_device_purchase_currency_select,
+    on_device_purchase_price_input,
+    on_device_purchase_toggle,
     on_mini_app_reserve_toggle,
     on_toggle,
     on_trial_channel_guard_toggle,
@@ -76,6 +79,16 @@ main = Window(
             ),
             id="mini_app_reserve",
             state=RemnashopExtra.MINI_APP_RESERVE,
+        ),
+    ),
+    Row(
+        SwitchTo(
+            text=I18nFormat(
+                "btn-remnashop-extra.device-purchase",
+                enabled=F["device_purchase_enabled"],
+            ),
+            id="device_purchase",
+            state=RemnashopExtra.DEVICE_PURCHASE,
         ),
     ),
     Row(
@@ -255,6 +268,90 @@ mini_app_reserve = Window(
     getter=extra_getter,
 )
 
+device_purchase = Window(
+    Banner(BannerName.DASHBOARD),
+    I18nFormat(
+        "msg-extra-device-purchase",
+        enabled=F["device_purchase_enabled"],
+        price_xtr=F["device_purchase_price_xtr"],
+        price_rub=F["device_purchase_price_rub"],
+        price_usd=F["device_purchase_price_usd"],
+    ),
+    Row(
+        Button(
+            text=I18nFormat(
+                "btn-remnashop-extra.toggle",
+                enabled=F["device_purchase_enabled"],
+            ),
+            id="device_purchase_toggle",
+            on_click=on_device_purchase_toggle,
+        ),
+    ),
+    Row(
+        Button(
+            text=I18nFormat(
+                "btn-remnashop-extra.device-price",
+                currency=Currency.XTR.value,
+                symbol=Currency.XTR.symbol,
+                price=F["device_purchase_price_xtr"],
+            ),
+            id="device_price_xtr",
+            on_click=on_device_purchase_currency_select,
+        ),
+        Button(
+            text=I18nFormat(
+                "btn-remnashop-extra.device-price",
+                currency=Currency.RUB.value,
+                symbol=Currency.RUB.symbol,
+                price=F["device_purchase_price_rub"],
+            ),
+            id="device_price_rub",
+            on_click=on_device_purchase_currency_select,
+        ),
+        Button(
+            text=I18nFormat(
+                "btn-remnashop-extra.device-price",
+                currency=Currency.USD.value,
+                symbol=Currency.USD.symbol,
+                price=F["device_purchase_price_usd"],
+            ),
+            id="device_price_usd",
+            on_click=on_device_purchase_currency_select,
+        ),
+    ),
+    Row(
+        SwitchTo(
+            text=I18nFormat("btn-back.general"),
+            id="back",
+            state=RemnashopExtra.MAIN,
+        ),
+    ),
+    IgnoreUpdate(),
+    state=RemnashopExtra.DEVICE_PURCHASE,
+    getter=extra_getter,
+)
+
+device_purchase_price = Window(
+    Banner(BannerName.DASHBOARD),
+    I18nFormat(
+        "msg-extra-device-purchase-price",
+        currency=F["device_currency"],
+        symbol=F["device_currency_symbol"],
+        price=F["device_price"],
+    ),
+    MessageInput(func=on_device_purchase_price_input),
+    Row(
+        SwitchTo(
+            text=I18nFormat("btn-back.general"),
+            id="back",
+            state=RemnashopExtra.DEVICE_PURCHASE,
+        ),
+    ),
+    IgnoreUpdate(),
+    state=RemnashopExtra.DEVICE_PURCHASE_PRICE,
+    getter=device_purchase_price_getter,
+)
+
 router = Dialog(
     main,
     device_single,
@@ -263,4 +360,6 @@ router = Dialog(
     referral_reset,
     trial_channel_guard,
     mini_app_reserve,
+    device_purchase,
+    device_purchase_price,
 )

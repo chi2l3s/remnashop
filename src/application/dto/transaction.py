@@ -45,6 +45,9 @@ class TransactionDto(BaseDto, TrackableMixin, TimestampMixin):
     currency: Currency
     plan_snapshot: "PlanSnapshotDto"
 
+    # Количество докупаемых устройств (только для PurchaseType.DEVICES)
+    devices_count: int = 0
+
     @property
     def is_completed(self) -> bool:
         return self.status == TransactionStatus.COMPLETED

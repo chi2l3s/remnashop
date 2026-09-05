@@ -353,6 +353,16 @@ btn-remnashop-extra =
         *[0] 🔴
     } Резервная кнопка подключения
 
+    .device-purchase = { $enabled ->
+        [1] 🟢
+        *[0] 🔴
+    } Докупка устройств
+
+    .device-price = 💰 { $currency } { $price ->
+        [0] — не задана
+        *[HAS] — { $price }{ $symbol }
+    }
+
     .toggle = { $enabled ->
         [1] 🟢 Включено
         *[0] 🔴 Выключено
@@ -568,6 +578,11 @@ btn-subscription =
     .back-duration = ⬅️ Изменить длительность
     .back-payment-method = ⬅️ Изменить способ оплаты
     .connect = 🚀 Подключиться
+    .devices = ➕ Докупить устройства
+    .devices-count = { $count } шт.
+    .devices-count-priced = { $count } шт. | { $final_amount }{ $currency }
+    .devices-back-count = ⬅️ Изменить количество
+    .devices-back-method = ⬅️ Изменить способ оплаты
 
     .payment-method = { $gateway_title } | { $final_amount ->
     [0] 🎁

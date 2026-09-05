@@ -445,6 +445,9 @@ class UserPurchaseEvent(UserEvent):
     purchase_type: PurchaseType
     is_trial_plan: bool
 
+    # Количество докупленных устройств (>0 только для PurchaseType.DEVICES)
+    devices_count: int = 0
+
     payment_id: UUID
     gateway_type: PaymentGatewayType
     final_amount: Decimal
@@ -481,6 +484,8 @@ class UserPurchaseEvent(UserEvent):
                 return "event-subscription.renew"
             case PurchaseType.CHANGE:
                 return "event-subscription.change"
+            case PurchaseType.DEVICES:
+                return "event-subscription.devices"
 
 
 @dataclass(frozen=True, kw_only=True)

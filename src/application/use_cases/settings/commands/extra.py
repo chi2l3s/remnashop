@@ -8,9 +8,13 @@ from src.application.common.dao import SettingsDao
 from src.application.common.policy import Permission
 from src.application.common.uow import UnitOfWork
 from src.application.dto import SettingsDto, UserDto
+from src.core.enums import Currency
 
 COOLDOWN_MIN = 0
 COOLDOWN_MAX = 8760  # 1 year in hours
+
+DEVICE_PRICE_MIN = 1
+DEVICE_PRICE_MAX = 1_000_000
 
 
 @dataclass(frozen=True)
@@ -101,4 +105,58 @@ class UpdateResetCooldown(Interactor[UpdateResetCooldownDto, Optional[SettingsDt
             await self.uow.commit()
 
         logger.info(f"{actor.log} Set {data.feature}.cooldown_hours: {hours}")
+        return updated
+
+
+class ToggleDevicePurchase(Interactor[None, Optional[SettingsDto]]):
+    required_permission = Permission.SETTINGS_EXTRA
+
+    def __init__(self, uow: UnitOfWork, settings_dao: SettingsDao) -> None:
+        self.uow = uow
+        self.settings_dao = settings_dao
+
+    async def _execute(self, actor: UserDto, data: None) -> Optional[SettingsDto]:
+        async with self.uow:
+            settings = await self.settings_dao.get()
+            settings.extra.device_purchase.enabled = not settings.extra.device_purchase.enabled
+            updated = await self.settings_dao.update(settings)
+            await self.uow.commit()
+
+        logger.info(
+            f"{actor.log} Toggled device_purchase.enabled: {settings.extra.device_purchase.enabled}"
+        )
+        return updated
+
+
+@dataclass(frozen=True)
+class UpdateDevicePurchasePriceDto:
+    currency: Currency
+    raw_value: str
+
+
+class UpdateDevicePurchasePrice(Interactor[UpdateDevicePurchasePriceDto, Optional[SettingsDto]]):
+    required_permission = Permission.SETTINGS_EXTRA
+
+    def __init__(self, uow: UnitOfWork, settings_dao: SettingsDao) -> None:
+        self.uow = uow
+        self.settings_dao = settings_dao
+
+    async def _execute(
+        self, actor: UserDto, data: UpdateDevicePurchasePriceDto
+    ) -> Optional[SettingsDto]:
+        price = int(data.raw_value.strip())
+        if price < DEVICE_PRICE_MIN or price > DEVICE_PRICE_MAX:
+            raise ValueError(
+                f"Device price must be between {DEVICE_PRICE_MIN} and {DEVICE_PRICE_MAX}"
+            )
+
+        async with self.uow:
+            settings = await self.settings_dao.get()
+            prices = dict(settings.extra.device_purchase.prices)
+            prices[data.currency] = price
+            settings.extra.device_purchase.prices = prices
+            updated = await self.settings_dao.update(settings)
+            await self.uow.commit()
+
+        logger.info(f"{actor.log} Set device_purchase price for '{data.currency}': {price}")
         return updated
