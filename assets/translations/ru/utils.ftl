@@ -15,23 +15,23 @@ ad-link-default-name = Новая ссылка
 plan-default-name = Новый план
 
 platform-icon =
-    .ios = 🍎
-    .android = 🤖
-    .windows = 🖥️
-    .macos = 💻
-    .linux = 🐧
-    .default = 📱
+    .ios = <tg-emoji emoji-id="6019267111950488810">🍎</tg-emoji>
+    .android = <tg-emoji emoji-id="6019330475603004839">🤖</tg-emoji>
+    .windows = <tg-emoji emoji-id="6019267111950488810">💻</tg-emoji>
+    .macos = <tg-emoji emoji-id="6019069972951601039">💻</tg-emoji>
+    .linux = <tg-emoji emoji-id="6019451602270687231">🐧</tg-emoji>
+    .default = <tg-emoji emoji-id="5427252019620504695">📱</tg-emoji>
 
 inline-invite =
     .title = Пригласить друга
     .description = Нажмите, чтобы отправить пригласительную ссылку!
     .message =
-        🚀 Привет! Хочешь стабильный и быстрый VPN?
+        <tg-emoji emoji-id="5188481279963715781">🚀</tg-emoji> Привет! Хочешь стабильный и быстрый VPN?
         
         { $bot_name } — поможет тебе с этим!
 
-        ↘️ ЖМИ КНОПКУ И ПОПРОБУЙ БЕСПЛАТНО!
-    .start = 🚀 Присоединиться
+        <tg-emoji emoji-id="6206354659003600828">↘️</tg-emoji> ЖМИ КНОПКУ И ПОПРОБУЙ БЕСПЛАТНО!
+    .start = <tg-emoji emoji-id="5188481279963715781">🚀</tg-emoji> Присоединиться
 
 message =
     .withdraw-points = Здравствуйте! Я бы хотел запросить обмен баллов.
