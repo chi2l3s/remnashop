@@ -30,6 +30,17 @@ class LayeredFileStorage(BaseStorage):
             ),
         )
 
+    @staticmethod
+    def _collect_ftl_files(locale_dir: Path) -> list[Path]:
+        # rglob рекурсивен и захватывает скрытые служебные папки (например .legacy
+        # от старых версий entrypoint) — их дубликаты определений перекрывают
+        # основные переводы, поэтому игнорируем всё внутри скрытых директорий.
+        return [
+            f
+            for f in sorted(locale_dir.rglob("*.ftl"))
+            if not any(part.startswith(".") for part in f.relative_to(locale_dir).parts[:-1])
+        ]
+
     def _load_translations(self) -> None:
         # Local dev fallback: assets.default/ not present — behave like FileStorage
         if not self._default_dir.exists():
@@ -37,7 +48,7 @@ class LayeredFileStorage(BaseStorage):
                 if not locale_dir.is_dir():
                     continue
                 locale = locale_dir.name
-                texts = [f.read_text("utf8") for f in sorted(locale_dir.rglob("*.ftl"))]
+                texts = [f.read_text("utf8") for f in self._collect_ftl_files(locale_dir)]
                 if texts:
                     translator = self._make_translator(locale, texts)
                     self._default_translators[locale] = translator
@@ -50,7 +61,7 @@ class LayeredFileStorage(BaseStorage):
             locale = locale_dir.name
 
             # Load all default .ftl files
-            default_texts = [f.read_text("utf8") for f in sorted(locale_dir.rglob("*.ftl"))]
+            default_texts = [f.read_text("utf8") for f in self._collect_ftl_files(locale_dir)]
             if default_texts:
                 translator = self._make_translator(locale, default_texts)
                 self._default_translators[locale] = translator
