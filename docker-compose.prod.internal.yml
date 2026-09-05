@@ -1,5 +1,13 @@
 x-build: &build
-  image: ghcr.io/snoups/remnashop:latest
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      BUILD_TIME: ${BUILD_TIME:-}
+      BUILD_BRANCH: ${BUILD_BRANCH:-}
+      BUILD_COMMIT: ${BUILD_COMMIT:-}
+      BUILD_TAG: ${BUILD_TAG:-}
+  image: remnashop:latest
 
   volumes:
       - ./logs:/opt/remnashop/logs
