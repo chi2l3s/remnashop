@@ -134,7 +134,7 @@ async def menu_getter(
 
 
 def get_platform_icon(i18n: TranslatorRunner, platform: str | None) -> str:
-    known_platforms = {"ios", "android", "windows", "macos", "linux"}
+    known_platforms = {"ios", "android", "androidtv", "windows", "macos", "linux"}
 
     if platform and platform.lower() in known_platforms:
         return i18n.get(f"platform-icon.{platform.lower()}")

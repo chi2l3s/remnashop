@@ -17,7 +17,8 @@ plan-default-name = Новый план
 platform-icon =
     .ios = <tg-emoji emoji-id="6019267111950488810">🍎</tg-emoji>
     .android = <tg-emoji emoji-id="6019330475603004839">🤖</tg-emoji>
-    .windows = <tg-emoji emoji-id="6019267111950488810">💻</tg-emoji>
+    .androidtv = <tg-emoji emoji-id="6019330475603004839">🤖</tg-emoji>
+    .windows = <tg-emoji emoji-id="5927109109621984802">💻</tg-emoji>
     .macos = <tg-emoji emoji-id="6019069972951601039">💻</tg-emoji>
     .linux = <tg-emoji emoji-id="6019451602270687231">🐧</tg-emoji>
     .default = <tg-emoji emoji-id="5427252019620504695">📱</tg-emoji>
