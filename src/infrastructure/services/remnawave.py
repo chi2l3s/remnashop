@@ -1,11 +1,12 @@
 import asyncio
 from dataclasses import fields, is_dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional, Union
 from uuid import UUID
 
 from loguru import logger
 from packaging.version import Version
+from pydantic import ValidationError
 from remnapy import RemnawaveSDK
 from remnapy.exceptions import AuthenticationError, ConflictError, NotFoundError
 from remnapy.models import (
@@ -181,9 +182,51 @@ class RemnawaveImpl(Remnawave):
         return response.root
 
     async def get_devices(self, user_uuid: UUID) -> list[HwidDeviceDto]:
-        response = await self.sdk.hwid.get_hwid_user(user_uuid)
+        try:
+            response = await self.sdk.hwid.get_hwid_user(user_uuid)
+        except ValidationError:
+            # Панель Remnawave 3.2.x отдаёт устройства в новой схеме
+            # (userId/requestIp, без userUuid) — модель SDK не проходит валидацию.
+            logger.warning(
+                f"HWID devices response schema mismatch for RemnaUser '{user_uuid}' "
+                f"(panel 3.2.x) — parsing leniently"
+            )
+            return await self._get_devices_lenient(user_uuid)
         logger.debug(f"Fetched {response.total} devices for RemnaUser '{user_uuid}'")
         return response.devices if response.total else []
+
+    async def _get_devices_lenient(self, user_uuid: UUID) -> list[HwidDeviceDto]:
+        client = self.sdk.hwid.client
+        response = await client.get(f"/hwid/devices/{user_uuid}")
+        response.raise_for_status()
+        raw_devices = response.json().get("response", {}).get("devices", [])
+        devices: list[HwidDeviceDto] = []
+        for raw in raw_devices:
+            devices.append(
+                HwidDeviceDto.model_construct(
+                    hwid=raw.get("hwid", ""),
+                    user_uuid=raw.get("userUuid"),
+                    platform=raw.get("platform"),
+                    os_version=raw.get("osVersion"),
+                    device_model=raw.get("deviceModel"),
+                    user_agent=raw.get("userAgent"),
+                    created_at=self._parse_panel_datetime(raw.get("createdAt"))
+                    or datetime.now(timezone.utc),
+                    updated_at=self._parse_panel_datetime(raw.get("updatedAt"))
+                    or datetime.now(timezone.utc),
+                )
+            )
+        logger.debug(f"Leniently fetched {len(devices)} devices for RemnaUser '{user_uuid}'")
+        return devices
+
+    @staticmethod
+    def _parse_panel_datetime(value: Optional[str]) -> Optional[datetime]:
+        if not value:
+            return None
+        try:
+            return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            return None
 
     async def delete_device(self, user_uuid: UUID, hwid_uuid: str) -> Optional[int]:
         try:
@@ -194,6 +237,14 @@ class RemnawaveImpl(Remnawave):
                 f"Deleted HWID device '{hwid_uuid}' for RemnaUser '{user_uuid}'. "
                 f"Total devices now: {response.total}"
             )
+        except ValidationError:
+            # Панель Remnawave 3.2.x отвечает на удаление без тела (202/204) —
+            # модель SDK не валидируется, но устройство удалено успешно.
+            logger.info(
+                f"Deleted HWID device '{hwid_uuid}' for RemnaUser '{user_uuid}' "
+                f"(empty response, panel 3.2.x)"
+            )
+            return None
         except NotFoundError:
             logger.debug(f"RemnaUser '{user_uuid}' not found in panel")
             return None
@@ -205,6 +256,13 @@ class RemnawaveImpl(Remnawave):
             result = await self.sdk.hwid.delete_all_hwid_user(
                 DeleteUserAllHwidDeviceRequestDto(user_uuid=user_uuid)
             )
+        except ValidationError:
+            # Панель Remnawave 3.2.x отвечает на удаление без тела (202/204).
+            logger.info(
+                f"Deleted all HWID devices for RemnaUser '{user_uuid}' "
+                f"(empty response, panel 3.2.x)"
+            )
+            return
         except NotFoundError:
             logger.debug(f"RemnaUser '{user_uuid}' not found in panel")
             return
