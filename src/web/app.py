@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from aiogram import Dispatcher
 from fastapi import FastAPI
 from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
@@ -5,6 +7,7 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import HTMLResponse
 from loguru import logger
 from starlette.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles
 
 from src.__version__ import __version__
 from src.core.config import AppConfig
@@ -78,6 +81,17 @@ def get_app(config: AppConfig, dispatcher: Dispatcher) -> FastAPI:
     )
 
     telegram_webhook_endpoint.register(app=app, path=config.bot.webhook_path)
+
+    if config.web_enabled:
+        webapp_dist = Path(__file__).resolve().parents[2] / "webapp" / "dist"
+        if webapp_dist.is_dir():
+            # Register last: API, webhook and docs routes keep priority over the SPA.
+            app.mount("/", StaticFiles(directory=webapp_dist, html=True), name="webapp")
+            logger.info(f"Telegram Web App mounted from '{webapp_dist}'")
+        else:
+            logger.warning(
+                f"WEB_ENABLED=true, but Telegram Web App build was not found at '{webapp_dist}'"
+            )
 
     app.state.telegram_webhook_endpoint = telegram_webhook_endpoint
     app.state.dispatcher = dispatcher

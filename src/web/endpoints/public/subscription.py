@@ -36,6 +36,7 @@ from src.application.use_cases.subscription.commands.purchase import (
 )
 from src.application.use_cases.user.queries.plans import GetAvailablePlans, GetAvailableTrial
 from src.core.enums import (
+    AuthType,
     PaymentGatewayType,
     PurchaseType,
     TransactionStatus,
@@ -93,7 +94,10 @@ def _assert_web_gateway(gateway_type: PaymentGatewayType) -> None:
 
 
 def _assert_web_purchase_email_verified(user: UserDto) -> None:
-    if user.is_email_verified:
+    # Telegram Mini Apps are authenticated by signed initData from Telegram itself.
+    # Email verification remains mandatory for browser/email accounts, but should
+    # not block a user who opened the cabinet from the bot.
+    if user.auth_type == AuthType.TELEGRAM or user.is_email_verified:
         return
 
     raise HTTPException(

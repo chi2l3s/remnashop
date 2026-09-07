@@ -66,6 +66,13 @@ class AppConfig(BaseConfig, env_prefix="APP_"):
     def default_translations_dir(self) -> Path:
         return self.default_assets_dir / "translations"
 
+    @property
+    def resolved_web_cabinet_url(self) -> str:
+        configured_url = self.web_cabinet_url.strip()
+        if configured_url:
+            return configured_url
+        return f"https://{self.domain.get_secret_value()}"
+
     def get_webhook(self, gateway_type: PaymentGatewayType) -> str:
         domain = f"https://{self.domain.get_secret_value()}"
         path = f"{API_V1 + PAYMENTS_WEBHOOK_PATH}/{gateway_type.lower()}"

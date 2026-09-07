@@ -29,4 +29,8 @@ Makefile
 .coverage
 htmlcov/
 
+webapp/node_modules/
+webapp/dist/
+webapp/*.tsbuildinfo
+
 .history

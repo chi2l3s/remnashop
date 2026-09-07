@@ -1,3 +1,10 @@
+FROM node:24-alpine AS webapp-builder
+WORKDIR /opt/remnashop/webapp
+COPY webapp/package.json webapp/package-lock.json ./
+RUN npm ci
+COPY webapp/ ./
+RUN npm run build
+
 FROM python:3.12-alpine
 WORKDIR /opt/remnashop
 
@@ -6,6 +13,7 @@ RUN apk add --no-cache git postgresql-client
 COPY pyproject.toml .
 COPY uv.lock .
 COPY docker-entrypoint.sh .
+COPY --from=webapp-builder /opt/remnashop/webapp/dist ./webapp/dist
 
 RUN pip install --no-cache-dir uv && uv sync --frozen
 

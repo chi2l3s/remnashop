@@ -1,3 +1,10 @@
+FROM node:24-alpine AS webapp-builder
+WORKDIR /opt/remnashop/webapp
+COPY webapp/package.json webapp/package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+COPY webapp/ ./
+RUN npm run build
+
 FROM ghcr.io/astral-sh/uv:python3.12-alpine AS builder
 WORKDIR /opt/remnashop
 RUN apk add --no-cache git
@@ -28,6 +35,7 @@ ENV PYTHONPATH=/opt/remnashop
 
 COPY ./src ./src
 COPY ./assets /opt/remnashop/assets.default
+COPY --from=webapp-builder /opt/remnashop/webapp/dist ./webapp/dist
 
 COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
 RUN chmod +x ./docker-entrypoint.sh
