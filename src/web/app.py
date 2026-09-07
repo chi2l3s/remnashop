@@ -90,7 +90,7 @@ def get_app(config: AppConfig, dispatcher: Dispatcher) -> FastAPI:
             logger.info(f"Telegram Web App mounted from '{webapp_dist}'")
         else:
             logger.warning(
-                f"WEB_ENABLED=true, but Telegram Web App build was not found at '{webapp_dist}'"
+                f"APP_WEB_ENABLED=true, but Telegram Web App build was not found at '{webapp_dist}'"
             )
 
     app.state.telegram_webhook_endpoint = telegram_webhook_endpoint

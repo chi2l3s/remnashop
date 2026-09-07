@@ -35,8 +35,8 @@ class AppConfig(BaseConfig, env_prefix="APP_"):
     assets_dir: Path = ASSETS_DIR
     origins: StringList = StringList("")
     swagger_enabled: bool = False
-    web_enabled: bool = Field(default=False, validation_alias="WEB_ENABLED")
-    web_cabinet_url: str = Field(default="", validation_alias="WEB_CABINET_URL")
+    web_enabled: bool = False
+    web_cabinet_url: str = ""
 
     bot: BotConfig = Field(default_factory=BotConfig)
     remnawave: RemnawaveConfig = Field(default_factory=RemnawaveConfig)
@@ -87,12 +87,12 @@ class AppConfig(BaseConfig, env_prefix="APP_"):
         if self.web_enabled:
             if not self.api_key:
                 raise ValueError(
-                    "APP_API_KEY must be set when WEB_ENABLED=true; "
+                    "APP_API_KEY must be set when APP_WEB_ENABLED=true; "
                     "do not reuse APP_CRYPT_KEY for API authentication"
                 )
             if not self.jwt_secret:
                 raise ValueError(
-                    "APP_JWT_SECRET must be set when WEB_ENABLED=true; "
+                    "APP_JWT_SECRET must be set when APP_WEB_ENABLED=true; "
                     "do not reuse APP_CRYPT_KEY for JWT signing"
                 )
         return self
