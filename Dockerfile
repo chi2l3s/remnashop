@@ -1,3 +1,10 @@
+FROM node:22-alpine AS cabinet-builder
+WORKDIR /app/cabinet
+COPY cabinet/package*.json ./
+RUN npm ci
+COPY cabinet ./
+RUN npm run build
+
 FROM ghcr.io/astral-sh/uv:python3.12-alpine AS builder
 WORKDIR /opt/remnashop
 RUN apk add --no-cache git
@@ -27,6 +34,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/opt/remnashop
 
 COPY ./src ./src
+COPY --from=cabinet-builder /app/src/web/static/cabinet ./src/web/static/cabinet
 COPY ./assets /opt/remnashop/assets.default
 
 COPY ./docker-entrypoint.sh ./docker-entrypoint.sh

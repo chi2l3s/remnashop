@@ -10,6 +10,7 @@ from src.application.common.dao import (
     PaymentGatewayDao,
     SettingsDao,
     SubscriptionDao,
+    UserDao,
 )
 from src.application.dto import PlanDto, PlanSnapshotDto, UserDto
 from src.application.services import PricingService
@@ -30,6 +31,7 @@ from src.application.use_cases.remnawave.commands.management import (
     DeleteUserDeviceDto,
     ReissueSubscription,
 )
+from src.application.use_cases.remnawave.commands.synchronization import SyncRemnaUser
 from src.application.use_cases.subscription.commands.purchase import (
     ActivateTrialSubscription,
     ActivateTrialSubscriptionDto,
@@ -48,6 +50,7 @@ from src.core.exceptions import (
     PromocodeNotFoundError,
     TrialNotAvailableError,
 )
+from src.web.panel_subscription import resolve_panel_subscription
 from src.web.schemas import (
     DeviceDeleteResponse,
     DeviceResponse,
@@ -136,8 +139,12 @@ async def get_current_subscription(
     user: CurrentUser,
     subscription_dao: FromDishka[SubscriptionDao],
     remnawave: FromDishka[Remnawave],
+    user_dao: FromDishka[UserDao],
+    sync_remna_user: FromDishka[SyncRemnaUser],
 ) -> Optional[SubscriptionInfoResponse]:
-    current_subscription = await subscription_dao.get_current(user.id)
+    current_subscription = await resolve_panel_subscription(
+        user, subscription_dao, user_dao, remnawave, sync_remna_user
+    )
 
     if not current_subscription:
         return None

@@ -47,3 +47,11 @@ site/
 *.egg-info/
 *.egg
 frontend/
+node_modules/
+src/web/static/cabinet/
+cabinet/test-results/
+!cabinet/tests/
+!cabinet/tests/*.js
+!/tests/
+/tests/*
+!/tests/test_cabinet_panel_subscription.py
