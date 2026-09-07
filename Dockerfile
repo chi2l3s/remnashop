@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 FROM node:24-alpine AS webapp-builder
 WORKDIR /opt/remnashop/webapp
 COPY webapp/package.json webapp/package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci
 COPY webapp/ ./
+=======
+FROM node:22-alpine AS cabinet-builder
+WORKDIR /app/cabinet
+COPY cabinet/package*.json ./
+RUN npm ci
+COPY cabinet ./
+>>>>>>> 7d43311817ae6e36ab877842eab762ef2c2627ae
 RUN npm run build
 
 FROM ghcr.io/astral-sh/uv:python3.12-alpine AS builder
@@ -34,6 +42,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/opt/remnashop
 
 COPY ./src ./src
+COPY --from=cabinet-builder /app/src/web/static/cabinet ./src/web/static/cabinet
 COPY ./assets /opt/remnashop/assets.default
 COPY --from=webapp-builder /opt/remnashop/webapp/dist ./webapp/dist
 

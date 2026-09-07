@@ -47,6 +47,17 @@ site/
 *.egg-info/
 *.egg
 frontend/
+<<<<<<< HEAD
 webapp/node_modules/
 webapp/dist/
 webapp/*.tsbuildinfo
+=======
+node_modules/
+src/web/static/cabinet/
+cabinet/test-results/
+!cabinet/tests/
+!cabinet/tests/*.js
+!/tests/
+/tests/*
+!/tests/test_cabinet_panel_subscription.py
+>>>>>>> 7d43311817ae6e36ab877842eab762ef2c2627ae
