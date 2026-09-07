@@ -12,7 +12,6 @@ from starlette.staticfiles import StaticFiles
 from src.__version__ import __version__
 from src.core.config import AppConfig
 from src.lifespan import lifespan
-from src.web.cabinet import mount_cabinet
 
 from .endpoints import (
     TelegramWebhookEndpoint,
@@ -53,7 +52,6 @@ def get_app(config: AppConfig, dispatcher: Dispatcher) -> FastAPI:
     app.include_router(remnawave_router)
     if config.web_enabled:
         app.include_router(public_router)
-        mount_cabinet(app)
 
     if config.swagger_enabled:
 
