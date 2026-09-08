@@ -116,9 +116,9 @@ class CryptoPayGateway(BasePaymentGateway):
         if not payload_str:
             raise KeyError("Invalid response from CryptoPay API: missing 'payload'")
 
-        payment_url = data.get("bot_invoice_url")
+        payment_url = data.get("mini_app_invoice_url")
         if not payment_url:
-            raise KeyError("Invalid response from CryptoPay API: missing 'bot_invoice_url'")
+            raise KeyError("Invalid response from CryptoPay API: missing 'mini_app_invoice_url'")
 
         return PaymentResultDto(id=UUID(payload_str), url=str(payment_url))
 
