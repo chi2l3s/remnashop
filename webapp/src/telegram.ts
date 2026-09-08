@@ -22,6 +22,12 @@ export interface TelegramWebApp {
   setBackgroundColor(color: string): void;
   openLink(url: string, options?: { try_instant_view?: boolean }): void;
   HapticFeedback?: TelegramHaptics;
+  BackButton?: {
+    show(): void;
+    hide(): void;
+    onClick(callback: () => void): void;
+    offClick(callback: () => void): void;
+  };
 }
 
 declare global {
@@ -36,21 +42,39 @@ export function getTelegramWebApp(): TelegramWebApp | null {
 
 export function prepareTelegramWebApp(): TelegramWebApp | null {
   const app = getTelegramWebApp();
-  const theme = app?.colorScheme === "light" ? "light" : "dark";
-  document.documentElement.dataset.theme = theme;
+  let theme: "light" | "dark" =
+    app?.initData && app.colorScheme === "dark" ? "dark" : "light";
+  try {
+    const saved = localStorage.getItem("remna-theme-v1");
+    if (saved === "light" || saved === "dark") theme = saved;
+  } catch {
+    /* Private WebViews may disable storage. */
+  }
+  applyTheme(theme);
 
   if (!app) return null;
   if (!app.initData) return app;
 
   app.ready();
   app.expand();
-  try {
-    app.setHeaderColor(theme === "light" ? "#f2f5f3" : "#080d17");
-    app.setBackgroundColor(theme === "light" ? "#f2f5f3" : "#080d17");
-  } catch {
-    // Older Telegram clients may not support programmatic colors.
-  }
   return app;
+}
+
+export function applyTheme(theme: "light" | "dark"): void {
+  document.documentElement.dataset.theme = theme;
+  const color = theme === "light" ? "#f6f5f2" : "#171817";
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute("content", color);
+  const app = getTelegramWebApp();
+  if (app?.initData) {
+    try {
+      app.setHeaderColor(color);
+      app.setBackgroundColor(color);
+    } catch {
+      /* Older clients. */
+    }
+  }
 }
 
 export function hapticSelection(): void {

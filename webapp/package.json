@@ -9,6 +9,8 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
+    "@base-ui/react": "^1.8.0",
+    "motion": "^13.2.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sonner": "^2.0.8"
