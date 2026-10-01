@@ -63,7 +63,7 @@ class PurchaseDevices(Interactor[PurchaseDevicesDto, DevicePurchaseDto]):
         # Обновляем подписку в Remnawave (используется total_device_limit)
         await self.remnawave.update_user(
             user=user,
-            uuid=subscription.user_remna_id,
+            remna_id=subscription.user_remna_id,
             subscription=subscription,
             reset_traffic=False,
         )

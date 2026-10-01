@@ -56,7 +56,7 @@ class ActivateTrialSubscription(Interactor[ActivateTrialSubscriptionDto, None]):
         created_user = await self.remnawave.create_user(user, plan=plan)
 
         trial_subscription = SubscriptionDto(
-            user_remna_id=created_user.uuid,
+            user_remna_id=created_user.id,
             status=SubscriptionStatus(created_user.status),
             is_trial=True,
             traffic_limit=plan.traffic_limit,
@@ -180,7 +180,7 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
 
                 await self.remnawave.update_user(
                     user=user,
-                    uuid=subscription.user_remna_id,
+                    remna_id=subscription.user_remna_id,
                     subscription=subscription,
                     reset_traffic=True,
                 )
@@ -207,7 +207,7 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
 
                 updated_user = await self.remnawave.update_user(
                     user=user,
-                    uuid=subscription.user_remna_id,
+                    remna_id=subscription.user_remna_id,
                     plan=plan,
                     reset_traffic=True,
                 )
@@ -217,7 +217,7 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
                 new_sub.extra_devices = subscription.extra_devices
                 await self.remnawave.update_user(
                     user=user,
-                    uuid=subscription.user_remna_id,
+                    remna_id=subscription.user_remna_id,
                     subscription=new_sub,
                     reset_traffic=False,
                 )
@@ -245,7 +245,7 @@ class PurchaseSubscription(Interactor[PurchaseSubscriptionDto, None]):
         plan: PlanSnapshotDto,
     ) -> SubscriptionDto:
         return SubscriptionDto(
-            user_remna_id=remna_user.uuid,
+            user_remna_id=remna_user.id,
             status=SubscriptionStatus(remna_user.status),
             is_trial=plan.is_trial,
             traffic_limit=plan.traffic_limit,

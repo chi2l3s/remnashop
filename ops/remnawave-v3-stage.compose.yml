@@ -1,0 +1,68 @@
+# Isolated rehearsal: never attach these services to the production network.
+services:
+  panel-db:
+    image: postgres:18.4
+    container_name: remna-v3-stage-panel-db
+    env_file: panel.env
+    networks:
+      default:
+        aliases: [remnawave-db]
+    volumes:
+      - panel-db:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 3s
+      timeout: 3s
+      retries: 10
+  redis:
+    image: valkey/valkey:9-alpine
+    volumes:
+      - valkey-socket:/var/run/valkey
+    command: >-
+      valkey-server --save "" --appendonly no
+      --unixsocket /var/run/valkey/valkey.sock --unixsocketperm 777 --port 6379
+    networks:
+      default:
+        aliases: [remnashop-redis]
+  bot-db:
+    image: postgres:17
+    container_name: remna-v3-stage-bot-db
+    environment:
+      POSTGRES_USER: remnashop
+      POSTGRES_DB: remnashop
+      POSTGRES_HOST_AUTH_METHOD: trust
+    networks:
+      default:
+        aliases: [remnashop-db]
+    volumes:
+      - bot-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U remnashop -d remnashop]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+  panel:
+    image: remnawave/backend:3.4.4
+    container_name: remna-v3-stage-panel
+    env_file: panel.env
+    environment:
+      WEBHOOK_ENABLED: "false"
+      IS_TELEGRAM_NOTIFICATIONS_ENABLED: "false"
+      API_INSTANCES: "1"
+    networks:
+      default:
+        aliases: [remnawave]
+    volumes:
+      - valkey-socket:/var/run/valkey
+    depends_on:
+      panel-db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+volumes:
+  panel-db:
+  bot-db:
+  valkey-socket:
+networks:
+  default:
+    internal: true
